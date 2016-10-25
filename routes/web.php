@@ -15,8 +15,8 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+$app->get('api/v1/navigation/{rol}', 'NavController@menu');
 
+//Testing
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
-
-
 $app->post('api/v1/viajes','ViajesController@addViaje');
