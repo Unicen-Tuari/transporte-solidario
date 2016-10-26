@@ -12,7 +12,8 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    //return $app->version();
+    return view('home');
 });
 
 $app->get('api/v1/navigation/{rol}', 'NavController@menu');
