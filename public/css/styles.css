@@ -1,4 +1,15 @@
 body {
-  min-height: 2000px;
   padding-top: 70px;
+}
+
+/* NAV BAR */
+
+.navbar-brand img {
+  width: 220px;
+}
+
+.jumbotron.home{
+  background-image: url('/img/bg_hero.jpg');
+  background-position-y: center;
+  background-size: 91%;
 }

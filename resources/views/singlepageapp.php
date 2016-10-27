@@ -13,7 +13,7 @@
     <title>Transporte Solidario</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/simplex/bootstrap.min.css" crossorigin="anonymous">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
@@ -35,17 +35,7 @@
 
     <div id="nav"></div>
 
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Transporte Solidario</h1>
-        <p>Una iniciativa de Mesa Solidaria y UNICEN-Tupar</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-
+    <div id="main-container" class="container">
     </div> <!-- /container -->
 
 
@@ -57,6 +47,9 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/mustache.js/mustache.js" ></script>
-    <script src="js/app.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/controllers/navigation-controller.js"></script>
+    <script src="js/app/controllers/user-controller.js"></script>
+
   </body>
 </html>

@@ -1,0 +1,8 @@
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron home">
+  <h1>Transporte Solidario</h1>
+  <p>Una iniciativa de Mesa Solidaria y UNICEN-Tupar</p>
+  <p>
+    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Quiero saber más &raquo;</a>
+  </p>
+</div>
