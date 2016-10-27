@@ -11,6 +11,17 @@
 * Ejecutar script transporte.sql en base de datos "transporte"
 * Renombrar .env.example -> .env
 
+## Para trabajar en la User Story
+* Cambiamos a un nuevo branch para la US que le corresponda a cada uno:
+
+$ git checkout -b us_N
+
+* Trabajamos sobre el branch y se pushea solo el branch nuevo
+
+$ git push origin us_N
+
+
+
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
