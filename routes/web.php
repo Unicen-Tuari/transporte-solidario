@@ -13,10 +13,13 @@
 
 /* Site endpoints */
 $app->get('{type:\w*}', [
-    'as' => 'app',function ($type = '') use ($app) {      
+    'as' => 'app',function ($type = '') use ($app) {
     return view('singlepageapp');
 }]);
 
+$app->get('api/v1/solicitados', function() {
+  return view('viajes_solicitados');
+});
 /*$app->get('/usuarios',function(){ return redirect()->route('app');});*/
 
 

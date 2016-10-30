@@ -10,11 +10,12 @@ function init(){
     console.log("Initializing app...");
 
     var navigationController = new NavigationController();
-
     var role = '';
     navigationController.loadNav(role);
     navigationController.processAction(location.hash.replace('#',''));
     //navigationController.loadTemplate('home',[],'#main-container');
+    var viaje = new ViajesController();
+    viaje.viewViajes();
 
 
 }
