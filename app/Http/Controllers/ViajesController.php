@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Models\viajeModel;
 
 class ViajesController extends Controller
 {
@@ -29,11 +30,17 @@ class ViajesController extends Controller
     }
 
   public function getViajes(){
-          return array(
+
+          return array(array(
             'id' => 1,
             'partida' => 'Tandil',
             'destino' => 'Tandil',
-            'ONG' => 'Mesa Solidaria'
+            'ONG' => 'Mesa Solidaria'),
+            array(
+            'id' => 1,
+            'partida' => 'Tandil',
+            'destino' => 'Tandil',
+            'ONG' => 'Mesa Solidaria')
           );
         }
 
