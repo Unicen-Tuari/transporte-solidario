@@ -2,13 +2,16 @@
 
 <p>viajes registrados en el sistema an no realizados</p>
 
+
 <table class="table table-striped">
+{{#data}}
   <thead>
     <tr>
       <th>Viajes</th>
     </tr>
   </thead>
   <tbody>
+
     <tr>
     <td>id</td>
     <td>{{id}}</td>
@@ -25,6 +28,6 @@
     <td>ONG</td>
     <td>{{ong}}</td>
     </tr>
-
+{{/data}}
   </tbody>
 </table>
