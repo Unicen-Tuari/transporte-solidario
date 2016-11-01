@@ -11,6 +11,6 @@ ViajesController.prototype = {
         navigationController.loadTemplate('viajes',data,'#main-container',function(){
           navigationController.handleNavigationEvents();
         });
-      });
+      },"json");
     }
 }
