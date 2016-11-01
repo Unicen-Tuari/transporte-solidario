@@ -30,8 +30,8 @@ class ViajesController extends Controller
     }
 
   public function getViajes(){
-
-          return array(array(
+          $var=new \stdClass;
+          $var->data=array(array(
             'id' => 1,
             'partida' => 'Tandil',
             'destino' => 'Tandil',
@@ -42,6 +42,8 @@ class ViajesController extends Controller
             'destino' => 'Tandil',
             'ONG' => 'Mesa Solidaria')
           );
+          return json_encode($var);
+
         }
 
 
