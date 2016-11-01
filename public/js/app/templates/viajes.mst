@@ -1,0 +1,33 @@
+<h1>Viajes Pendientes</h1>
+
+<p>viajes registrados en el sistema an no realizados</p>
+
+
+<table class="table table-striped">
+{{#data}}
+  <thead>
+    <tr>
+      <th>Viajes</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+    <td>id</td>
+    <td>{{id}}</td>
+    </tr>
+    <tr>
+    <td>Partida</td>
+    <td>{{partida}}</td>
+    </tr>
+    <tr>
+    <td>Destino</td>
+    <td>{{destino}}</td>
+    </tr>
+    <tr>
+    <td>ONG</td>
+    <td>{{ong}}</td>
+    </tr>
+{{/data}}
+  </tbody>
+</table>
