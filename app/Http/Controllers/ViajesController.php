@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class ViajesController extends Controller
 {
+
+    protected $model;
     /**
      * Create a new controller instance.
      *
@@ -13,6 +15,7 @@ class ViajesController extends Controller
      */
     public function __construct()
     {
+      $this->model = new ViajeModel;
         //
     }
 
@@ -24,6 +27,16 @@ class ViajesController extends Controller
         'ONG' => 'Mesa Solidaria'
       );
     }
+
+  public function getViajes(){
+          return array(
+            'id' => 1,
+            'partida' => 'Tandil',
+            'destino' => 'Tandil',
+            'ONG' => 'Mesa Solidaria'
+          );
+        }
+
 
     public function addViaje(Request $request){
       $partida = $request->input('partida');
