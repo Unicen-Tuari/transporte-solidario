@@ -38,18 +38,12 @@ NavigationController.prototype = {
       switch(action){
         case " ":
         case "#":
-        default:
           _this.loadTemplate('home',[],'#main-container');
           break;
         case "usuarios":
           var controller = new UserController;
           controller.load();
           break;
-        case "cargar-viaje":
-           var controller = new ViajesController;
-           controller.load();
-           break;
-
 
 
       };
