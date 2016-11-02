@@ -12,5 +12,10 @@ ViajesController.prototype = {
           navigationController.handleNavigationEvents();
         });
       },"json");
+    },
+    loadAdd : function (){
+      var navigationController = new NavigationController;
+      navigationController.loadTemplate('addviaje',[],'#main-container');
     }
+
 }

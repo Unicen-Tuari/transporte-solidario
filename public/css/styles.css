@@ -14,3 +14,7 @@ body {
   background-position-y: center;
   background-size: 91%;
 }
+.logo   {
+  max-width: 80px;
+
+}
