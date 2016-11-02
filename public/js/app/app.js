@@ -15,7 +15,7 @@ function init(){
     navigationController.loadNav(role);
     navigationController.processAction(location.hash.replace('#',''));
 
-    //navigationController.loadTemplate('home',[],'#main-container');
+    navigationController.loadTemplate('home',[],'#main-container');
 
 
 }
