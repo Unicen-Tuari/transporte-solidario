@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <h1><img src="img\logo_hero.png" class="logo">Cargar Viajes</h1>
+  </div>
+    <form>
+        <div class="form-group col-md-2 col-md-offset-4">
+          <label for="example"></label>
+          <input type="text" class="form-control" id="" placeholder="Origen">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="example"></label>
+          <input type="text" class="form-control" id="" placeholder="Destino">
+        </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example"></label>
+
+        <select class=" form-control" id=""  placeholder="ONG" >
+          <option value="">ONG</option>
+          <option value="">ONG1</option>
+          <option value="">ONG2</option>
+          <option value="">ONG3</option>
+          <option value="">ONG4</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example"></label>
+        <input type="date" step="1" min="2016-01-01" max="2017-12-31" value="2016-01-01"class="form-control" id="" placeholder="Fecha Solicitada">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example"></label>
+        <input type="text" class="form-control" id="" placeholder="Peso Estimado">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example"></label>
+        <input type="text" class="form-control" id="" placeholder="Tamaño Estimado">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example"></label>
+        <input type="text" class="form-control" id="" placeholder="Frecuencia">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-7">
+      <button type="submit" class="btn btn-default">Solicitar</button>
+    </div>
+    </form>
+  </div>
+</div>

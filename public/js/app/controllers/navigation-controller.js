@@ -42,7 +42,18 @@ NavigationController.prototype = {
           var controller = new UserController;
           controller.load();
           break;
-
+        case "cargar-viaje":
+          var controller = new ViajesController;
+          controller.loadAdd();
+          break;
+        case "viajes-pendientes":
+          var controller = new ViajesController;
+          controller.load();
+          break;
+        case "viajes-realizados":
+          var controller = new ViajesController;
+          controller.loadR();
+          break;
       };
     }
   };

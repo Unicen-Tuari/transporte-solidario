@@ -1,33 +1,29 @@
-"uses strict"
 
+  "uses strict"
 
-function ViajesController(){
+  function ViajesController(){
 
-}
+  }
 
-ViajesController.prototype = {
-    viewViajes : function (){
-      $.get('api/v1/solicitados',function(data){
-        $('#main-container').html(data);
-      })
-    },
-    solicitados :function (){
-      // hacer el llamado mustache
-      capo=this;
-      $.get('api/v1/viajes',function(data){
-        capo.loadT('solicitados',data,'#viajes',function(){
-        });
-      })
-    },
-    loadT: function (template,data,container,callback = null){
-      $.get({
-        url : config.app_path+'templates/'+template+'.mst',
-        cache : false
-      }).then(function(mst){
-        var output = Mustache.render(mst,data);
-        $(container).html(output);
-        if(callback) callback();
-      });
-    }
-
+  ViajesController.prototype = {
+      load : function (){
+        var navigationController = new NavigationController;
+        $.get('api/v1/viajes',function(data){
+          navigationController.loadTemplate('viajes',data,'#main-container',function(){
+            navigationController.handleNavigationEvents();
+          });
+        },"json");
+      },
+      loadAdd : function (){
+        var navigationController = new NavigationController;
+        navigationController.loadTemplate('addviaje',[],'#main-container');
+      },
+      loadR : function (){
+        var navigationController = new NavigationController;
+        $.get('api/v1/viajes',function(data){
+          navigationController.loadTemplate('realizados',data,'#main-container',function(){
+            navigationController.handleNavigationEvents();
+          });
+        },"json");
+      }
   }
