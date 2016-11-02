@@ -32,6 +32,7 @@ NavigationController.prototype = {
       });
     },
     processAction: function(action){
+     _this = this;
       location.hash = action;
       switch(action){
         case "":
@@ -39,9 +40,9 @@ NavigationController.prototype = {
           _this.loadTemplate('home',[],'#main-container');
           break;
         case "usuarios":
-          var controller = new UserController;
-          controller.load();
-          break;
+            var controller = new UserController;
+            controller.load();
+            break;
         case "cargar-viaje":
           var controller = new ViajesController;
           controller.loadAdd();
@@ -54,6 +55,8 @@ NavigationController.prototype = {
           var controller = new ViajesController;
           controller.loadR();
           break;
+
+
       };
     }
   };

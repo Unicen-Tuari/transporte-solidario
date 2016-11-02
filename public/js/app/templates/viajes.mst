@@ -1,5 +1,8 @@
 <h1>Viajes Pendientes</h1>
+
 <p>viajes registrados en el sistema an no realizados</p>
+
+
 <table class="table table-striped">
 {{#data}}
   <thead>
