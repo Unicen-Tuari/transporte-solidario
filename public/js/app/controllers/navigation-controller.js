@@ -41,7 +41,15 @@ NavigationController.prototype = {
           _this.loadTemplate('home',[],'#main-container');
           break;
         case "usuarios":
-          var controller = new UserController;
+            var controller = new UserController;
+            controller.load();
+            break;
+        case "cargar-viaje":
+          var controller = new ViajesController;
+          controller.loadAdd();
+          break;
+        case "viajes-pendientes":
+          var controller = new ViajesController;
           controller.load();
           break;
 
