@@ -23,7 +23,7 @@ class UserController extends Controller
   public function getUser($id){
     return array(
       'id' => $id,
-      'nombre' => 'Gabriel',
+      'name' => 'Gabriel',
       'email' => 'loco@gmail.com',
       'facebook' => 'gabi-cg',
       'webpage' => 'www.loco.com.ar',
@@ -38,7 +38,7 @@ class UserController extends Controller
   public function getUsers(){
     return array(array(
       'id' => '1',
-      'nombre' => 'Los Pibes',
+      'name' => 'Los Pibes',
       'email' => 'pibes@gmail.com',
       'facebook' => 'pibitosONG',
       'webpage' => 'www.lospibes-ong.com.ar',
@@ -50,7 +50,7 @@ class UserController extends Controller
     ),
     array(
       'id' => '2',
-      'nombre' => 'Gabriel',
+      'name' => 'Gabriel',
       'email' => 'loco@gmail.com',
       'facebook' => 'gabi-cg',
       'webpage' => 'www.loco.com.ar',
