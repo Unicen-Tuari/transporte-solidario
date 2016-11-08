@@ -1,7 +1,7 @@
 
   "uses strict"
 
-  function ViajesController(){
+  function ViajesController(){}
 
   ViajesController.prototype = {
       load : function (){

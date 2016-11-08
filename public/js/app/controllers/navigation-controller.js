@@ -52,13 +52,14 @@ NavigationController.prototype = {
           var controller = new ViajesController;
           controller.load();
           break;
+        case "perfil":
+          var controller = new UserController;
+          controller.loadProfile();
+          break;
         case "viajes-realizados":
           var controller = new ViajesController;
           controller.loadR();
           break;
-
-
-
       };
     }
   };

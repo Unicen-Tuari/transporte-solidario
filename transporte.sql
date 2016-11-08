@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2016 a las 08:19:13
+-- Tiempo de generación: 08-11-2016 a las 01:39:48
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `menu`
 --
 
-DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
   `id` int(10) UNSIGNED NOT NULL,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -50,6 +49,26 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 (6, 'Ingresar', 'login', 'LoginController', '', '2016-10-26 03:00:00', '2016-10-26 03:00:00'),
 (7, 'Registrarme', 'register', 'UserController', '', '2016-10-26 03:00:00', '2016-10-26 03:00:00');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `facebook` varchar(50) DEFAULT NULL,
+  `webpage` varchar(50) DEFAULT NULL,
+  `descripcion` text,
+  `telefono` varchar(50) DEFAULT NULL,
+  `tipo_usuario` varchar(255) NOT NULL,
+  `fecha_alta` date NOT NULL,
+  `img_path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+
 --
 -- Índices para tablas volcadas
 --
@@ -58,6 +77,12 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 -- Indices de la tabla `menu`
 --
 ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
