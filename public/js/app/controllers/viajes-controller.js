@@ -3,8 +3,6 @@
 
   function ViajesController(){
 
-  }
-
   ViajesController.prototype = {
       load : function (){
         var navigationController = new NavigationController;
