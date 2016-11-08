@@ -57,9 +57,9 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `clave` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `facebook` varchar(50) DEFAULT NULL,
   `webpage` varchar(50) DEFAULT NULL,
   `descripcion` text,
