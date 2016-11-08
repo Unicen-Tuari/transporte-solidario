@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2016 a las 23:07:11
+-- Tiempo de generación: 08-11-2016 a las 01:39:48
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -65,7 +65,8 @@ CREATE TABLE `users` (
   `descripcion` text,
   `telefono` varchar(50) DEFAULT NULL,
   `tipo_usuario` varchar(255) NOT NULL,
-  `fecha_alta` date NOT NULL
+  `fecha_alta` date NOT NULL,
+  `img_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
 
 --
