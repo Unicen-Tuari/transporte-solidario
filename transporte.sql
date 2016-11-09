@@ -7,6 +7,7 @@
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -100,6 +101,30 @@ INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`
 (5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG');
 
 --
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `facebook` varchar(50) DEFAULT NULL,
+  `webpage` varchar(50) DEFAULT NULL,
+  `descripcion` text,
+  `telefono` varchar(50) DEFAULT NULL,
+  `tipo_usuario` varchar(255) NOT NULL,
+  `fecha_alta` date NOT NULL,
+  `img_path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users`(`id`,`name`, `email`, `password`) VALUES (1,'Admin','a@a.com','$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -124,6 +149,12 @@ ALTER TABLE `viaje_realizado`
   ADD KEY `id_transportista` (`id_transportista`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -132,6 +163,8 @@ ALTER TABLE `viaje_realizado`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+
 --
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
@@ -146,6 +179,12 @@ ALTER TABLE `viajesolidario`
 --
 ALTER TABLE `viaje_realizado`
   ADD CONSTRAINT `fk_viajesolidario_realizado` FOREIGN KEY (`id_viaje`) REFERENCES `viajesolidario` (`id_viaje`) ON DELETE CASCADE;
+
+
+
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
