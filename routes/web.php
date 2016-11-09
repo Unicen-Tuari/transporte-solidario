@@ -18,7 +18,7 @@ $app->get('{type:\w*}', [
 }]);
 
 /*$app->get('/usuarios',function(){ return redirect()->route('app');});*/
-
+$app->post('/auth/login', 'AuthController@postLogin');
 
 /* API Endpoints*/
 

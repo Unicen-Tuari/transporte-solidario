@@ -56,7 +56,7 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 --
 
 CREATE TABLE `users` (
-  `id` int(10) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -68,6 +68,12 @@ CREATE TABLE `users` (
   `fecha_alta` date NOT NULL,
   `img_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users`(`id`,`name`, `email`, `password`) VALUES (1,'Admin','a@a.com','$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW');
 
 --
 -- Índices para tablas volcadas
@@ -93,6 +99,8 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
