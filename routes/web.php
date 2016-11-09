@@ -11,12 +11,20 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
+/* Site endpoints */
+$app->get('{type:\w*}', [
+    'as' => 'app',function ($type = '') use ($app) {
+    return view('singlepageapp');
+}]);
 
-$app->get('api/v1/navigation/{rol}', 'NavController@menu');
+/*$app->get('/usuarios',function(){ return redirect()->route('app');});*/
 
+
+/* API Endpoints*/
+
+$app->get('api/v1/navigation[/{role}]', 'NavigationController@menu');
 //Testing
+$app->get('api/v1/viajes','ViajesController@getViajes');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
+$app->get('api/v1/historial/{id}','ViajesController@getHistory');
 $app->post('api/v1/viajes','ViajesController@addViaje');
