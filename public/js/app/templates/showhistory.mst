@@ -1,0 +1,31 @@
+<h1>Historial de viajes</h1>
+<p>Viajes registrados en el sistema que han sido realizados</p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Finalización</th>
+        <th>Colaborador</th>
+        <th>Partida</th>
+        <th>Destino</th>
+        <th>Tamaño</th>
+        <th>Peso(Kg)</th>
+        <th>Distancia (km)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#data}}
+        <tr>
+          <td>{{fecha_inicio}}</td>
+          <td>{{fecha_final}}</td>
+          <td>{{colaborador}}</td>
+          <td>{{partida}}</td>
+          <td>{{destino}}</td>
+          <td>{{tamanio}}</td>
+          <td>{{peso}}</td>
+          <td>{{distancia}}</td>
+        </tr>
+      {{/data}}
+    </tbody>
+</table>
