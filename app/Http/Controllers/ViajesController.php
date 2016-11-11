@@ -31,18 +31,20 @@ class ViajesController extends Controller
 
   public function getViajes(){
           $var=new \stdClass;
-          $var->data=array(array(
+          $var->data=$this->model->getViajes();
+                      /*  array(array(
             'id' => 1,
             'partida' => 'Tandil',
             'destino' => 'Tandil',
             'ONG' => 'Mesa Solidaria'),
             array(
-            'id' => 1,
+            'id' => 2,
             'partida' => 'Tandil',
             'destino' => 'Tandil',
             'ONG' => 'Mesa Solidaria')
-          );
+          );*/
           return json_encode($var);
+
 
         }
 

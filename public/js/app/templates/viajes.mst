@@ -14,11 +14,11 @@
 
     <tr>
     <td>id</td>
-    <td>{{id}}</td>
+    <td>{{id_viaje}}</td>
     </tr>
     <tr>
     <td>Partida</td>
-    <td>{{partida}}</td>
+    <td>{{origen}}</td>
     </tr>
     <tr>
     <td>Destino</td>
@@ -26,7 +26,7 @@
     </tr>
     <tr>
     <td>ONG</td>
-    <td>{{ong}}</td>
+    <td>{{id_ong}}</td>
     </tr>
 {{/data}}
   </tbody>
