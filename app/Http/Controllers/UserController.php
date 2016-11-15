@@ -35,7 +35,13 @@ class UserController extends Controller
     );
   }
 
-  public function getUsers(){
+  public function getUsers(Request $request){
+
+    $user = $request->user();
+    
+
+    return [$user];
+    /*
     return array(array(
       'id' => '1',
       'name' => 'Los Pibes',
@@ -59,7 +65,7 @@ class UserController extends Controller
       'tipo_usuario' => 'usuario',
       'fecha_alta' => '07/11/2016',
       'img_path' => 'user-icon.png'
-    ));
+    ));*/
   }
 
     //

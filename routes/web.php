@@ -26,7 +26,17 @@ $app->get('api/v1/navigation[/{role}]', 'NavigationController@menu');
 //Testing
 $app->get('api/v1/viajes','ViajesController@getViajes');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
-$app->post('api/v1/viajes','ViajesController@addViaje');
 
-$app->get('api/v1/users', 'UserController@getUsers');
+//$app->get('api/v1/users', 'UserController@getUsers');
 $app->get('api/v1/users/{id}', 'UserController@getUser');
+
+
+
+$app->group(['prefix' => 'api/v1/',
+    'middleware' => 'auth'], function () use ($app) {
+
+
+    $app->get('users', 'UserController@getUsers');
+
+    $app->post('viajes','ViajesController@addViaje');
+});
