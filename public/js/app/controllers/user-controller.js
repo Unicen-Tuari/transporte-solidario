@@ -17,7 +17,7 @@ UserController.prototype = {
       },"json");
     },
 
-    loadProfile : function (){
+    loadProfile : function (id){
       var navigationController = new NavigationController;
       $.get('api/v1/users/{id}',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container');
