@@ -26,10 +26,9 @@ class UserController extends Controller
     return json_encode($var);
   }
 
-  public function getUsers(){
-    $var = new \stdClass;
-    $var->data = $this->model->getUsers();
-    return json_encode($var);
+  public function getUsers(Request $request){
+    $user = $request->user();
+    return [$user];
   }
 
 }
