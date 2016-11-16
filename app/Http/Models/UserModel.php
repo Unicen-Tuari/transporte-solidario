@@ -30,4 +30,30 @@ class UserModel extends Model
       return $user->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getLogin($name) {
+      $user = $this->db->prepare("SELECT name, password FROM users WHERE name = ?");
+      $user->execute(array($name));
+      return $user->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function copyImage($image){
+      $path = $image["name"];
+      copy($image["tmp_name"], $path);
+      return $path;
+    }
+
+    public function setUser($user) {
+      $this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+      try {
+        $this->$db->beginTransaction();
+        $path_image =  $this->copyImage($image);
+        $insertDance = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
+        $insertDance->execute(array($user['name'],$user['email'],$user['password'],$user['face'],$user['web'],$user['desc'],$user['tel'],$user['tipo'],$user['fecAlta'],$user['img']));
+        $this->$db->commit();
+      } catch(PDOException $ex) {
+        $this->$db->rollBack();
+        log($ex->getMessage());
+      }
+    }
+
 }
