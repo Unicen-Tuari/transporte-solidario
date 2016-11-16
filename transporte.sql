@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2016 a las 03:11:24
+-- Tiempo de generación: 16-11-2016 a las 11:13:31
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -74,12 +74,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`) VALUES
-(1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, NULL, NULL, '', '0000-00-00', NULL),
-(8, 'carlitos', 'carlitos@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.carlitos.com', 'carlitos es un transportista', NULL, 'transportista', '2016-11-08', NULL),
-(9, 'losPibes', 'pibes@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.vamoLosPibes.com', 'losPibes es un ONG', NULL, 'ong', '2016-11-12', NULL),
-(10, 'alberto', 'alberto@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'alberFace', 'www.alber.com', 'alberto es un transportista', NULL, 'transportista', '2016-11-08', NULL),
-(11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, NULL, NULL, 'ong', '2016-11-01', NULL),
-(12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', NULL);
+(1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'aa_face', 'www.a.com', 'acá va las descripción para a@a', '0249 154 78944', 'admin', '0000-00-00', 'user-icon.png'),
+(8, 'carlitos', 'carlitos@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.carlitos.com', 'carlitos es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(9, 'losPibes', 'pibes@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'no sé que es facebook', 'www.vamoLosPibes.com', 'losPibes es un ONG', '0223 658 68974', 'ong', '2016-11-12', NULL),
+(10, 'alberto', 'alberto@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'alberFace', 'www.alber.com', 'alberto es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, 'vamos a completar algo de doña amanda', NULL, 'ong', '2016-11-01', NULL),
+(12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', 'user-icon.png');
 
 -- --------------------------------------------------------
 
