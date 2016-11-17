@@ -28,6 +28,34 @@ class ViajesController extends Controller
         'ONG' => 'Mesa Solidaria'
       );
     }
+/*
+    $order = null;
+    $valor = null;
+    $campo = null;
+    if(isset($_Request['orderby']){
+    $order =$_Request['orderby']
+    }
+    
+    if(isset($_Request['destino']){
+      $campo='destino';
+      $valor =$_Request['destino']
+    }
+    else{
+      if(isset($_Request['ONG']){
+        $campo='ong';
+        $valor =$_Request['ong']
+      }
+      else
+      if(isset($_Request['frecuencia']){
+        $campo='frecuencia';
+        $valor =$_Request['frecuencia']
+      }
+    }
+    model->getviajes(orden, campo, valor);
+
+*/
+
+
 
   public function getViajes(){
           $var=new \stdClass;

@@ -57,6 +57,7 @@ NavigationController.prototype = {
           controller.loadProfile();
           break;
         case "viajes-realizados":
+          debugger;
           var controller = new ViajesController;
           controller.loadR();
           break;

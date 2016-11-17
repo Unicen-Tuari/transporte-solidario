@@ -1,33 +1,81 @@
-<h1>Viajes Pendientes</h1>
+<div class="container">
 
-<p>viajes registrados en el sistema an no realizados</p>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1><img src="img\logo_hero.png" class="logo">Viajes Pendientes</h1>
+    </div>
+
+    <div class="col-md-offset-5 col-md-4">
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Ordenar por <span class="caret"></span>
+       </button>
+       <ul id="ordenarpor" class="dropdown-menu">
+         <li><a href="#" orden="peso">Peso</a></li>
+         <li><a href="#" orden="kilometro">Kilometros</a></li>
+         <li><a href="#" orden="ong">ONG</a></li>
+       </ul>
+      </div>
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Filtrar por <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu">
+         <li><a href="#">Destino</a></li>
+         <li><a href="#">Frecuencia</a></li>
+         <li><a href="#">ONG</a></li>
+       </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+   <p> </p>
+  </div>
 
 
-<table class="table table-striped">
+
+
 {{#data}}
-  <thead>
-    <tr>
-      <th>Viajes</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <tr>
-    <td>id</td>
-    <td>{{id_viaje}}</td>
-    </tr>
-    <tr>
-    <td>Partida</td>
-    <td>{{origen}}</td>
-    </tr>
-    <tr>
-    <td>Destino</td>
-    <td>{{destino}}</td>
-    </tr>
-    <tr>
-    <td>ONG</td>
-    <td>{{id_ong}}</td>
-    </tr>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="col-md-4">
+          <img src="img\logo_Mesa.png" class="img-rounded" alt="Img User" width="130" height="50">
+        </div>
+
+        <div class="col-md-8">
+        <h2>{{origen}} - {{destino}}</h2>
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
+        <h3>{{id_ong}}</h3>
+        </div>
+
+        <div class="col-md-4">
+        <h3>{{fecha_creac}}</h3>
+        </div>
+
+        <div class="col-md-2 col-md-offset-4">
+        <h4>{{ancho}}</h4>
+        </div>
+
+        <div class="col-md-2">
+        <h4>{{alto}}</h4>
+        </div>
+
+        <div class="col-md-2">
+        <h4>{{peso}}</h4>
+        </div>
+
+        <div class="col-md-2">
+        <h4>{{frecuencia}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 {{/data}}
-  </tbody>
-</table>
+
+</div>
