@@ -32,6 +32,7 @@ NavigationController.prototype = {
         if(callback) callback();
       });
     },
+
     processAction: function(action){
      _this = this;
       location.hash = action;
@@ -57,7 +58,6 @@ NavigationController.prototype = {
           controller.loadProfile();
           break;
         case "viajes-realizados":
-          debugger;
           var controller = new ViajesController;
           controller.loadR();
           break;
