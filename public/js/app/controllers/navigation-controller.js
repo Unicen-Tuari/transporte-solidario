@@ -5,9 +5,9 @@ function NavigationController(){
 }
 
 NavigationController.prototype = {
-    loadNav : function (rol){
+    loadNav : function (){
        _this = this;
-      $.get('api/v1/navigation/'+rol,function(data){
+      $.get('api/v1/navigation',function(data){
         _this.loadTemplate('nav',data,'#nav',function(){
           _this.handleNavigationEvents();
         });
@@ -59,6 +59,10 @@ NavigationController.prototype = {
         case "viajes-realizados":
           var controller = new ViajesController;
           controller.loadR();
+          break;
+        case "login":
+          var controller = new UserController;
+          controller.loadSignIn();
           break;
       };
     }
