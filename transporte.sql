@@ -3,10 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2016 a las 23:17:43
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.8
-
+-- Tiempo de generación: 16-11-2016 a las 11:13:31
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -49,6 +48,38 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 (5, 'Ver Perfil', 'perfil', 'UserController', 'usuario', '2016-10-26 03:00:00', '2016-10-26 03:00:00'),
 (6, 'Ingresar', 'login', 'LoginController', '', '2016-10-26 03:00:00', '2016-10-26 03:00:00'),
 (7, 'Registrarme', 'register', 'UserController', '', '2016-10-26 03:00:00', '2016-10-26 03:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `facebook` varchar(50) DEFAULT NULL,
+  `webpage` varchar(50) DEFAULT NULL,
+  `descripcion` text,
+  `telefono` varchar(50) DEFAULT NULL,
+  `tipo_usuario` varchar(255) NOT NULL,
+  `fecha_alta` date NOT NULL,
+  `img_path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`) VALUES
+(1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'aa_face', 'www.a.com', 'acá va las descripción para a@a', '0249 154 78944', 'admin', '0000-00-00', 'user-icon.png'),
+(8, 'carlitos', 'carlitos@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.carlitos.com', 'carlitos es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(9, 'losPibes', 'pibes@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'no sé que es facebook', 'www.vamoLosPibes.com', 'losPibes es un ONG', '0223 658 68974', 'ong', '2016-11-12', NULL),
+(10, 'alberto', 'alberto@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'alberFace', 'www.alber.com', 'alberto es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, 'vamos a completar algo de doña amanda', NULL, 'ong', '2016-11-01', NULL),
+(12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', 'user-icon.png');
 
 -- --------------------------------------------------------
 
@@ -101,30 +132,6 @@ INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`
 (5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG');
 
 --
--- Estructura de tabla para la tabla `users`
---
-
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `facebook` varchar(50) DEFAULT NULL,
-  `webpage` varchar(50) DEFAULT NULL,
-  `descripcion` text,
-  `telefono` varchar(50) DEFAULT NULL,
-  `tipo_usuario` varchar(255) NOT NULL,
-  `fecha_alta` date NOT NULL,
-  `img_path` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users`(`id`,`name`, `email`, `password`) VALUES (1,'Admin','a@a.com','$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW');
-
---
 -- Índices para tablas volcadas
 --
 
@@ -132,6 +139,12 @@ INSERT INTO `users`(`id`,`name`, `email`, `password`) VALUES (1,'Admin','a@a.com
 -- Indices de la tabla `menu`
 --
 ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -149,12 +162,6 @@ ALTER TABLE `viaje_realizado`
   ADD KEY `id_transportista` (`id_transportista`);
 
 --
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -163,8 +170,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
-
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
@@ -179,12 +189,6 @@ ALTER TABLE `viajesolidario`
 --
 ALTER TABLE `viaje_realizado`
   ADD CONSTRAINT `fk_viajesolidario_realizado` FOREIGN KEY (`id_viaje`) REFERENCES `viajesolidario` (`id_viaje`) ON DELETE CASCADE;
-
-
-
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
