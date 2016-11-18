@@ -5,7 +5,7 @@
       <h1><img src="img\logo_hero.png" class="logo">Viajes Pendientes</h1>
     </div>
 
-    <div class="col-md-offset-5 col-md-4">
+    <div class="col-md-offset-4 col-md-4">
       <div class="btn-group ">
        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Ordenar por <span class="caret"></span>
@@ -16,16 +16,49 @@
          <li><a href="#" orden="ong">ONG</a></li>
        </ul>
       </div>
+
       <div class="btn-group ">
        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Filtrar por <span class="caret"></span>
+         Destino <span class="caret"></span>
        </button>
        <ul class="dropdown-menu">
-         <li><a href="#">Destino</a></li>
-         <li><a href="#">Frecuencia</a></li>
-         <li><a href="#">ONG</a></li>
+       {{#data}}
+       {{#destinos}}
+         <li><a href="#">{{destino}}</a></li>
+       {{/destinos}}
+      {{/data}}
        </ul>
       </div>
+
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Frecuencia <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu">
+        {{#data}}
+         {{#frecuencias}}
+           <li><a href="#">{{frecuencia}}</a></li>
+         {{/frecuencias}}
+        {{/data}}
+        </ul>
+      </div>
+
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         ONG <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu">
+          {{#data}}
+           {{#ongs}}
+           <li><a href="#">{{name}}</a></li>
+           {{/ongs}}
+          {{/data}}
+       </ul>
+      </div>
+
+
+
+
     </div>
   </div>
 
@@ -35,15 +68,15 @@
 
 
 
-
+<div id="listadoViajes">
 {{#data}}
-
+{{#viajes}}
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-body">
 
         <div class="col-md-4">
-          <img src="img\logo_Mesa.png" class="img-rounded" alt="Img User" width="130" height="50">
+          <img src="{{img_path}}" class="img-rounded" alt="Img User" width="130" height="50">
         </div>
 
         <div class="col-md-8">
@@ -51,7 +84,7 @@
         </div>
 
         <div class="col-md-4 col-md-offset-4">
-        <h3>{{id_ong}}</h3>
+        <h3>{{name}}</h3>
         </div>
 
         <div class="col-md-4">
@@ -76,6 +109,8 @@
       </div>
     </div>
   </div>
+  {{/viajes}}
 {{/data}}
+</div>
 
 </div>
