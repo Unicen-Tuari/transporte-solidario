@@ -29,10 +29,26 @@ class UserController extends Controller
   public function getUsers(Request $request){
     /*$user = $request->user();
     return [$user];*/
-    // lo siguiente es sólo para poder visualizar los usuarios
+
+    // lo siguiente es sólo para poder visualizar los usuarios, vale lo de arriba
     $var = new \stdClass;
     $var->data = $this->model->getUsers();
     return json_encode($var);
+  }
+
+  public function setRegister(Request $request){ // no se como se consiguen los datos
+    $info = array(
+      'name' => $request->input('name'),
+      'email' => $request->input('email'),
+      'password' => $request->input('password'),
+      'facebook' => $request->input('face'),
+      'webpage' => $request->input('web'),
+      'descripcion' => $request->input('desc'),
+      'telefono' => $request->input('tel'),
+      'tipo_usuario' => $request->input('tipo|'),
+      'img_path' => $request->input('image')
+    );
+    $this->model->setRegister($info);
   }
 
 }

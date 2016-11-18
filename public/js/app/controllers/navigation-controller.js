@@ -60,6 +60,10 @@ NavigationController.prototype = {
           var controller = new ViajesController;
           controller.loadR();
           break;
+        case "register":
+          var controller = new UserController;
+          controller.loadRegister();
+          break;
       };
     }
   };

@@ -42,18 +42,19 @@ class UserModel extends Model
       return $path;
     }
 
-    public function setUser($user) {
-      $this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-      try {
-        $this->$db->beginTransaction();
-        $path_image =  $this->copyImage($image);
+    public function setRegister($user) {
+      //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+      //try {
+        $dateTime = date_create('now')->format('Y-m-d');
+        //$this->$db->beginTransaction();
+        $path_image =  $this->copyImage($user['img_path']);
         $insertDance = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
-        $insertDance->execute(array($user['name'],$user['email'],$user['password'],$user['face'],$user['web'],$user['desc'],$user['tel'],$user['tipo'],$user['fecAlta'],$user['img']));
+        $insertDance->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
         $this->$db->commit();
-      } catch(PDOException $ex) {
+      /*} catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());
-      }
+      }*/
     }
 
 }
