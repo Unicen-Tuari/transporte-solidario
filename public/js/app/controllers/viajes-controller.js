@@ -9,16 +9,20 @@ var viajes;
         $.get('api/v1/viajes',function(data){
           viajes=data;
           navigationController.loadTemplate('viajes',viajes,'#main-container',function(){
-
             $('#ordenarpor li a').click(function(){
-              var viajesFiltrados = {
-                "data" : $(viajes['data']).filter(function(i,n){
+        var viajesFiltrados = {"data": JSON.parse(JSON.stringify($(viajes['data']['viajes']).filter(function(i,n){
                                                   return n.destino == 'Azul';
-                                                  })
-                };
-                  console.log(viajesFiltrados);
-              navigationController.loadTemplate('viajes',viajesFiltrados,'#main-container',function(){
-                navigationController.handleNavigationEvents();
+                                                })
+                                              ))};
+              //var data=JSON.stringify(dat);
+//              var viajesFiltrados= {"data":JSON.parse(JSON.stringify(dat))};
+              //JSON.parse(data);
+
+                 //(array)viajesFiltrados['data'];
+                 console.log(data);
+                 console.log(viajesFiltrados);
+                 navigationController.loadTemplate('listViajes',viajesFiltrados,'#listadoViajes',function(){
+                 navigationController.handleNavigationEvents();
               });
             });
 
