@@ -22,22 +22,22 @@ class ViajeModel extends Model
 
       $viajes=[];
 
-      $sel_ong=$this->db->prepare("SELECT name FROM users where not (name='admin') GROUP BY name");
+      $sel_ong=$this->db->prepare("SELECT name FROM users u, viajesolidario v where not (u.name='admin') AND (v.habilitado) GROUP BY name");
       $sel_ong->execute();
       $ongs=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['ongs']=$ongs;
 
-      $sel_fre=$this->db->prepare("SELECT frecuencia FROM viajesolidario GROUP BY frecuencia");
+      $sel_fre=$this->db->prepare("SELECT frecuencia FROM viajesolidario where (habilitado) GROUP BY frecuencia");
       $sel_fre->execute();
       $frecuencias=$sel_fre->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['frecuencias']=$frecuencias;
 
-      $sel_dest=$this->db->prepare("SELECT destino FROM viajesolidario GROUP BY destino");
+      $sel_dest=$this->db->prepare("SELECT destino FROM viajesolidario where (habilitado) GROUP BY destino");
       $sel_dest->execute();
       $destinos=$sel_dest->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['destinos']=$destinos;
 
-      $select = $this->db->prepare("SELECT * FROM viajesolidario ");
+      $select = $this->db->prepare("SELECT * FROM viajesolidario where habilitado");
       $select->execute();
       $auxViajes=$select->fetchAll(PDO::FETCH_ASSOC);
       foreach ($auxViajes as $key => $viaje) {
