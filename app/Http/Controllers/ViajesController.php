@@ -48,7 +48,7 @@ class ViajesController extends Controller
 
         }
 
-
+    // [Auth]
     public function addViaje(Request $request){
       $partida = $request->input('partida');
       //REPOSITORIO

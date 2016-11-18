@@ -22,7 +22,7 @@ $app->post('/auth/login', 'AuthController@postLogin');
 
 /* API Endpoints*/
 
-$app->get('api/v1/navigation[/{role}]', 'NavigationController@menu');
+$app->get('api/v1/navigation', 'NavigationController@menu');
 //Testing
 $app->get('api/v1/viajes','ViajesController@getViajes');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
@@ -37,6 +37,7 @@ $app->group(['prefix' => 'api/v1/',
 
 
     $app->get('users', 'UserController@getUsers');
+    $app->get('perfil', 'UserController@getLoggedInUser');
 
     $app->post('viajes','ViajesController@addViaje');
 });
