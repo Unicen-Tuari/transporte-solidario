@@ -12,7 +12,7 @@
        </button>
        <ul id="ordenarpor" class="dropdown-menu">
          <li><a href="#" orden="peso">Peso</a></li>
-         <li><a href="#" orden="kilometro">Kilometros</a></li>
+         <li><a href="#" orden="fecha_creacion">Fecha creacion</a></li>
          <li><a href="#" orden="ong">ONG</a></li>
        </ul>
       </div>
@@ -21,10 +21,10 @@
        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Destino <span class="caret"></span>
        </button>
-       <ul class="dropdown-menu">
+       <ul id="filtrarpor" class="dropdown-menu">
        {{#data}}
        {{#destinos}}
-         <li><a href="#">{{destino}}</a></li>
+         <li><a href="#" filtro="{{destino}}" tipoFilt="destino">{{destino}}</a></li>
        {{/destinos}}
       {{/data}}
        </ul>
@@ -34,10 +34,10 @@
        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Frecuencia <span class="caret"></span>
        </button>
-       <ul class="dropdown-menu">
+       <ul id="filtrarpor" class="dropdown-menu">
         {{#data}}
          {{#frecuencias}}
-           <li><a href="#">{{frecuencia}}</a></li>
+           <li><a href="#" filtro="{{frecuencia}}" tipoFilt="frecuencia">{{frecuencia}}</a></li>
          {{/frecuencias}}
         {{/data}}
         </ul>
@@ -47,10 +47,10 @@
        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          ONG <span class="caret"></span>
        </button>
-       <ul class="dropdown-menu">
+       <ul id="filtrarpor" class="dropdown-menu">
           {{#data}}
            {{#ongs}}
-           <li><a href="#">{{name}}</a></li>
+           <li><a href="#" filtro="{{name}}" tipoFilt="name">{{name}}</a></li>
            {{/ongs}}
           {{/data}}
        </ul>
