@@ -6,30 +6,61 @@ var viajes;
   ViajesController.prototype = {
       load : function (){
         var navigationController = new NavigationController;
-        $.get('api/v1/viajes',function(data){
-          viajes=data;
+        $.get('api/v1/viajes',function(response){
+          var viajes=response;
           navigationController.loadTemplate('viajes',viajes,'#main-container',function(){
-            $('#ordenarpor li a').click(function(){
-        var viajesFiltrados = {"data": JSON.parse(JSON.stringify($(viajes['data']['viajes']).filter(function(i,n){
-                                                  return n.destino == 'Azul';
-                                                })
-                                              ))};
-              //var data=JSON.stringify(dat);
-//              var viajesFiltrados= {"data":JSON.parse(JSON.stringify(dat))};
-              //JSON.parse(data);
+            $('#filtrarpor li a').click(function(e){
+              e.preventDefault();
+              var filtro=$(this).attr("filtro");
+              var tipoFiltro=$(this).attr("tipoFilt");
+              var viajesFiltrados = (response.data.viajes).filter(function(viaje,index){
+                switch(tipoFiltro){
+                  case "destino":return viaje.destino == filtro;
+                                 break;
+                  case "frecuencia":return viaje.frecuencia == filtro;
+                                    break;
+                  case "name":return viaje.name == filtro;
+                                 break;
+                               };
 
-                 //(array)viajesFiltrados['data'];
-                 console.log(data);
-                 console.log(viajesFiltrados);
-                 navigationController.loadTemplate('listViajes',viajesFiltrados,'#listadoViajes',function(){
-                 navigationController.handleNavigationEvents();
-              });
+                });
+               var viajes= {"data": {
+                            "viajes" : $.map(viajesFiltrados,function(value,index){
+                                       return value;})
+                                    }
+                            };
+                navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
             });
 
-            navigationController.handleNavigationEvents();
+            /*
+            $('#ordenarpor li a').click(function(e){
+              e.preventDefault();
+              var filtro=$(this).attr("filtro");
+              var tipoFiltro=$(this).attr("tipoFilt");
+              var viajesFiltrados = (response.data.viajes).short(function(viaje,index){
+                switch(tipoFiltro){
+                  case "destino":return viaje.destino == filtro;
+                                 break;
+                  case "frecuencia":return viaje.frecuencia == filtro;
+                                    break;
+                  case "name":return viaje.name == filtro;
+                                 break;
+                               };
+
+                });
+               var viajes= {"data": {
+                            "viajes" : $.map(viajesFiltrados,function(value,index){
+                                       return value;})
+                                    }
+                            };
+                navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
+            });*/
+
           });
         },"json");
       },
+
+
       loadAdd : function (){
         var navigationController = new NavigationController;
         navigationController.loadTemplate('addviaje',[],'#main-container');
