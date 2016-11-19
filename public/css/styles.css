@@ -7,6 +7,9 @@ body {
 .navbar-brand img {
   width: 220px;
 }
+button img{
+  width: 50px;
+}
 
 .jumbotron.home{
   background-image: url('/img/bg_hero.jpg');

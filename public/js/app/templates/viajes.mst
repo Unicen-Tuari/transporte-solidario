@@ -55,18 +55,12 @@
           {{/data}}
        </ul>
       </div>
-
-
-
-
     </div>
   </div>
 
   <div class="row">
    <p> </p>
   </div>
-
-
 
 <div id="listadoViajes">
 {{#data}}
@@ -79,9 +73,15 @@
           <img src="{{img_path}}" class="img-rounded" alt="Img User" width="130" height="50">
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-6">
         <h2>{{origen}} - {{destino}}</h2>
         </div>
+
+        <div class="col-md-2">
+        <button class="btn " type="button"  aria-haspopup="true" aria-expanded="false">
+          <img src="img/logo_hero.png" > Ofrecerme
+        </button>
+       </div>
 
         <div class="col-md-4 col-md-offset-4">
         <h3>{{name}}</h3>
