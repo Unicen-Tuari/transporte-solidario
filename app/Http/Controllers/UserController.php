@@ -62,5 +62,3 @@ class UserController extends Controller
     );
     $this->model->setRegister($info);
   }
-
-}

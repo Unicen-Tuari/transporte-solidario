@@ -26,6 +26,7 @@ $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
 $app->get('api/v1/users', 'UserController@getUsers'); // hay que eliminar esta linea y descomentar la que está dentro del grupo autorizado
 $app->get('api/v1/users/{id}', 'UserController@getUser');
 
+<<<<<<< HEAD
 $app->post('api/v1/register', 'UserController@setRegister');
 
 $app->group(['prefix' => 'api/v1/',

@@ -31,7 +31,7 @@ UserController.prototype = {
         });
       },"json");
     },
-    
+
     loadProfile : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users/{id}',function(data){
