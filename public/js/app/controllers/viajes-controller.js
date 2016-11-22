@@ -8,7 +8,18 @@
         $.get('api/v1/viajes',function(response){
           var viajes=response;
             navigationController.loadTemplate('viajes',viajes,'#main-container',function(){
-            navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
+            navigationController.loadTemplate('listViajes',viajes,'#listadoViajes',function(){
+              $('.ofrecer').click(function(e){
+              e.preventDefault();
+               var idViaje= $(this).attr("id_viaje");
+               console.log(idViaje);
+            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+                alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
+              //})
+            });}
+          );
+
+
             $('#filtrarpor li a').click(function(e){
               e.preventDefault();
               var filtro=$(this).attr("filtro");
@@ -31,8 +42,6 @@
                             };
                 navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
             });
-
-
             $('#ordenarpor li a').click(function(e){
               e.preventDefault();
               var criterioOrden=$(this).attr("orden");
