@@ -13,24 +13,14 @@ UserController.prototype = {
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
-<<<<<<< HEAD
-        navigationController.loadTemplate('users',data,'#main-container',function(){
-        });
-=======
         navigationController.loadTemplate('users',data,'#main-container');
->>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
       },"json");
     },
 
     loadProfile : function (id){
       var navigationController = new NavigationController;
       $.get('api/v1/users/{id}',function(data){
-<<<<<<< HEAD
-        navigationController.loadTemplate('perfil',data,'#main-container',function(){
-        });
-=======
         navigationController.loadTemplate('perfil',data,'#main-container');
->>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
       },"json");
     },
 
