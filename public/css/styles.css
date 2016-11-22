@@ -17,3 +17,20 @@ body {
   max-width: 80px;
 
 }
+#viajes
+{
+border-style: outset;
+padding: 5px;
+margin-top: 10px;
+
+}
+#viajes ul li{
+  list-style:none;
+}
+
+#dropdown-orden{
+  margin-top: 10px;
+}
+#partida{
+margin-top: 10px;  
+}
