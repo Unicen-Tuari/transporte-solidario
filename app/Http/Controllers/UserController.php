@@ -20,12 +20,7 @@ class UserController extends Controller
       //
   }
 
-  public function getUsers(){
-    $users=new \stdClass;
-    $data=$this->model->getUsers();
-    $users->data=$data;
-    return json_encode($users);
-  }
+
 
   public function setRol($id,Request $request){
     $this->model->setRol($id,$request->input('rol'));
@@ -62,3 +57,4 @@ class UserController extends Controller
     );
     $this->model->setRegister($info);
   }
+}
