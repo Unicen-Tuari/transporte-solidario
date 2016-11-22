@@ -122,14 +122,8 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`) VALUES
-(1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'aa_face', 'www.a.com', 'acá va las descripción para a@a', '0249 154 78944', 'admin', '0000-00-00', 'user-icon.png'),
-(8, 'carlitos', 'carlitos@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.carlitos.com', 'carlitos es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
-(9, 'losPibes', 'pibes@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'no sé que es facebook', 'www.vamoLosPibes.com', 'losPibes es un ONG', '0223 658 68974', 'ong', '2016-11-12', NULL),
-(10, 'alberto', 'alberto@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'alberFace', 'www.alber.com', 'alberto es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
-(11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, 'vamos a completar algo de doña amanda', NULL, 'ong', '2016-11-01', NULL),
-(12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', 'user-icon.png');
-
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`, `id_role`) VALUES
+(1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, '', '2016-11-17', NULL, 2);
 
 -- --------------------------------------------------------
 

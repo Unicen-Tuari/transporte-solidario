@@ -17,9 +17,9 @@ UserController.prototype = {
       },"json");
     },
 
-    loadProfile : function (id){
+    loadProfile : function (){
       var navigationController = new NavigationController;
-      $.get('api/v1/users/{id}',function(data){
+      $.get('api/v1/users',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container');
       },"json");
     },
