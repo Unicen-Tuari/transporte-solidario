@@ -7,7 +7,8 @@
         var navigationController = new NavigationController;
         $.get('api/v1/viajes',function(response){
           var viajes=response;
-          navigationController.loadTemplate('viajes',viajes,'#main-container',function(){
+            navigationController.loadTemplate('viajes',viajes,'#main-container',function(){
+            navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
             $('#filtrarpor li a').click(function(e){
               e.preventDefault();
               var filtro=$(this).attr("filtro");

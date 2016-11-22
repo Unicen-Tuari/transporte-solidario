@@ -8,9 +8,22 @@
           <img src="{{img_path}}" class="img-rounded" alt="Img User" width="130" height="50">
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-5">
         <h2>{{origen}} - {{destino}}</h2>
         </div>
+
+        <div class="col-md-1">
+        {{#loHice}}
+        <h3><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></h3>
+        {{/loHice}}
+        </div>
+
+
+        <div class="col-md-2">
+        <button class="btn " type="button"  aria-haspopup="true" aria-expanded="false">
+          <img src="img/logo_hero.png" > Ofrecerme
+        </button>
+       </div>
 
         <div class="col-md-4 col-md-offset-4">
         <h3>{{name}}</h3>
@@ -21,22 +34,22 @@
         </div>
 
         <div class="col-md-2 col-md-offset-4">
-        <h4>{{ancho}}</h4>
+        <h4><span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span> {{ancho}}</h4>
         </div>
 
         <div class="col-md-2">
-        <h4>{{alto}}</h4>
+        <h4><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> {{alto}}</h4>
         </div>
 
         <div class="col-md-2">
-        <h4>{{peso}}</h4>
+        <h4><span class="glyphicons-scale-classic" aria-hidden="true"></span> {{peso}}</h4>
         </div>
 
         <div class="col-md-2">
-        <h4>{{frecuencia}}</h4>
+        <h4><span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{frecuencia}}</h4>
         </div>
       </div>
     </div>
   </div>
-{{/viajes}}
+  {{/viajes}}
 {{/data}}
