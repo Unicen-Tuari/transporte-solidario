@@ -20,7 +20,7 @@
 
 
         <div class="col-md-2">
-        <button class="btn " type="button"  aria-haspopup="true" aria-expanded="false">
+        <button id_viaje="{{id_viaje}}" class="btn ofrecer" type="button"  aria-haspopup="true" aria-expanded="false">
           <img src="img/logo_hero.png" > Ofrecerme
         </button>
        </div>
