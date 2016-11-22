@@ -40,8 +40,18 @@
                                        return value;})
                                     }
                             };
-                navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
+                            navigationController.loadTemplate('listViajes',viajes,'#listadoViajes',function(){
+                              $('.ofrecer').click(function(e){
+                              e.preventDefault();
+                               var idViaje= $(this).attr("id_viaje");
+                               console.log(idViaje);
+                            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+                                alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
+                              //})
+                            });}
+                          );
             });
+
             $('#ordenarpor li a').click(function(e){
               e.preventDefault();
               var criterioOrden=$(this).attr("orden");
@@ -61,7 +71,16 @@
                                        return value;})
                                     }
                             };
-                navigationController.loadTemplate('listViajes',viajes,'#listadoViajes');
+                            navigationController.loadTemplate('listViajes',viajes,'#listadoViajes',function(){
+                              $('.ofrecer').click(function(e){
+                              e.preventDefault();
+                               var idViaje= $(this).attr("id_viaje");
+                               console.log(idViaje);
+                            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+                                alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
+                              //})
+                            });}
+                          );
             });
 
           });
