@@ -48,32 +48,15 @@ class ViajeModel extends Model
         $viaje['telefono']=$usONG[0]['telefono'];
         $viaje['email']=$usONG[0]['email'];
         $viaje['img_path']=$usONG[0]['img_path'];
+        $resultado = $this->db->prepare('SELECT * FROM viaje_realizado where id_viaje LIKE ? AND id_transportista=3 '); // en lugar de 3 tendria que ir el id del usuario (transportista) que esta logueado en el momento
+        $resultado->execute(array($viaje['id_viaje']));
+        $viaje['loHice']= $resultado->fetchColumn()>0;
         $viajes[]=$viaje;
       }
       $consulta_return['viajes']=$viajes;
 
       return $consulta_return;
 
-
-
-      /*
-      $viajes_return=[];
-      $select = $this->db->prepare("SELECT * FROM viajesolidario ");
-      $select->execute();
-      $viajes=$select->fetchAll(PDO::FETCH_ASSOC);
-      foreach ($viajes as $key => $viaje) {
-        $select2=$this->db->prepare("SELECT name, telefono, email, img_path FROM users where id LIKE ? ");
-        $select2->execute(array($viaje['id_ong']));
-        $usONG=$select2->fetchAll(PDO::FETCH_ASSOC);
-        $viaje['name']=$usONG[0]['name'];
-        $viaje['telefono']=$usONG[0]['telefono'];
-        $viaje['email']=$usONG[0]['email'];
-        $viaje['img_path']=$usONG[0]['img_path'];
-        $viajes_return[]=$viaje;
-      }
-
-      return $viajes_return;
-    */
     }
 }
 
