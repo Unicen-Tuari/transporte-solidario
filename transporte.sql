@@ -3,9 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
 -- Tiempo de generación: 22-11-2016 a las 04:50:28
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.6.11
+=======
+-- Tiempo de generación: 16-11-2016 a las 11:13:31
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -55,8 +61,13 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 -- Estructura de tabla para la tabla `users`
 --
 
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL,
+=======
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -67,14 +78,27 @@ CREATE TABLE IF NOT EXISTS `users` (
   `tipo_usuario` varchar(255) NOT NULL,
   `fecha_alta` date NOT NULL,
   `img_path` varchar(255) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`) VALUES
+<<<<<<< HEAD
 (1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, NULL, NULL, '', '0000-00-00', NULL);
+=======
+(1, 'Admin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'aa_face', 'www.a.com', 'acá va las descripción para a@a', '0249 154 78944', 'admin', '0000-00-00', 'user-icon.png'),
+(8, 'carlitos', 'carlitos@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'www.carlitos.com', 'carlitos es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(9, 'losPibes', 'pibes@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'no sé que es facebook', 'www.vamoLosPibes.com', 'losPibes es un ONG', '0223 658 68974', 'ong', '2016-11-12', NULL),
+(10, 'alberto', 'alberto@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'alberFace', 'www.alber.com', 'alberto es un transportista', NULL, 'transportista', '2016-11-08', 'user-icon.png'),
+(11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, 'vamos a completar algo de doña amanda', NULL, 'ong', '2016-11-01', NULL),
+(12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', 'user-icon.png');
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 
 -- --------------------------------------------------------
 
@@ -124,11 +148,17 @@ CREATE TABLE IF NOT EXISTS `viaje_realizado` (
 -- Volcado de datos para la tabla `viaje_realizado`
 --
 
+<<<<<<< HEAD
 INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
 (1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
 (2, 5, '2016-11-22', 'LALALA', 1),
 (5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
 (7, 5, '2016-11-19', 'sgsdgsd', 0);
+=======
+INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`) VALUES
+(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar'),
+(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG');
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 
 --
 -- Índices para tablas volcadas
@@ -169,12 +199,20 @@ ALTER TABLE `viaje_realizado`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
+<<<<<<< HEAD
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+>>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
 --
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
