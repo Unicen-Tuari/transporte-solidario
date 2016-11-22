@@ -28,33 +28,6 @@ class ViajesController extends Controller
         'ONG' => 'Mesa Solidaria'
       );
     }
-/*
-    $order = null;
-    $valor = null;
-    $campo = null;
-    if(isset($_Request['orderby']){
-    $order =$_Request['orderby']
-    }
-    
-    if(isset($_Request['destino']){
-      $campo='destino';
-      $valor =$_Request['destino']
-    }
-    else{
-      if(isset($_Request['ONG']){
-        $campo='ong';
-        $valor =$_Request['ong']
-      }
-      else
-      if(isset($_Request['frecuencia']){
-        $campo='frecuencia';
-        $valor =$_Request['frecuencia']
-      }
-    }
-    model->getviajes(orden, campo, valor);
-
-*/
-
 
 
   public function getViajes(){
@@ -75,7 +48,12 @@ class ViajesController extends Controller
 
 
         }
+   public function ofrecermeAlViaje(Request $request){
+    $id_transp= $request->input('id');
+    $id_Viaj=$request->input('id_viaje');
+    $this->model->ofrecerme($id_transp,$id_Viaj);
 
+   }
 
     public function addViaje(Request $request){
       $partida = $request->input('partida');
