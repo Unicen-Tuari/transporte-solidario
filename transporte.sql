@@ -1,8 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
+
 -- Tiempo de generación: 16-11-2016 a las 11:13:31
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
@@ -26,15 +27,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE `menu` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(10) unsigned NOT NULL,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `action` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `controller` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -55,7 +56,7 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 -- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -81,13 +82,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `
 (11, 'doña Amanda', 'Ñamanda@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, NULL, 'vamos a completar algo de doña amanda', NULL, 'ong', '2016-11-01', NULL),
 (12, 'pablo', 'pablo@hotmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'pablo.face', 'www.pablo.com', 'pablo es un usuario', NULL, 'usuario', '2016-11-08', 'user-icon.png');
 
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `viajesolidario`
 --
 
-CREATE TABLE `viajesolidario` (
+CREATE TABLE IF NOT EXISTS `viajesolidario` (
   `id_viaje` int(11) NOT NULL,
   `origen` varchar(50) NOT NULL,
   `destino` varchar(50) NOT NULL,
@@ -98,7 +100,7 @@ CREATE TABLE `viajesolidario` (
   `alto` float NOT NULL,
   `ancho` float NOT NULL,
   `peso` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viajesolidario`
@@ -108,7 +110,8 @@ INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `i
 (1, 'Tandil', 'Azul', '2016-11-07', 1, 1, 'mensual', 1, 4, 25),
 (2, 'Tandil', 'Olavarria', '2016-11-07', 2, 1, 'Semanal', 2, 2, 34),
 (5, 'Tandil', 'Juarez', '2016-11-07', 3, 1, '15 dias', 1.4, 2.2, 66),
-(6, 'Tandil', 'Capital Federal', '2016-11-07', 4, 1, 'Mensual', 1, 1.5, 33);
+(6, 'Tandil', 'Capital Federal', '2016-11-07', 4, 1, 'Mensual', 1, 1.5, 33),
+(7, 'Azul', 'Tandil', '2016-11-19', 2, 1, 'Mensual', 30, 30, 10);
 
 -- --------------------------------------------------------
 
@@ -116,20 +119,23 @@ INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `i
 -- Estructura de tabla para la tabla `viaje_realizado`
 --
 
-CREATE TABLE `viaje_realizado` (
+CREATE TABLE IF NOT EXISTS `viaje_realizado` (
   `id_viaje` int(11) NOT NULL,
   `id_transportista` int(11) NOT NULL,
   `fecha_realizado` date NOT NULL,
-  `observacion` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `observacion` varchar(150) DEFAULT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viaje_realizado`
 --
 
-INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`) VALUES
-(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar'),
-(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG');
+INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
+(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
+(2, 5, '2016-11-22', 'LALALA', 1),
+(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
+(7, 5, '2016-11-19', 'sgsdgsd', 0);
 
 --
 -- Índices para tablas volcadas
@@ -158,6 +164,7 @@ ALTER TABLE `viajesolidario`
 -- Indices de la tabla `viaje_realizado`
 --
 ALTER TABLE `viaje_realizado`
+  ADD PRIMARY KEY (`id_viaje`,`id_transportista`),
   ADD KEY `id_viaje` (`id_viaje`),
   ADD KEY `id_transportista` (`id_transportista`);
 
@@ -174,12 +181,17 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
 ALTER TABLE `viajesolidario`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `viaje_realizado`
+--
+ALTER TABLE `viaje_realizado`
+  MODIFY `id_transportista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --

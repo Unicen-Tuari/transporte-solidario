@@ -57,8 +57,8 @@ NavigationController.prototype = {
           controller.loadProfile(1); // acá le tengo que pasar el usuario que está logueado
           break;
         case "viajes-realizados":
-          var controller = new ViajesController;
-          controller.loadR();
+          var controller = new ViajesRealizadosController;
+          controller.load();
           break;
         case "register":
           var controller = new UserController;

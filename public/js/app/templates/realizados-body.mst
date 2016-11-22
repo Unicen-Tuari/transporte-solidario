@@ -1,0 +1,31 @@
+
+{{#data}}
+<div id="viajes" class="col-md-offset-2 col-md-8">
+<div id="partida" class="col-md-1">
+  <span style="font-style:italic">Viaje#{{id_viaje}}</span>
+</div>
+<div id="partida" class="col-md-3">
+<ul>
+  <li>Partida <span class="glyphicon glyphicon-plane" aria-hidden="true"></span> {{origen}}</li>
+  <li>Destino <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>{{destino}}</li>
+</ul>
+</div>
+<div id="partida" class="col-md-offset-1 col-md-3">
+<ul>
+  <li>ONG: {{id_ong}}</li>
+  <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"> </span>{{fecha_creac}}</li>
+</ul>
+</div>
+<div id="partida" class="col-md-3">
+<ul>
+{{#estado}}
+  <li><span style="color:green" class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>{{estado}} {{fecha_realizado}}</li>
+{{/estado}}
+{{^estado}}
+  <li><span style="color:red" class="glyphicon glyphicon-remove-sign" aria-hidden="true">Cancelado</span></li>
+{{/estado}}
+
+</ul>
+</div>
+</div>
+{{/data}}

@@ -20,6 +20,7 @@ $app->post('/auth/login', 'AuthController@postLogin');
 $app->get('api/v1/navigation[/{role}]', 'NavigationController@menu');
 //Testing
 $app->get('api/v1/viajes','ViajesController@getViajes');
+$app->get('api/v1/viajes/realizados/{orden}/{estado}','ViajesController@getViajesRealizados');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
 
 $app->get('api/v1/users', 'UserController@getUsers'); // hay que eliminar esta linea y descomentar la que está dentro del grupo autorizado
