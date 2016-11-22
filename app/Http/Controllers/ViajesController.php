@@ -58,5 +58,11 @@ class ViajesController extends Controller
       );
     }
 
+    public function getViajesRealizados($orden,$estado){
+            $var=new \stdClass;
+            $var->data=$this->model->getViajesRealizados($orden,$estado);
+            return json_encode($var);
+
+          }
     //
 }

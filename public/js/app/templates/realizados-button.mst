@@ -1,0 +1,20 @@
+<h1>Viajes Realizados</h1>
+<p>viajes registrados en el sistema realizados</p>
+<div class="col-md-offset-4 col-md-8">
+  <ul id="bestados"class="nav nav-pills">
+    <li id="todos" class="active"><a href="#">Todos</a></li>
+    <li id="asignados" ><a href="#">Asignados <span style="" class="glyphicon glyphicon-ok-sign" aria-hidden="true">1</span></a></li>
+    <li id="finalizados" ><a href="#">Finalizados<span style="" class="glyphicon glyphicon-ok-sign" aria-hidden="true">2</span></a></li>
+    <!-- Small button group -->
+
+  <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+  <select id="dropdown-orden" name="ordenamiento">
+    <option value="origen"> Origen </option>
+    <option value="destino"> Destino </option>
+    <option value="fecha_creac"> Fecha creacion </option>
+    <option value="id_ong"> ONG </option>
+  </select>
+</ul>
+</div>
+<div id="rbody">
+</div >

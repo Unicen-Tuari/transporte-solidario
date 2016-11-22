@@ -17,7 +17,7 @@ UserController.prototype = {
       },"json");
     },
 
-    loadProfile : function (){
+    loadProfile : function (id){
       var navigationController = new NavigationController;
       $.get('api/v1/users/{id}',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container');
@@ -50,12 +50,44 @@ UserController.prototype = {
       });
     },
 
+    createUser : function (form) {
+      var navigationController = new NavigationController;
+      var formData = new FormData(form);
+      $.ajax({
+        method: "POST",
+        url: 'api/v1/register',
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: function(data){
+          navigationController.loadTemplate('home',data,'#main-container');
+        },
+        error: function(jqxml, status, errorThrown) {
+          console.log(errorThrown);
+
+        }
+      });
+    },
+
     setGlobalLogin : function(token){
       localStorage.setItem('token-transporte', token);
       $.ajaxSetup({
         beforeSend : function( xhr ){
           xhr.setRequestHeader('Authorization', 'Bearer '+ token)
         }
+      });
+    },
+
+    loadRegister : function (){
+      var navigationController = new NavigationController;
+      $.get('api/v1/users',function(data){
+        navigationController.loadTemplate('newUser',data,'#main-container');
+      },"json");
+      $('#newUser').on("submit",function() {
+        event.preventDefault();
+        alert("llegamo");
+        createUser(this);
       });
     }
 }
