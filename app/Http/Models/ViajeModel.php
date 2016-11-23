@@ -37,6 +37,7 @@ class ViajeModel extends Model
       $destinos=$sel_dest->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['destinos']=$destinos;
 
+
       $select = $this->db->prepare("SELECT * FROM viajesolidario where habilitado");
       $select->execute();
       $auxViajes=$select->fetchAll(PDO::FETCH_ASSOC);
@@ -56,8 +57,20 @@ class ViajeModel extends Model
       $consulta_return['viajes']=$viajes;
 
       return $consulta_return;
-
     }
+    public function getViajesRealizados($orden,$estado){
+      //hacer con if si viene estado por defecto cargar como esta
+      //si no agregar a la misma sentencia agregar where por el estado que viene
+      if ($estado != 0){
+        $realizados = $this->db->prepare("SELECT * FROM viaje_realizado VR join viajesolidario VS on VR.id_viaje=VS.id_viaje where VR.estado=? ORDER BY $orden");
+        $realizados->execute([$estado]);
+        return $realizados->fetchAll(PDO::FETCH_ASSOC);
+      }else{
+      $realizados = $this->db->prepare("SELECT * FROM viaje_realizado VR join viajesolidario VS on VR.id_viaje=VS.id_viaje ORDER BY $orden");
+      $realizados->execute();
+      return $realizados->fetchAll(PDO::FETCH_ASSOC);}
+    }
+
     public function ofrecerme($id_tr,$id_viaj)
     {
 

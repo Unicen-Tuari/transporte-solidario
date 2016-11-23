@@ -55,6 +55,7 @@ class ViajesController extends Controller
 
    }
 
+    // [Auth]
     public function addViaje(Request $request){
       $partida = $request->input('partida');
       //REPOSITORIO
@@ -64,5 +65,11 @@ class ViajesController extends Controller
       );
     }
 
+    public function getViajesRealizados($orden,$estado){
+            $var=new \stdClass;
+            $var->data=$this->model->getViajesRealizados($orden,$estado);
+            return json_encode($var);
+
+          }
     //
 }
