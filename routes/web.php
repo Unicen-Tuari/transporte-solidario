@@ -25,7 +25,7 @@ $app->get('api/v1/navigation', 'NavigationController@menu');
 $app->get('api/v1/viajes','ViajesController@getViajes');
 $app->get('api/v1/viajes/realizados/{orden}/{estado}','ViajesController@getViajesRealizados');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
-$app->post('api/v1/viajes/afrecerme','ViajesController@ofrecermeAlViaje');
+$app->post('api/v1/viajes/ofrecerme','ViajesController@ofrecermeAlViaje');
 
 
 

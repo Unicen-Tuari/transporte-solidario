@@ -22,7 +22,7 @@ class ViajeModel extends Model
 
       $viajes=[];
 
-      $sel_ong=$this->db->prepare("SELECT name FROM users u, viajesolidario v where not (u.name='admin') AND (v.habilitado) GROUP BY name");
+      $sel_ong=$this->db->prepare("SELECT name FROM users u, viajesolidario v where not (u.name='SysAdmin') AND (v.habilitado) GROUP BY name");
       $sel_ong->execute();
       $ongs=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['ongs']=$ongs;
