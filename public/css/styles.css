@@ -17,27 +17,22 @@ body {
   max-width: 80px;
 
 }
-.glyphicon-spin {
-    -webkit-animation: spin 1000ms infinite linear;
-    animation: spin 1000ms infinite linear;
+
+#viajes
+{
+border-style: outset;
+padding: 5px;
+margin-top: 10px;
+
 }
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg);
-    }
+#viajes ul li{
+  list-style:none;
 }
-@keyframes {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg);
-    }
+
+#dropdown-orden{
+  margin-top: 10px;
+}
+#partida{
+margin-top: 10px;
+>>>>>>> master
 }

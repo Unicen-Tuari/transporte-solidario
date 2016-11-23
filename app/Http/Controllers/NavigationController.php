@@ -46,8 +46,13 @@ class NavigationController extends Controller
 
     }
 */
-    public function menu($role = null){
-      return $this->model->findAll($role);
+    public function menu(Request $request){
+      $role = RoleController::$ROLE_GUEST;
+      $user = $request->user();
+      if($user != null && $user->id_role != null){
+        $role = $user->id_role;
+      }
+      return $this->model->findByRole($role);
     }
 
     //

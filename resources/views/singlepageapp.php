@@ -51,6 +51,7 @@
     <script src="js/app/controllers/navigation-controller.js"></script>
     <script src="js/app/controllers/user-controller.js"></script>
     <script src="js/app/controllers/viajes-controller.js"></script>
+    <script src="js/app/controllers/viajesrealizados-controller.js"></script>
 
   </body>
 </html>

@@ -48,6 +48,9 @@ class ViajesController extends Controller
 
         }
 
+
+    // [Auth]
+
     public function addViaje(Request $request){
       $var=new \stdClass;
       $origen = $request->input('origen');
@@ -61,5 +64,14 @@ class ViajesController extends Controller
       $var=$this->model->addViaje($origen,$destino,$fecha,$id_ong,$frecuencia,$ancho,$alto,$peso);
       return $var;
     }
+
+
+    public function getViajesRealizados($orden,$estado){
+            $var=new \stdClass;
+            $var->data=$this->model->getViajesRealizados($orden,$estado);
+            return json_encode($var);
+
+          }
+    //
 
 }
