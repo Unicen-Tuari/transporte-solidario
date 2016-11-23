@@ -13,25 +13,41 @@ UserController.prototype = {
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
-<<<<<<< HEAD
-        navigationController.loadTemplate('users',data,'#main-container',function(){
-        });
-=======
         navigationController.loadTemplate('users',data,'#main-container');
->>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
       },"json");
     },
 
-    loadProfile : function (id){
+    loadProfile : function (){
       var navigationController = new NavigationController;
-      $.get('api/v1/users/{id}',function(data){
-<<<<<<< HEAD
-        navigationController.loadTemplate('perfil',data,'#main-container',function(){
-        });
-=======
+      $.get('api/v1/users',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container');
->>>>>>> 2dd0aa2d2e6de7c03d2da198a30600ce489935b3
       },"json");
+    },
+
+    loadSignIn : function (){
+      var _this = this;
+      var navigationController = new NavigationController;
+      navigationController.loadTemplate('signin',[],'#main-container',function(){
+        $('#login-form').submit(function(e){
+          e.preventDefault();
+          _this.login($(this).serialize(),function(){ // Callback
+            navigationController.loadNav();
+            _this.loadProfile();
+          });
+        })
+      });
+    },
+
+    login : function (data, callback){
+      var _this = this;
+      $.post('auth/login',
+        data
+      ).done(function(data){
+        if(data.token != undefined){
+          _this.setGlobalLogin(data.token);
+          callback();
+        }
+      });
     },
 
     createUser : function (form) {
@@ -49,6 +65,16 @@ UserController.prototype = {
         },
         error: function(jqxml, status, errorThrown) {
           console.log(errorThrown);
+
+        }
+      });
+    },
+
+    setGlobalLogin : function(token){
+      localStorage.setItem('token-transporte', token);
+      $.ajaxSetup({
+        beforeSend : function( xhr ){
+          xhr.setRequestHeader('Authorization', 'Bearer '+ token)
         }
       });
     },
