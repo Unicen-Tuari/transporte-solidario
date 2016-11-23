@@ -33,11 +33,14 @@ class UserController extends Controller
     return json_encode($var);
   }
 
-  public function getUsers(Request $request){
-    /*$user = $request->user();
-    return [$user];*/
+  // [Auth]
+  public function getLoggedInUser(Request $request){
+    $user = $request->user();
+    return $user;
+  }
 
-    // lo siguiente es sólo para poder visualizar los usuarios, vale lo de arriba
+  // [Auth]
+  public function getUsers(Request $request){
     $var = new \stdClass;
     $var->data = $this->model->getUsers();
     return json_encode($var);
