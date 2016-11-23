@@ -48,15 +48,18 @@ class ViajesController extends Controller
 
         }
 
-
     public function addViaje(Request $request){
-      $partida = $request->input('partida');
-      //REPOSITORIO
-      return array(
-        'id' => 'nuevo id',
-        'partida' => $partida
-      );
+      $var=new \stdClass;
+      $origen = $request->input('origen');
+      $destino = $request->input('destino');
+      $fecha = $request->input('fecha');
+      $id_ong = $request->input('id_ong');
+      $frecuencia = $request->input('frecuencia');
+      $ancho = $request->input('ancho');
+      $alto = $request->input('alto');
+      $peso = $request->input('peso');
+      $var=$this->model->addViaje($origen,$destino,$fecha,$id_ong,$frecuencia,$ancho,$alto,$peso);
+      return $var;
     }
 
-    //
 }

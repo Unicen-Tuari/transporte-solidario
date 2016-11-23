@@ -14,7 +14,6 @@ UserController.prototype = {
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
         navigationController.loadTemplate('users',data,'#main-container',function(){
-          navigationController.handleNavigationEvents();
         });
       },"json");
     },
@@ -23,7 +22,6 @@ UserController.prototype = {
       var navigationController = new NavigationController;
       $.get('api/v1/users/{id}',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container',function(){
-          navigationController.handleNavigationEvents();
         });
       },"json");
     }
