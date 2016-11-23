@@ -19,7 +19,7 @@ UserController.prototype = {
 
     loadProfile : function (){
       var navigationController = new NavigationController;
-      $.get('api/v1/users',function(data){
+      $.get('api/v1/perfil',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container');
       },"json");
     },
@@ -81,13 +81,13 @@ UserController.prototype = {
 
     loadRegister : function (){
       var navigationController = new NavigationController;
-      $.get('api/v1/users',function(data){
-        navigationController.loadTemplate('newUser',data,'#main-container');
-      },"json");
-      $('#newUser').on("submit",function() {
-        event.preventDefault();
-        alert("llegamo");
-        createUser(this);
+      navigationController.loadTemplate('newUser',[],'#main-container',function(){
+        $('#newUser').on("submit",function() {
+          event.preventDefault();
+          alert("llegamo");
+          createUser(this);
+        });
       });
+
     }
 }
