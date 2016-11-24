@@ -73,6 +73,7 @@ class ViajeModel extends Model
 
     public function ofrecerme($id_tr,$id_viaj)
     {
-
+      $insertDance = $this->db->prepare("INSERT INTO ofrecido(id_viaje,id_transportista,oferta_activa) VALUES(?,?,?)");
+      $insertDance->execute(array($id_viaj,$id_tr,1));
     }
 }

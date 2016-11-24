@@ -49,7 +49,8 @@ class ViajesController extends Controller
 
         }
    public function ofrecermeAlViaje(Request $request){
-    $id_transp= $request->input('id');
+    $user = $request->user();
+    $id_transp = $user->id;
     $id_Viaj=$request->input('id_viaje');
     $this->model->ofrecerme($id_transp,$id_Viaj);
 

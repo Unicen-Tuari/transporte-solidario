@@ -13,9 +13,9 @@
               e.preventDefault();
                var idViaje= $(this).attr("id_viaje");
                console.log(idViaje);
-            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+              $.post('api/v1/viajes/ofrecerme',{id_viaje:idViaje},function() {
                 alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
-              //})
+              })
             });}
           );
 
@@ -45,9 +45,9 @@
                               e.preventDefault();
                                var idViaje= $(this).attr("id_viaje");
                                console.log(idViaje);
-                            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+                              $.post('api/v1/viajes/ofrecerme',{id_viaje:idViaje},function() {
                                 alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
-                              //})
+                              })
                             });}
                           );
             });
@@ -76,9 +76,9 @@
                               e.preventDefault();
                                var idViaje= $(this).attr("id_viaje");
                                console.log(idViaje);
-                            //  $.post('api/v1/viajes/ofrecerme',{id:va el id del trasnportista,id_viaje:idViaje},function() {
+                              $.post('api/v1/viajes/ofrecerme',{id_viaje:idViaje},function() {
                                 alert('Gracias por su ayuda en breve se comunicaran desde la Ong con usted');
-                              //})
+                              })
                             });}
                           );
             });
