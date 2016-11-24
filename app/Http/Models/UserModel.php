@@ -18,11 +18,7 @@ class UserModel extends Model
       parent::__construct();
     }
 
-    public function getUsers() {
-      $users = $this->db->prepare("SELECT * FROM users");
-      $users->execute();
-      return $users->fetchAll(PDO::FETCH_ASSOC);
-    }
+
 
     public function getUserById($id) {
       $user = $this->db->prepare("SELECT * FROM users WHERE id = ?");
@@ -57,4 +53,21 @@ class UserModel extends Model
       }*/
     }
 
+    public function getUsers(){
+      $getUsers = $this->db->prepare("SELECT * FROM users");
+      $getUsers->execute();
+      $users=$getUsers->fetchAll(PDO::FETCH_ASSOC);
+      $return=[];
+      foreach ($users as $key => $user) {
+        $ong = ($user['tipo_usuario']=='ong');
+        $user['ong'] = $ong;
+        $return[] = $user;
+      }
+      return $return;
+    }
+
+    public function setRol($id,$rol){
+      $insert = $this->db->prepare("UPDATE users SET tipo_usuario = ? WHERE id =?");
+      $insert->execute(array($rol,$id));
+    }
 }
