@@ -19,7 +19,6 @@
             });}
           );
 
-
             $('#filtrarpor li a').click(function(e){
               e.preventDefault();
               var filtro=$(this).attr("filtro");

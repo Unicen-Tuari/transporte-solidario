@@ -34,9 +34,8 @@ class UserController extends Controller
 
   // [Auth]
   public function getUsers(Request $request){
-    $var = new \stdClass;
-    $var->data = $this->model->getUsers();
-    return json_encode($var);
+    $var = [ "data" => $this->model->getUsers()];
+    return $var;
   }
 
   public function setRegister(Request $request){ // no se como se consiguen los datos

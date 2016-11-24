@@ -1,11 +1,12 @@
 body {
-  padding-top: 70px;
+  padding-top: 85px;
 }
 
 /* NAV BAR */
 
 .navbar-brand img {
-  width: 220px;
+  width: 111px;
+  margin-top: -11px;
 }
 button img{
   width: 50px;

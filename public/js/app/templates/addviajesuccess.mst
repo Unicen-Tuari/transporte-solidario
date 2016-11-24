@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-    <h1><img src="img\logo_hero.png" class="logo">Viaje Cargado</h1>
+    <h1>Viaje Cargado</h1>
     <ul>
       <li>Id_viaje : {{id_viaje}}</li>
       <li>Origen : {{origen}}</li>
       <li>Destino : {{destino}}</li>
       <li>Fecha : {{fecha_creac}}</li>
       <li>Id_ong : {{id_ong}}</li>
-      <li>Habilitado : {{#habilitado}}<p><span class="glyphicon glyphicon-ok"></span></p>{{/habilitado}}
+      <li>Habilitado : {{#habilitado}} <span class="glyphicon glyphicon-ok"></span>{{/habilitado}}
       <li>Frecuencia : {{frecuencia}}</li>
       <li>Alto : {{alto}}</li>
       <li>Ancho : {{ancho}}</li>

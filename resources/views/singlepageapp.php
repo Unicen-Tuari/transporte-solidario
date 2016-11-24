@@ -13,7 +13,7 @@
     <title>Transporte Solidario</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://bootswatch.com/simplex/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" crossorigin="anonymous">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 

@@ -20,8 +20,8 @@
 
 
         <div class="col-md-2">
-        <button id_viaje="{{id_viaje}}" class="btn ofrecer" type="button"  aria-haspopup="true" aria-expanded="false">
-          <img src="img/logo_hero.png" > Ofrecerme
+        <button id_viaje="{{id_viaje}}" class="btn btn-primary ofrecer" type="button"  aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-ok"></span>  Ofrecerme
         </button>
        </div>
 

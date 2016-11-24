@@ -21,8 +21,6 @@ function init(){
 
     navigationController.loadTemplate('home',[],'#main-container');
 
-
-
 }
 
 $(document).ready(function(){

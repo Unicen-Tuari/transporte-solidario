@@ -50,6 +50,10 @@ NavigationController.prototype = {
           controller.loadAdd();
         
           break;
+        case "cargar-viaje":
+            var controller = new ViajesController;
+            controller.loadAdd();
+            break;
         case "viajes-pendientes":
           var controller = new ViajesController;
           controller.load();

@@ -6,3 +6,12 @@
     <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Quiero saber más &raquo;</a>
   </p>
 </div>
+<div class="row"><h2>Una iniciativa de</h2>
+
+  <img src="http://www.camaraempresaria.org.ar/savia/wp-content/uploads/2016/09/savia.jpg" style="
+    width: 250px;
+">
+  <img src="https://fb-s-a-a.akamaihd.net/h-ak-xap1/v/t1.0-9/1380731_555148204629853_973402161244635114_n.jpg?oh=4a5bb2635f93241cf35de68ee926de42&amp;oe=589CE5D5&amp;__gda__=1486536862_21a1df5a3854bbf7061c066fb309b840" style="
+    width: 250px;
+">
+</div>
