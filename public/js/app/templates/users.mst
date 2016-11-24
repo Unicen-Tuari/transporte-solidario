@@ -18,15 +18,17 @@
         </div>
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>   {{email}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>   {{facebook}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>   {{webpage}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-file"></span>   {{descripcion}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-phone"></span>   {{telefono}}</li>
-            <li class="list-group-item hide">{{tipo_user}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span>   {{fecha_alta}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>{{email}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>{{facebook}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>{{webpage}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-file"></span>{{descripcion}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-phone"></span>{{telefono}}</li>
+            <li class="list-group-item hide">{{tipo_usuario}}</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span>{{fecha_alta}}</li>
           </ul>
+
+          {{#ong}}<button type="button" class="btn-degrad btn btn-danger" data_id="{{id}}">Degradar a usuario comun</button>{{/ong}}
+          {{^ong}}<button type="button" class="btn-promot btn btn-success" data_id="{{id}}">Promover a ONG</button>{{/ong}}
         </div>
       </div>
     </div>

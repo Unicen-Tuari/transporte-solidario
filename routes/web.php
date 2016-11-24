@@ -35,4 +35,5 @@ $app->group(['prefix' => 'api/v1/',
       $app->get('users/{id}', 'UserController@getUser');
       $app->get('perfil', 'UserController@getLoggedInUser');
       $app->post('viajes','ViajesController@addViaje');
+      $app->post('users/{id}', 'UserController@setRol');
 });

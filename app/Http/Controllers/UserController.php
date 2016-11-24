@@ -53,4 +53,8 @@ class UserController extends Controller
     $this->model->setRegister($info);
   }
 
+  public function setRol($id,Request $request){
+    $this->model->setRol($id,$request->input('rol'));
+    return "exito!";
+  }
 }
