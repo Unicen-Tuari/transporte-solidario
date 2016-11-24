@@ -22,10 +22,8 @@ $app->post('/auth/login', 'AuthController@postLogin');
 $app->get('api/v1/navigation', 'NavigationController@menu');
 
 //Testing
-$app->get('api/v1/viajes','ViajesController@getViajes');
 $app->get('api/v1/viajes/realizados/{orden}/{estado}','ViajesController@getViajesRealizados');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
-$app->post('api/v1/viajes/ofrecerme','ViajesController@ofrecermeAlViaje');
 
 
 
@@ -34,6 +32,8 @@ $app->post('api/v1/register', 'UserController@setRegister');
 $app->group(['prefix' => 'api/v1/',
     'middleware' => 'auth'], function () use ($app) {
 
+      $app->get('viajes','ViajesController@getViajes');
+      $app->post('viajes/ofrecerme','ViajesController@ofrecermeAlViaje');
       $app->get('users', 'UserController@getUsers'); // hay que eliminar esta linea y descomentar la que está dentro del grupo autorizado
       $app->get('users/{id}', 'UserController@getUser');
       $app->get('perfil', 'UserController@getLoggedInUser');
