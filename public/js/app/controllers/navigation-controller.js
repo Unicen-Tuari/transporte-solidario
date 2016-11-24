@@ -5,9 +5,9 @@ function NavigationController(){
 }
 
 NavigationController.prototype = {
-    loadNav : function (rol){
+    loadNav : function (){
        _this = this;
-      $.get('api/v1/navigation/'+rol,function(data){
+      $.get('api/v1/navigation',function(data){
         _this.loadTemplate('nav',data,'#nav',function(){
           _this.handleNavigationEvents();
         });
@@ -32,6 +32,7 @@ NavigationController.prototype = {
         if(callback) callback();
       });
     },
+
     processAction: function(action){
      _this = this;
       location.hash = action;
@@ -47,6 +48,7 @@ NavigationController.prototype = {
         case "cargar-viaje":
           var controller = new ViajesController;
           controller.loadAdd();
+        
           break;
         case "cargar-viaje":
             var controller = new ViajesController;
@@ -56,8 +58,22 @@ NavigationController.prototype = {
           var controller = new ViajesController;
           controller.load();
           break;
-
-
+        case "perfil":
+          var controller = new UserController;
+          controller.loadProfile();
+          break;
+        case "viajes-realizados":
+          var controller = new ViajesRealizadosController;
+          controller.load();
+          break;
+        case "register":
+          var controller = new UserController;
+          controller.loadRegister();
+          break;
+        case "login":
+          var controller = new UserController;
+          controller.loadSignIn();
+          break;
       };
     }
   };

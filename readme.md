@@ -9,7 +9,7 @@
 * cd public/js/mustache.js/
 * git clone https://github.com/janl/mustache.js.git .
 * Ejecutar script transporte.sql en base de datos "transporte"
-* Renombrar .env.example -> .env
+* Copiar .env.example -> .env (Dejar intacto el archivo original)
 
 ## Para trabajar en la User Story
 * Cambiamos a un nuevo branch para la US que le corresponda a cada uno:

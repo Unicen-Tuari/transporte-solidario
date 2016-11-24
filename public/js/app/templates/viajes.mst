@@ -1,33 +1,69 @@
-<h1>Viajes Pendientes</h1>
+<div class="container">
 
-<p>viajes registrados en el sistema an no realizados</p>
+  <div class="row">
+    <div class="col-md-12 ">
+      <h1>Viajes Pendientes</h1>
+    </div>
 
+    <div class="col-md-offset-3 col-md-6">
+      <div class="btn-group">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Ordenar por <span class="caret"></span>
+       </button>
+       <ul id="ordenarpor" class="dropdown-menu">
+         <li><a href="#" orden="peso">Peso</a></li>
+         <li><a href="#" orden="fecha_creacion">Fecha creacion</a></li>
+         <li><a href="#" orden="ong">ONG</a></li>
+       </ul>
+      </div>
 
-<table class="table table-striped">
-{{#data}}
-  <thead>
-    <tr>
-      <th>Viajes</th>
-    </tr>
-  </thead>
-  <tbody>
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Destino <span class="caret"></span>
+       </button>
+       <ul id="filtrarpor" class="dropdown-menu">
+       {{#data}}
+       {{#destinos}}
+         <li><a href="#" filtro="{{destino}}" tipoFilt="destino">{{destino}}</a></li>
+       {{/destinos}}
+      {{/data}}
+       </ul>
+      </div>
 
-    <tr>
-    <td>id</td>
-    <td>{{id}}</td>
-    </tr>
-    <tr>
-    <td>Partida</td>
-    <td>{{partida}}</td>
-    </tr>
-    <tr>
-    <td>Destino</td>
-    <td>{{destino}}</td>
-    </tr>
-    <tr>
-    <td>ONG</td>
-    <td>{{ong}}</td>
-    </tr>
-{{/data}}
-  </tbody>
-</table>
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Frecuencia <span class="caret"></span>
+       </button>
+       <ul id="filtrarpor" class="dropdown-menu">
+        {{#data}}
+         {{#frecuencias}}
+           <li><a href="#" filtro="{{frecuencia}}" tipoFilt="frecuencia">{{frecuencia}}</a></li>
+         {{/frecuencias}}
+        {{/data}}
+        </ul>
+      </div>
+
+      <div class="btn-group ">
+       <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         ONG <span class="caret"></span>
+       </button>
+       <ul id="filtrarpor" class="dropdown-menu">
+          {{#data}}
+           {{#ongs}}
+           <li><a href="#" filtro="{{name}}" tipoFilt="name">{{name}}</a></li>
+           {{/ongs}}
+          {{/data}}
+       </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+   <p> </p>
+  </div>
+
+<div id="listadoViajes">
+
+</div>
+
+</div>

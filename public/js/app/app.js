@@ -8,15 +8,18 @@ var config = {
 function init(){
 
     console.log("Initializing app...");
+    var token = localStorage.getItem('token-transporte');
+    if(token != undefined){
+      var $userController = new UserController();
+      $userController.setGlobalLogin(token);
+    }
 
     var navigationController = new NavigationController();
 
-    var role = '';
-    navigationController.loadNav(role);
+    navigationController.loadNav();
     navigationController.processAction(location.hash.replace('#',''));
 
     navigationController.loadTemplate('home',[],'#main-container');
-
 
 }
 
