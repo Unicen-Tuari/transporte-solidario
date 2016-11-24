@@ -7,6 +7,9 @@ body {
 .navbar-brand img {
   width: 220px;
 }
+button img{
+  width: 50px;
+}
 
 .jumbotron.home{
   background-image: url('/img/bg_hero.jpg');
@@ -17,6 +20,7 @@ body {
   max-width: 80px;
 
 }
+
 #viajes
 {
 border-style: outset;
@@ -32,5 +36,5 @@ margin-top: 10px;
   margin-top: 10px;
 }
 #partida{
-margin-top: 10px;  
+margin-top: 10px;
 }

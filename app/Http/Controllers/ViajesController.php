@@ -29,6 +29,7 @@ class ViajesController extends Controller
       );
     }
 
+
   public function getViajes(){
           $var=new \stdClass;
           $var->data=$this->model->getViajes();
@@ -48,15 +49,29 @@ class ViajesController extends Controller
 
         }
 
+   public function ofrecermeAlViaje(Request $request){
+    $user = $request->user();
+    $id_transp = $user->id;
+    $id_Viaj=$request->input('id_viaje');
+    $this->model->ofrecerme($id_transp,$id_Viaj);
+   }
+
     // [Auth]
+
     public function addViaje(Request $request){
-      $partida = $request->input('partida');
-      //REPOSITORIO
-      return array(
-        'id' => 'nuevo id',
-        'partida' => $partida
-      );
+      $var=new \stdClass;
+      $origen = $request->input('origen');
+      $destino = $request->input('destino');
+      $fecha = $request->input('fecha');
+      $id_ong = $request->input('id_ong');
+      $frecuencia = $request->input('frecuencia');
+      $ancho = $request->input('ancho');
+      $alto = $request->input('alto');
+      $peso = $request->input('peso');
+      $var=$this->model->addViaje($origen,$destino,$fecha,$id_ong,$frecuencia,$ancho,$alto,$peso);
+      return $var;
     }
+
 
     public function getViajesRealizados($orden,$estado){
             $var=new \stdClass;
@@ -65,4 +80,5 @@ class ViajesController extends Controller
 
           }
     //
+
 }
