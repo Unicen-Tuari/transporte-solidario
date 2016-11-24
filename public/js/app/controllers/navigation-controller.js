@@ -48,6 +48,7 @@ NavigationController.prototype = {
         case "cargar-viaje":
           var controller = new ViajesController;
           controller.loadAdd();
+        
           break;
         case "viajes-pendientes":
           var controller = new ViajesController;

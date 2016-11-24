@@ -4,45 +4,64 @@
     <div class="col-md-4 col-md-offset-4">
     <h1><img src="img\logo_hero.png" class="logo">Cargar Viajes</h1>
   </div>
-    <form>
+    <form  id="formViaje"       >
         <div class="form-group col-md-2 col-md-offset-4">
-          <label for="example"></label>
-          <input type="text" class="form-control" id="" placeholder="Origen">
+          <label for="example">Origen</label>
+          <input type="text" class="form-control" name="origen" id="" placeholder="Origen">
         </div>
         <div class="form-group col-md-2">
-          <label for="example"></label>
-          <input type="text" class="form-control" id="" placeholder="Destino">
+          <label for="example">Destino</label>
+          <input type="text" class="form-control" name="destino" id="" placeholder="Destino">
         </div>
       <div class="form-group col-md-4 col-md-offset-4">
-        <label for="example"></label>
-
-        <select class=" form-control" id=""  placeholder="ONG" >
-          <option value="">ONG</option>
-          <option value="">ONG1</option>
-          <option value="">ONG2</option>
-          <option value="">ONG3</option>
-          <option value="">ONG4</option>
+        <label for="example">ONG</label>
+        <select class="form-control" name="id_ong" id=""  placeholder="ONG" >
+          <option value=""></option>
+          {{#.}}
+            <option value="{{id}}">{{name}}</option>
+          {{/.}}
         </select>
       </div>
       <div class="form-group col-md-4 col-md-offset-4">
-        <label for="example"></label>
-        <input type="date" step="1" min="2016-01-01" max="2017-12-31" value="2016-01-01"class="form-control" id="" placeholder="Fecha Solicitada">
+        <label for="example">Fecha</label>
+        <input type="date" step="1" min="" max="2017-12-31" value=""class="form-control" name="fecha" id="fecha" placeholder="Fecha Solicitada">
       </div>
       <div class="form-group col-md-4 col-md-offset-4">
-        <label for="example"></label>
-        <input type="text" class="form-control" id="" placeholder="Peso Estimado">
+        <label for="example">Frecuencia</label>
+        <select class="form-control" name="frecuencia" id=""  placeholder="" >
+          <option value="">Frecuencia</option>
+          <option value="semanal">Semanal</option>
+          <option value="quincenal">Quincenal</option>
+          <option value="mensual">Mensual</option>
+        </select>
       </div>
       <div class="form-group col-md-4 col-md-offset-4">
-        <label for="example"></label>
-        <input type="text" class="form-control" id="" placeholder="Tamaño Estimado">
+        <label for="example">Peso</label>
+        <input type="text" class="form-control" name="peso" id="" placeholder="Peso Estimado">
       </div>
       <div class="form-group col-md-4 col-md-offset-4">
-        <label for="example"></label>
-        <input type="text" class="form-control" id="" placeholder="Frecuencia">
+        <label for="example">Ancho</label>
+        <input type="text" class="form-control" name="ancho" id="" placeholder="Tamaño Estimado">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="example">Alto</label>
+        <input type="text" class="form-control" name="alto" id="" placeholder="Tamaño Estimado">
       </div>
       <div class="form-group col-md-4 col-md-offset-7">
-      <button type="submit" class="btn btn-default">Solicitar</button>
+      <button type="button" class="btn btn-default" id="agregarViaje" data-loading-text="<i class='glyphicon glyphicon-refresh glyphicon-spin'>
+      </i> Cargando..."data-somestringvalue-text="<i class='glyphicon glyphicon-ok'></i>  Listo&nbsp;" >Solicitar Viaje</button>
     </div>
     </form>
   </div>
 </div>
+<script>
+/*$(document).ready(function(){
+    $(".btn").click(function(){
+        $(this).button('loading').delay(5000).queue(function(){
+            $(this).button('somestringvalue');
+            $(this).dequeue();
+            $(this).removeClass("btn-default").addClass("btn-success");
+        });
+    });
+});*/
+</script>
