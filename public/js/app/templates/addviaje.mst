@@ -6,16 +6,16 @@
   </div>
     <form id="formViaje">
         <div class="form-group col-md-4 col-md-offset-2">
-          <label for="example">Origen</label>
-          <input type="text" class="form-control" name="origen" id="" placeholder="Origen">
+          <label for="example">Origen*</label>
+          <input type="text" class="form-control" name="origen" id="" placeholder="Origen" required>
         </div>
         <div class="form-group col-md-4">
-          <label for="example">Destino</label>
-          <input type="text" class="form-control" name="destino" id="" placeholder="Destino">
+          <label for="example">Destino*</label>
+          <input type="text" class="form-control" name="destino" id="" placeholder="Destino" required>
         </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label for="example">ONG</label>
-        <select class="form-control" name="id_ong" id=""  placeholder="ONG" >
+        <label for="example">ONG*</label>
+        <select class="form-control" name="id_ong" id="" required placeholder="ONG" >
         <option disabled selected value> -- elija una O.N.G. -- </option>
           {{#data}}
             <option value="{{id}}">{{name}}</option>
@@ -23,13 +23,13 @@
         </select>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label for="example">Fecha</label>
-        <input type="date" step="1" min="" max="2017-12-31" value=""class="form-control" name="fecha" id="fecha" placeholder="Fecha Solicitada">
+        <label for="example">Fecha*</label>
+        <input type="date" step="1" min="" max="2017-12-31" value=""class="form-control" name="fecha" id="fecha" placeholder="Fecha Solicitada" required>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label for="example">Frecuencia</label>
-        <select class="form-control" name="frecuencia" id=""  placeholder="" >
-          <option value="">Frecuencia</option>
+        <label for="example">Frecuencia*</label>
+        <select class="form-control" name="frecuencia" id=""  placeholder="" required>
+          <option disabled selected value> -- elija una frecuencia -- </option>
           <option value="semanal">Semanal</option>
           <option value="quincenal">Quincenal</option>
           <option value="mensual">Mensual</option>
