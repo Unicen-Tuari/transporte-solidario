@@ -53,9 +53,7 @@ class ViajesController extends Controller
     $id_transp = $user->id;
     $id_Viaj=$request->input('id_viaje');
     $this->model->ofrecerme($id_transp,$id_Viaj);
-
    }
-
     // [Auth]
     public function addViaje(Request $request){
       $partida = $request->input('partida');

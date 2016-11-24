@@ -1,11 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
+
 -- Tiempo de generación: 24-11-2016 a las 01:32:52
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,15 +29,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE `menu` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(10) unsigned NOT NULL,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `action` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `controller` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -104,7 +107,10 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 (1, 6),
 (1, 7),
 (2, 1),
+<<<<<<< HEAD
 (2, 3),
+=======
+>>>>>>> 31619f1efa3d433e5bde31049d9e51d21fce413e
 (2, 4),
 (2, 5);
 
@@ -145,7 +151,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `
 -- Estructura de tabla para la tabla `viajesolidario`
 --
 
-CREATE TABLE `viajesolidario` (
+CREATE TABLE IF NOT EXISTS `viajesolidario` (
   `id_viaje` int(11) NOT NULL,
   `origen` varchar(50) NOT NULL,
   `destino` varchar(50) NOT NULL,
@@ -156,7 +162,7 @@ CREATE TABLE `viajesolidario` (
   `alto` float NOT NULL,
   `ancho` float NOT NULL,
   `peso` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viajesolidario`
@@ -175,17 +181,38 @@ INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `i
 -- Estructura de tabla para la tabla `viaje_realizado`
 --
 
-CREATE TABLE `viaje_realizado` (
+CREATE TABLE IF NOT EXISTS `viaje_realizado` (
   `id_viaje` int(11) NOT NULL,
   `id_transportista` int(11) NOT NULL,
   `fecha_realizado` date NOT NULL,
   `observacion` varchar(150) DEFAULT NULL,
   `estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
 
 --
 -- Volcado de datos para la tabla `viaje_realizado`
 --
+
+
+INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
+(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
+(2, 5, '2016-11-22', 'LALALA', 1),
+(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
+(7, 5, '2016-11-19', 'sgsdgsd', 0);
+
+
+--
+-- Indices de la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
 
 INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
 (1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
@@ -194,14 +221,10 @@ INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`
 (7, 5, '2016-11-19', 'sgsdgsd', 0);
 
 --
--- Índices para tablas volcadas
+-- Indices de la tabla `role_menu`
 --
-
---
--- Indices de la tabla `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `role_menu`
+  ADD PRIMARY KEY (`id_role`,`id_menu`);
 
 --
 -- Indices de la tabla `role`
@@ -249,22 +272,23 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
 ALTER TABLE `viajesolidario`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `viaje_realizado`
 --
 ALTER TABLE `viaje_realizado`
-  MODIFY `id_transportista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transportista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --

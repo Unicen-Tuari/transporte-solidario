@@ -24,9 +24,6 @@ $app->get('api/v1/navigation', 'NavigationController@menu');
 //Testing
 $app->get('api/v1/viajes/realizados/{orden}/{estado}','ViajesController@getViajesRealizados');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
-
-
-
 $app->post('api/v1/register', 'UserController@setRegister');
 
 $app->group(['prefix' => 'api/v1/',

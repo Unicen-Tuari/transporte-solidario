@@ -37,7 +37,6 @@ class ViajeModel extends Model
       $destinos=$sel_dest->fetchAll(PDO::FETCH_ASSOC);
       $consulta_return['destinos']=$destinos;
 
-
       $select = $this->db->prepare("SELECT * FROM viajesolidario where habilitado");
       $select->execute();
       $auxViajes=$select->fetchAll(PDO::FETCH_ASSOC);
