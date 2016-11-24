@@ -107,10 +107,8 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 (1, 6),
 (1, 7),
 (2, 1),
-<<<<<<< HEAD
+(2, 2),
 (2, 3),
-=======
->>>>>>> 31619f1efa3d433e5bde31049d9e51d21fce413e
 (2, 4),
 (2, 5);
 
@@ -214,30 +212,11 @@ ALTER TABLE `menu`
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
-INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
-(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
-(2, 5, '2016-11-22', 'LALALA', 1),
-(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
-(7, 5, '2016-11-19', 'sgsdgsd', 0);
-
 --
 -- Indices de la tabla `role_menu`
 --
 ALTER TABLE `role_menu`
   ADD PRIMARY KEY (`id_role`,`id_menu`);
-
---
--- Indices de la tabla `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `role_menu`
---
-ALTER TABLE `role_menu`
-  ADD PRIMARY KEY (`id_role`,`id_menu`);
-
 --
 -- Indices de la tabla `users`
 --
