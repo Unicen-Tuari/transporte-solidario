@@ -29,6 +29,7 @@ class ViajesController extends Controller
       );
     }
 
+
   public function getViajes(){
           $var=new \stdClass;
           $var->data=$this->model->getViajes();
@@ -48,6 +49,12 @@ class ViajesController extends Controller
 
         }
 
+   public function ofrecermeAlViaje(Request $request){
+    $user = $request->user();
+    $id_transp = $user->id;
+    $id_Viaj=$request->input('id_viaje');
+    $this->model->ofrecerme($id_transp,$id_Viaj);
+   }
 
     // [Auth]
 

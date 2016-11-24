@@ -32,6 +32,7 @@ NavigationController.prototype = {
         if(callback) callback();
       });
     },
+
     processAction: function(action){
      _this = this;
       location.hash = action;

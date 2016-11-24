@@ -5,10 +5,10 @@
 --
 -- Servidor: 127.0.0.1
 
--- Tiempo de generación: 16-11-2016 a las 11:13:31
+-- Tiempo de generación: 24-11-2016 a las 01:32:52
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 7.0.8
 
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -55,6 +55,19 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `role`, `created_at`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ofrecido`
+--
+
+CREATE TABLE `ofrecido` (
+  `id_ofrecimiento` int(11) NOT NULL,
+  `id_viaje` int(11) NOT NULL,
+  `id_transportista` int(11) NOT NULL,
+  `oferta_activa` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `role`
 --
 
@@ -94,6 +107,8 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 (1, 6),
 (1, 7),
 (2, 1),
+(2, 2),
+(2, 3),
 (2, 4),
 (2, 5);
 
@@ -123,7 +138,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`, `id_role`) VALUES
-(1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, '', '2016-11-17', NULL, 2);
+(1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, '', '2016-11-17', NULL, 2),
+(2, 'Mesa Solidaria', 'mesasolidaria@lala.com', 'laclave1', 'miramelamesa', 'que mesasa', 'son un para de chavones/as que hacen cosas por la gente', '24324234', 'ONG', '2016-11-16', 'logo_Mesa.png', 3),
+(3, 'Banco de alimentos', 'bancoalimentos@gmail.com', 'quebanquitopapa', 'bancoalimentos', 'www.bankfood.com', 'El citibank del morfi', '3247932864', 'ONG', '2016-11-16', 'BancoAlimentos.jpg', 3),
+(4, 'reinventar', 'teinventedenuevo@gmail.com', '27o8127oyhdlq', 'reinventarTandil', 'www.reinventar.com.ar', 'hacen algo', '23212', 'ONG', '2016-11-15', 'reinventar.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -149,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `viajesolidario` (
 --
 
 INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `id_ong`, `habilitado`, `frecuencia`, `alto`, `ancho`, `peso`) VALUES
-(1, 'Tandil', 'Azul', '2016-11-07', 1, 1, 'mensual', 1, 4, 25),
+(1, 'Tandil', 'Azul', '2016-11-07', 2, 1, 'mensual', 1, 4, 25),
 (2, 'Tandil', 'Olavarria', '2016-11-07', 2, 1, 'Semanal', 2, 2, 34),
 (5, 'Tandil', 'Juarez', '2016-11-07', 3, 1, '15 dias', 1.4, 2.2, 66),
 (6, 'Tandil', 'Capital Federal', '2016-11-07', 4, 1, 'Mensual', 1, 1.5, 33),
@@ -169,9 +187,18 @@ CREATE TABLE IF NOT EXISTS `viaje_realizado` (
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+
 --
 -- Volcado de datos para la tabla `viaje_realizado`
 --
+
+
+INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
+(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
+(2, 5, '2016-11-22', 'LALALA', 1),
+(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
+(7, 5, '2016-11-19', 'sgsdgsd', 0);
+
 
 --
 -- Indices de la tabla `menu`
@@ -185,18 +212,11 @@ ALTER TABLE `menu`
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
-INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
-(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
-(2, 5, '2016-11-22', 'LALALA', 1),
-(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
-(7, 5, '2016-11-19', 'sgsdgsd', 0);
-
 --
 -- Indices de la tabla `role_menu`
 --
 ALTER TABLE `role_menu`
   ADD PRIMARY KEY (`id_role`,`id_menu`);
-
 --
 -- Indices de la tabla `users`
 --
@@ -232,6 +252,7 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT de la tabla `users`
 --

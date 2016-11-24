@@ -19,9 +19,6 @@ ViajesRealizadosController.prototype = {
     }
 
 }
-
-
-
 $(document).ready(function(){
   var estado=0;
   var orden="origen";
