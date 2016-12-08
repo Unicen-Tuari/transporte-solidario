@@ -15,7 +15,7 @@ UserController.prototype = {
          UserController.prototype.load();
        });
     },
-    
+
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
@@ -74,7 +74,7 @@ UserController.prototype = {
         cache: false,
         processData:false,
         success: function(data){
-          navigationController.loadTemplate('home',data,'#main-container');
+          navigationController.loadTemplate('signin',data,'#main-container');
         },
         error: function(jqxml, status, errorThrown) {
           console.log(errorThrown);
@@ -93,12 +93,12 @@ UserController.prototype = {
     },
 
     loadRegister : function (){
+      var _this = this;
       var navigationController = new NavigationController;
       navigationController.loadTemplate('newUser',[],'#main-container',function(){
-        $('#newUser').on("submit",function() {
-          event.preventDefault();
-          alert("llegamo");
-          createUser(this);
+        $('#new-user').on("submit",function(e) {
+          e.preventDefault();
+          _this.createUser(this);
         });
       });
 

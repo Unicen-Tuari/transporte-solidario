@@ -6,26 +6,26 @@
     </div>
   </div>
 
-  <form class="form-horizontal" id="nuevoUsuario">
+  <form class="form-horizontal" id="new-user">
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="name">Nombre de usuario:</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre de usuario">
+        <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese su nombre de usuario">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="email">Email:</label>
       <div class="col-sm-4">
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su email">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="pwd">Password:</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
       </div>
     </div>
     <div class="form-group">
@@ -38,7 +38,7 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="tipo">Tipo de usuario</label>
       <div class="col-sm-4">
-        <select class="form-control" id="tipo">
+        <select class="form-control" name="tipo" id="tipo">
           <option value="admin">admin</option>
           <option value="ong">ong</option>
           <option value="transportista">transportista</option>
@@ -62,35 +62,35 @@
               <div class="form-group">
                 <label class="control-label col-sm-4" for="face">Facebook <span class="glyphicon glyphicon-thumbs-up"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="face" placeholder="Ingrese su id de Facebook">
+                  <input type="text" class="form-control" name="face" id="face" placeholder="Ingrese su id de Facebook">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="web">Webpage <span class="glyphicon glyphicon-home"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su Webpage">
+                  <input type="text" class="form-control" name="web" id="web" placeholder="Ingrese su Webpage">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="tel">Tel&eacute;fono <span class="glyphicon glyphicon-phone"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su tel&eacute;fono">
+                  <input type="text" class="form-control" name="tel" id="tel" placeholder="Ingrese su tel&eacute;fono">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="desc">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
                 <div class="col-sm-4">
-                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                  <textarea class="form-control" rows="5" name="desc" id="comment"></textarea>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="image">Im&aacute;gen <span class="glyphicon glyphicon-picture"></span> </label>
                 <div class="col-sm-4">
-                  <input class="btn btn-link" type="file" name="image[]" id="image">
+                  <input class="btn btn-link" type="file" name="image" id="image">
                 </div>
               </div>
 
@@ -103,7 +103,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default id="newUser">Crear Usuario</button>
+        <button type="submit" class="btn btn-default" id="btn-new-user">Crear Usuario</button>
       </div>
     </div>
 

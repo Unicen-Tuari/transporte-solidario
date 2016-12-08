@@ -33,8 +33,8 @@ class UserModel extends Model
     }
 
     public function copyImage($image){
-      $path = $image["name"];
-      copy($image["tmp_name"], $path);
+      $path = $image->path();
+      copy($path, 'upload/'+$image->getClientOriginalName());
       return $path;
     }
 
@@ -43,10 +43,24 @@ class UserModel extends Model
       //try {
         $dateTime = date_create('now')->format('Y-m-d');
         //$this->$db->beginTransaction();
-        $path_image =  $this->copyImage($user['img_path']);
-        $insertDance = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
-        $insertDance->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
-        $this->$db->commit();
+
+        //$path_image = $user['image'] != null ? $this->copyImage($user['image'][0]) : '';
+        if($user['image'] != null){
+           $img = $user['image'];
+           //$img->store('/');
+           $path = $this->copyImage($img);
+           $path_image = $path;
+        }
+        else{
+          $path_image = null;
+        }
+
+
+        $statement = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
+        $statement->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
+        $temp = $statement->fetch(PDO::FETCH_ASSOC);
+        $user['id'] = $this->db->lastInsertId();
+        return $user;
       /*} catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());

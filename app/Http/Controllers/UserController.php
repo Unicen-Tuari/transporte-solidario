@@ -39,6 +39,8 @@ class UserController extends Controller
   }
 
   public function setRegister(Request $request){ // no se como se consiguen los datos
+    $file = $request->hasFile('image') ? $request->file('image') : null;
+
     $info = array(
       'name' => $request->input('name'),
       'email' => $request->input('email'),
@@ -47,8 +49,8 @@ class UserController extends Controller
       'webpage' => $request->input('web'),
       'descripcion' => $request->input('desc'),
       'telefono' => $request->input('tel'),
-      'tipo_usuario' => $request->input('tipo|'),
-      'img_path' => $request->input('image')
+      'tipo_usuario' => $request->input('tipo'),
+      'image' => $file
     );
     $this->model->setRegister($info);
   }
