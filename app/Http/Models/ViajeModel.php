@@ -75,16 +75,31 @@ class ViajeModel extends Model
       if ($estado != 0){
         $realizados = $this->db->prepare("SELECT * FROM viaje_realizado VR join viajesolidario VS on VR.id_viaje=VS.id_viaje where VR.estado=? ORDER BY $orden");
         $realizados->execute([$estado]);
-        return $realizados->fetchAll(PDO::FETCH_ASSOC);
       }else{
       $realizados = $this->db->prepare("SELECT * FROM viaje_realizado VR join viajesolidario VS on VR.id_viaje=VS.id_viaje ORDER BY $orden");
       $realizados->execute();
-      return $realizados->fetchAll(PDO::FETCH_ASSOC);}
+      }
+
+      $temp=$realizados->fetchAll(PDO::FETCH_ASSOC);
+      $return=[];
+
+      foreach ($temp as $key => $viaje){
+        if($viaje['estado']=='1'){
+          $viaje['finalizado']=false;
+        }else $viaje['finalizado']=true;
+        $return[]=$viaje;
+      }
+      return $return;
     }
 
     public function ofrecerme($id_tr,$id_viaj)
     {
       $insertDance = $this->db->prepare("INSERT INTO ofrecido(id_viaje,id_transportista,oferta_activa) VALUES(?,?,?)");
       $insertDance->execute(array($id_viaj,$id_tr,1));
+    }
+
+    public function setFinViaje($id,$score){
+      $insert = $this->db->prepare("UPDATE viaje_realizado SET estado = ?, score = ? WHERE id_viaje = ?");
+      $insert->execute(array('2',$score,$id));
     }
 }

@@ -79,6 +79,10 @@ class ViajesController extends Controller
             return json_encode($var);
 
           }
+
+    public function setFinViaje($id,Request $request){
+      $this->model->setFinViaje($id,$request->input('score'));
+    }
     //
 
 }

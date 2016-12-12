@@ -195,6 +195,7 @@ CREATE TABLE IF NOT EXISTS `viaje_realizado` (
   `fecha_realizado` date NOT NULL,
   `observacion` varchar(150) DEFAULT NULL,
   `estado` int(11) NOT NULL,
+  `score` int(1) DEFAULT NULL COMMENT 'el score de 1 a 5 asignado a un viaje finalizado',
   PRIMARY KEY (`id_viaje`,`id_transportista`),
   KEY `id_viaje` (`id_viaje`),
   KEY `id_transportista` (`id_transportista`)
@@ -205,11 +206,11 @@ CREATE TABLE IF NOT EXISTS `viaje_realizado` (
 -- Volcado de datos para la tabla `viaje_realizado`
 --
 
-INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`) VALUES
-(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1),
-(2, 5, '2016-11-22', 'LALALA', 1),
-(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
-(7, 5, '2016-11-19', 'sgsdgsd', 0);
+INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`, `observacion`, `estado`, `score`) VALUES
+(1, 3, '2016-11-08', 'Problemas de logistica en destino no hay personal para descargar', 1, NULL),
+(2, 5, '2016-11-22', 'LALALA', 1, NULL),
+(5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2, 3),
+(7, 5, '2016-11-19', 'sgsdgsd', 0, NULL);
 
 
 --

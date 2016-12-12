@@ -19,11 +19,36 @@
 <div id="partida" class="col-md-3">
 <ul>
 {{#estado}}
-  <li><span style="color:green" class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>{{estado}} {{fecha_realizado}}</li>
+
+    {{#finalizado}}
+      <li><span style="color:green;font-size:14px;" class="glyphicon glyphicon-ok" aria-hidden="true"></span> Fin: {{fecha_realizado}}</li>
+      <li>Calificacion: <span style="color:orange;font-size:14px;" class="glyphicon glyphicon-star" aria-hidden="true"></span> {{score}}</li>
+    {{/finalizado}}
+    {{^finalizado}}
+      <li><span style="color:orange;font-size:14px;" class="glyphicon glyphicon-list" aria-hidden="true"></span> Asignado</li>
+      <li>
+      <div class="dropdown">
+      <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="glyphicon glyphicon-check"></span> Finalizar Viaje
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li class="dropdown-header">Calificacion (1 a 5)</li>
+        <li><a href="#" data_idviaje="{{id_viaje}}" data-calif="1"><span style="color:orange" class="glyphicon glyphicon-star"></span> 1 Estrella</a></li>
+        <li><a href="#" data_idviaje="{{id_viaje}}" data-calif="2"><span style="color:orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></span> 2 Estrellas</a></li>
+        <li><a href="#" data_idviaje="{{id_viaje}}" data-calif="3"><span style="color:orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></span> 3 Estrellas</a></li>
+        <li><a href="#" data_idviaje="{{id_viaje}}" data-calif="4"><span style="color:orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></span> 4 Estrellas</a></li>
+        <li><a href="#" data_idviaje="{{id_viaje}}" data-calif="5"><span style="color:orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></span> 5 Estrellas</a></li>
+      </ul>
+    </div></li>
+    {{/finalizado}}
 {{/estado}}
+
 {{^estado}}
-  <li><span style="color:red" class="glyphicon glyphicon-remove-sign" aria-hidden="true">Cancelado</span></li>
+  <li style="color:red;font-size:14px;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelado</li>
 {{/estado}}
+
+
 
 </ul>
 </div>
