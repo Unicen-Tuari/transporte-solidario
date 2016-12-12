@@ -19,10 +19,6 @@ ViajesRealizadosController.prototype = {
             console.log($(this).attr('data_idviaje'));
             ViajesRealizadosController.prototype.setFinViaje($(this).attr('data_idviaje'),$(this).attr('data-calif'));
           });
-          /*$('.dropdown').click(function(){
-          	console.log($(this).attr('data_idviaje'));
-            //ViajesRealizadosController.prototype.setFinViaje($(this).attr('data_idviaje'),5);
-          });*/
         });
       },"json");
     },
