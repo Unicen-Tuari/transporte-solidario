@@ -15,7 +15,7 @@ UserController.prototype = {
          UserController.prototype.load();
        });
     },
-    
+
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
@@ -33,7 +33,14 @@ UserController.prototype = {
     loadProfile : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/perfil',function(data){
-        navigationController.loadTemplate('perfil',data,'#main-container');
+        navigationController.loadTemplate('perfil',data,'#main-container',function(){
+          $('#loadImgPerfil').click(function(e){
+            e.preventDefault();
+            var nro = $('#idNro').text().split("#");
+            console.log("Click: " + nro[1]);
+            //$.post('api/v1/perfil/saveImg',{id_perfil:nro[1]},function() { });
+          });
+        });
       },"json");
     },
 
@@ -97,10 +104,8 @@ UserController.prototype = {
       navigationController.loadTemplate('newUser',[],'#main-container',function(){
         $('#newUser').on("submit",function() {
           event.preventDefault();
-          alert("llegamo");
           createUser(this);
         });
       });
-
     }
 }

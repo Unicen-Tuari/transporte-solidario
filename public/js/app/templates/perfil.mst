@@ -13,12 +13,22 @@
       </div>
       <div class="panel-body">
         <div class="col-md-4">
+
           <img src="{{img_path}}" class="img-responsive img-rounded" alt="Img User" width="128" height="128">
+
           <button type="button" class="btn btn-link" id="loadImgPerfil"><span class="glyphicon glyphicon-picture"></span>   Cargar im&aacute;gen</button>
+
+          <form>
+      		  <div class="form-group">
+        			<label for="exampleInputFile"><span class="glyphicon glyphicon-picture"></span>   Cargar im&aacute;gen</label>
+              <input type="file" id="fileToUpload" onchange="upload_image();">
+      		  </div>
+      		</form>
+
         </div>
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
+            <li class="list-group-item" id="idNro"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>    {{email}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>   {{facebook}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>   {{webpage}}</li>

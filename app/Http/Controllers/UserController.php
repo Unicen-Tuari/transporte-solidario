@@ -47,8 +47,7 @@ class UserController extends Controller
       'webpage' => $request->input('web'),
       'descripcion' => $request->input('desc'),
       'telefono' => $request->input('tel'),
-      'tipo_usuario' => $request->input('tipo|'),
-      'img_path' => $request->input('image')
+      'tipo_usuario' => $request->input('tipo')
     );
     $this->model->setRegister($info);
   }
@@ -56,5 +55,13 @@ class UserController extends Controller
   public function setRol($id,Request $request){
     $this->model->setRol($id,$request->input('rol'));
     return "exito!";
+  }
+
+  public function loadImage($id) {
+    $image_name = $_FILES['image']['name'][0];
+    $image_tmp = $_FILES['image']['tmp_name'][0];
+    $image['name'] = $image_name;
+    $image['tmp_name'] = $image_tmp;
+    $this->model->loadImage($id, $image);
   }
 }
