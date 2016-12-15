@@ -38,13 +38,13 @@ class UserModel extends Model
       return $path;
     }
 
-    public function loadImage($user) {
+    public function saveImg($user,$image) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       //try {
         //$this->$db->beginTransaction();
-        $path_image = $this->copyImage($user['img_path']);
-        $insertImg = $this->db->prepare("INSERT INTO users(img_path) VALUES(?)");
-        $insertImg->execute(array($path_image));
+        $path_image = "img/" . $this->copyImage($image);
+        $insertImg = $this->db->prepare("UPDATE users SET img_path = ? WHERE id = ?");
+        $insertImg->execute(array($path_image, $user));
         $this->$db->commit();
       /*} catch(PDOException $ex) {
         $this->$db->rollBack();

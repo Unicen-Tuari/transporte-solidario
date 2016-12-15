@@ -57,11 +57,11 @@ class UserController extends Controller
     return "exito!";
   }
 
-  public function loadImage($id) {
+  public function saveImg($id) {
     $image_name = $_FILES['image']['name'][0];
     $image_tmp = $_FILES['image']['tmp_name'][0];
     $image['name'] = $image_name;
     $image['tmp_name'] = $image_tmp;
-    $this->model->loadImage($id, $image);
+    $this->model->saveImg($id, $image);
   }
 }

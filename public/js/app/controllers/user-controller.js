@@ -31,14 +31,42 @@ UserController.prototype = {
     },
 
     loadProfile : function (){
+      var idUser = '';
       var navigationController = new NavigationController;
       $.get('api/v1/perfil',function(data){
         navigationController.loadTemplate('perfil',data,'#main-container',function(){
-          $('#loadImgPerfil').click(function(e){
-            e.preventDefault();
+          $('#fileToUpload').hide(); // escondemos el botón de carga default
+
+          $('#loadImgPerfil').click(function(event){
+            event.preventDefault();
             var nro = $('#idNro').text().split("#");
-            console.log("Click: " + nro[1]);
-            //$.post('api/v1/perfil/saveImg',{id_perfil:nro[1]},function() { });
+            idUser = nro[1];
+            $('#fileToUpload').click(); // llamo al evento click del botón escondido
+          });
+
+          $("#fileToUpload").on("change", function(event){
+            event.preventDefault();
+            $('#imgAjax').submit();
+          });
+
+          $("#imgAjax").on("submit", function(event){
+        		event.preventDefault();
+            var formData = new FormData(this);
+        		$.ajax({
+        			method: "POST",
+        			url: "api/v1/perfil/img/"+idUser,
+        			data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+        		  success: function() {
+                console.log("Imagen grabada");
+                //navigationController.loadTemplate('perfil',data,'#main-container');
+        		  },
+        		  error: function(jqxml, status, errorThrown) {
+                console.log(errorThrown);
+              }
+            });
           });
         });
       },"json");
