@@ -103,6 +103,17 @@
         },"json");
 
       },
+     assignT: function(){
+       var navigationController = new NavigationController;
+       $.get('api/v1/listAsignacion',function(data){
+        navigationController.loadTemplate('asignarTransportista',data,'#main-container',function(){
+        // var formData = new FormData(form);
+         //$.post('api/v1/listAsignacion/asignar',{data:formData},function() {
+
+          //  })
+       });
+       },"json");
+     },
 
 
 

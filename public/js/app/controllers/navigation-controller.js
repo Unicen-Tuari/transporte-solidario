@@ -48,7 +48,7 @@ NavigationController.prototype = {
         case "cargar-viaje":
           var controller = new ViajesController;
           controller.loadAdd();
-        
+
           break;
         case "cargar-viaje":
             var controller = new ViajesController;
@@ -74,6 +74,11 @@ NavigationController.prototype = {
           var controller = new UserController;
           controller.loadSignIn();
           break;
+        case "asignar":
+          var controller = new ViajesController;
+          controller.assignT();
+          break;
+
       };
     }
   };
