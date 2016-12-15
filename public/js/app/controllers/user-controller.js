@@ -15,7 +15,7 @@ UserController.prototype = {
          UserController.prototype.load();
        });
     },
-    
+
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
@@ -89,6 +89,12 @@ UserController.prototype = {
         beforeSend : function( xhr ){
           xhr.setRequestHeader('Authorization', 'Bearer '+ token)
         }
+      });
+    },
+
+    getRemoteSession : function() {
+      return jQuery.ajax({
+        url: "api/v1/perfil"
       });
     },
 

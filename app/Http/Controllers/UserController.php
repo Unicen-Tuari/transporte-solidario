@@ -29,6 +29,9 @@ class UserController extends Controller
   // [Auth]
   public function getLoggedInUser(Request $request){
     $user = $request->user();
+    if($user == null){
+      return "false";
+    }
     return $user;
   }
 

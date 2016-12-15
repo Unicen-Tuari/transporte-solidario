@@ -7,11 +7,16 @@ function NavigationController(){
 NavigationController.prototype = {
     loadNav : function (){
        _this = this;
-      $.get('api/v1/navigation',function(data){
-        _this.loadTemplate('nav',data,'#nav',function(){
-          _this.handleNavigationEvents();
-        });
-      });
+       var users = new UserController;
+       users.getRemoteSession().then(function(session){
+         $.get('api/v1/navigation',function(data){
+           data.user=session != undefined && session != "false" ? session : false;
+           _this.loadTemplate('nav',data,'#nav',function(){
+             _this.handleNavigationEvents();
+           });
+         });
+       });
+
     },
     handleNavigationEvents : function (){
        _this = this;
@@ -48,7 +53,7 @@ NavigationController.prototype = {
         case "cargar-viaje":
           var controller = new ViajesController;
           controller.loadAdd();
-        
+
           break;
         case "cargar-viaje":
             var controller = new ViajesController;
