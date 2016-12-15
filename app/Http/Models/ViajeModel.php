@@ -87,4 +87,38 @@ class ViajeModel extends Model
       $insertDance = $this->db->prepare("INSERT INTO ofrecido(id_viaje,id_transportista,oferta_activa) VALUES(?,?,?)");
       $insertDance->execute(array($id_viaj,$id_tr,1));
     }
+
+    public function getOfrecidosAmisViajes($id)
+     {
+      $sel_ong=$this->db->prepare("SELECT id_role FROM users where id=?");
+      $sel_ong->execute($id);
+      $ongs=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
+
+        if $ong['id_role']==2{
+          $sel_viajes= $this->db->prepare("SELECT * FROM viajesolidario where id_ong=?");
+          $sel_viajes->execute($id);
+          $viajes=$sel_viajes->fetchAll(PDO::FETCH_ASSOC);
+        }
+        if $ong['id_role']==3{
+          $sel_viajes= $this->db->prepare("SELECT * FROM viajesolidario ");
+          $sel_ong->execute();
+          $viajes=$sel_viajes->fetchAll(PDO::FETCH_ASSOC);
+        }
+        foreach ($viajes as $key => $viaje){
+          $sel_ofrecidos=$this->db->prepare("SELECT id_transportista FROM ofrecido where id_viaje=viaje['id_viaje'] and oferta_activa=1");
+          $sel_ofrecidos->execute();
+          $ofrecidos=$sel_ofrecidos->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($ofrecidos as $key => $ofrecido){
+            $sel_transp=$this->db->prepare("SELECT name,email,telefono FROM users where id=ofrecido['id_transportista']");
+            $sel_transp->execute();
+            $transporte=$sel_transp->fetchAll(PDO::FETCH_ASSOC);
+            $ofrecido['name']=$transporte['name'];
+            $ofrecido['email']=$transporte['email'];
+            $ofrecido['telefono']=$transporte['telefono'];
+          }
+          $viaje['ofrecidos']=$ofrecidos;
+        }
+       return $viajes;
+    }
+
 }

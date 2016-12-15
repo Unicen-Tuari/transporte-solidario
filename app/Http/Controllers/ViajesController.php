@@ -81,4 +81,13 @@ class ViajesController extends Controller
           }
     //
 
+   public function getOfrecidos() {
+     $var=new \stdClass;
+     $user = $request->user();
+     $miId = $user->id;
+     $var->data=$this->model->getOfrecidosAmisViajes($miId);
+     return json_encode($var);
+
+   }
+
 }

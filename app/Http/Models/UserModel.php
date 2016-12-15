@@ -46,7 +46,7 @@ class UserModel extends Model
         $path_image =  $this->copyImage($user['img_path']);
         $insertDance = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
         $insertDance->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
-        $this->$db->commit();
+      //  $this->$db->commit();
       /*} catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());

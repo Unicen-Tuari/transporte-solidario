@@ -47,7 +47,7 @@ class UserController extends Controller
       'webpage' => $request->input('web'),
       'descripcion' => $request->input('desc'),
       'telefono' => $request->input('tel'),
-      'tipo_usuario' => $request->input('tipo|'),
+      'tipo_usuario' => $request->input('tipo'),
       'img_path' => $request->input('image')
     );
     $this->model->setRegister($info);
