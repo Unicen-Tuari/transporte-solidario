@@ -47,7 +47,6 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `created_at`, `updated
 (2, 'Cargar Viaje', 'cargar-viaje', 'ViajesController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-send'),
 (3, 'Viajes pendientes', 'viajes-pendientes', 'ViajesController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-time'),
 (4, 'Viajes Realizados', 'viajes-realizados', 'HistorialViajesController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-road'),
-(5, 'Ver Perfil', 'perfil', 'UserController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-user'),
 (6, 'Ingresar', 'login', 'LoginController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-log-in'),
 (7, 'Registrarme', 'register', 'UserController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', '');
 

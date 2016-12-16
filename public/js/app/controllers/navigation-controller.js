@@ -79,6 +79,12 @@ NavigationController.prototype = {
           var controller = new UserController;
           controller.loadSignIn();
           break;
+        case "logout":
+          var controller = new UserController;
+          controller.setGlobalLogin("x");
+          location.hash='';
+          location.reload();
+          break;
       };
     }
   };
