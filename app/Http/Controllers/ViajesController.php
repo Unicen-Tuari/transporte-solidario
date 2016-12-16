@@ -81,7 +81,7 @@ class ViajesController extends Controller
           }
     //
 
-   public function getOfrecidos() {
+   public function getOfrecidos(Request $request) {
      $var=new \stdClass;
      $user = $request->user();
      $miId = $user->id;
