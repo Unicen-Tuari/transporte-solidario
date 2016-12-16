@@ -113,12 +113,9 @@
           //  })
        });
        },"json");
-     },
-
-
-
-
+     }
   }
+
    function handleFormEvents(){
        var navigationController = new NavigationController;
        $("#agregarViaje").click(function(event){
