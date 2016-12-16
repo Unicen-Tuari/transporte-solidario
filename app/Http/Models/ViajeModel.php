@@ -90,35 +90,41 @@ class ViajeModel extends Model
 
     public function getOfrecidosAmisViajes($id)
      {
-      $sel_ong=$this->db->prepare("SELECT id_role FROM users where id=?");
-      $sel_ong->execute($id);
-      $ongs=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
+      $viajes_to_return=[];
+      $vj=[];
+      $Ofrc=[];
+      $sel_ong=$this->db->prepare("SELECT * FROM users where id=?");
+      $sel_ong->execute(array($id));
+      $ong=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
 
-        if $ong['id_role']==2{
+        if ($ong[0]['id_role']==3){
           $sel_viajes= $this->db->prepare("SELECT * FROM viajesolidario where id_ong=?");
-          $sel_viajes->execute($id);
+          $sel_viajes->execute(array($id));
           $viajes=$sel_viajes->fetchAll(PDO::FETCH_ASSOC);
         }
-        if $ong['id_role']==3{
+        if ($ong[0]['id_role']==2){
           $sel_viajes= $this->db->prepare("SELECT * FROM viajesolidario ");
-          $sel_ong->execute();
+          $sel_viajes->execute();
           $viajes=$sel_viajes->fetchAll(PDO::FETCH_ASSOC);
-        }
+            }
         foreach ($viajes as $key => $viaje){
-          $sel_ofrecidos=$this->db->prepare("SELECT id_transportista FROM ofrecido where id_viaje=viaje['id_viaje'] and oferta_activa=1");
-          $sel_ofrecidos->execute();
+          $sel_ofrecidos=$this->db->prepare("SELECT id_transportista FROM ofrecido where id_viaje=? AND oferta_activa");
+          $sel_ofrecidos->execute(array($viaje['id_viaje']));
           $ofrecidos=$sel_ofrecidos->fetchAll(PDO::FETCH_ASSOC);
           foreach ($ofrecidos as $key => $ofrecido){
-            $sel_transp=$this->db->prepare("SELECT name,email,telefono FROM users where id=ofrecido['id_transportista']");
-            $sel_transp->execute();
+            $sel_transp=$this->db->prepare("SELECT name,email,telefono FROM users where id=?");
+            $sel_transp->execute(array($ofrecido['id_transportista']));
             $transporte=$sel_transp->fetchAll(PDO::FETCH_ASSOC);
-            $ofrecido['name']=$transporte['name'];
-            $ofrecido['email']=$transporte['email'];
-            $ofrecido['telefono']=$transporte['telefono'];
+            $ofrecido['name']=$transporte[0]['name'];
+            $ofrecido['email']=$transporte[0]['email'];
+            $ofrecido['telefono']=$transporte[0]['telefono'];
+            $Ofrc[]=$ofrecido;
           }
-          $viaje['ofrecidos']=$ofrecidos;
+          $viaje['ofrecidos']=$Ofrc;
+          $vj[]=$viaje;
         }
-       return $viajes;
+        $viajes_to_return[]=$vj;
+       return $viajes_to_return;
     }
 
 }
