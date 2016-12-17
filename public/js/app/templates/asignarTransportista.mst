@@ -1,52 +1,31 @@
-<div class="container">
-
-  <div class="row">
-    <div class="col-md-12 ">
-      <h1>Asignar Transportista</h1>
+ <h1>Asignar Transportista</h1>
+{{#data}}
+{{#hayOfrecidos}}
+{{#sinAsignar}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>{{descripcion}}</h2>
+      <h3>{{origen}} - {{destino}}</h3>
     </div>
-  </div>
 
-  {{#data}}
-  {{#viajes}}
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-body">
-         <div class="col-md-8">
-         <h3>{{descripcion}}</h3>
-         </div>
-          <div class="col-md-5">
-          <h2>{{origen}} - {{destino}}</h2>
-          </div>
-          <div class="col-md-4">
-          <h3>{{fecha_creac}}</h3>
-          </div>
-          <div class="col-md-2">
-          <h4><span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{frecuencia}}</h4>
-          </div>
-
-          <div class="row">
-            <div class="panel panel-default">
-            {{#ofrecidos}}
-            <form class="form-horizontal" id="nuevoUsuario">
-              <div class="radio">
-              <label><input type="radio" name="optradio" value="{{id_transp}}">{{name_transp}}</label>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default id="newUser">Asignar</button>
-                </div>
-              </div>
-
-            </form>
-            {{/ofrecidos}}
-            </div>
-          </div>
-
+    <div class="panel-body">
+      {{#ofrecidos}}
+      <form class="form-horizontal" id="OF">
+        <div class="radio">
+          <label>
+           <input type="radio" name="optionsRadios" value="{{id_transp}}">
+                {{name}}
+          </label>
         </div>
-      </div>
+      {{/ofrecidos}}
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" id="newUser">Asignar</button>
+          </div>
+        </div>
     </div>
-    {{/viajes}}
+    </form>
+  </div>
+  {{/sinAsignar}}
+  {{/hayOfrecidos}}
   {{/data}}
-
-</div>
