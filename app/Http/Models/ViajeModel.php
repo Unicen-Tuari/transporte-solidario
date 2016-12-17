@@ -91,8 +91,6 @@ class ViajeModel extends Model
     public function getOfrecidosAmisViajes($id)
      {
       $viajes_to_return=[];
-      $vj=[];
-      $Ofrc=[];
       $sel_ong=$this->db->prepare("SELECT * FROM users where id=?");
       $sel_ong->execute(array($id));
       $ong=$sel_ong->fetchAll(PDO::FETCH_ASSOC);
@@ -111,6 +109,7 @@ class ViajeModel extends Model
           $sel_ofrecidos=$this->db->prepare("SELECT id_transportista FROM ofrecido where id_viaje=? AND oferta_activa");
           $sel_ofrecidos->execute(array($viaje['id_viaje']));
           $ofrecidos=$sel_ofrecidos->fetchAll(PDO::FETCH_ASSOC);
+          $Ofrc=[];
           foreach ($ofrecidos as $key => $ofrecido){
             $sel_transp=$this->db->prepare("SELECT name,email,telefono FROM users where id=?");
             $sel_transp->execute(array($ofrecido['id_transportista']));
@@ -120,11 +119,14 @@ class ViajeModel extends Model
             $ofrecido['telefono']=$transporte[0]['telefono'];
             $Ofrc[]=$ofrecido;
           }
+          if (count($ofrecidos)>0)
+            $viaje['hayOfrecidos']=true;
+          else
+            $viaje['hayOfrecidos']=false;
           $viaje['ofrecidos']=$Ofrc;
-          $vj[]=$viaje;
+          $viajes_to_return[]=$viaje;
         }
-        $viajes_to_return[]=$vj;
-       return $viajes_to_return;
+      return $viajes_to_return;
     }
 
 }
