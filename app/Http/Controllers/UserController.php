@@ -57,11 +57,14 @@ class UserController extends Controller
     return "exito!";
   }
 
-  public function saveImg($id) {
-    $image_name = $_FILES['image']['name'][0];
-    $image_tmp = $_FILES['image']['tmp_name'][0];
-    $image['name'] = $image_name;
-    $image['tmp_name'] = $image_tmp;
-    $this->model->saveImg($id, $image);
+  public function saveImg(Request $request, $id) { //https://lumen.laravel.com/docs/5.2/requests#files
+    if ($request->file('archivo')->isValid()) {
+      // guardo la imagen con el nombre igual al id del usuario
+      $fileName = $id.".".$request->file('archivo')->guessExtension();
+      $request->file('archivo')->move("img", $fileName);
+      $this->model->saveImg($id, "img/" . $fileName);
+    }
+    return true;
   }
+
 }

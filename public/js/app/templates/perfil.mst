@@ -14,9 +14,9 @@
       <div class="panel-body">
         <div class="col-md-4">
           <img src="{{img_path}}" class="img-responsive img-rounded" alt="Img User" width="128" height="128">
-          <form id="imgAjax">
+          <form id="imgAjax" enctype="multipart/form-data">
             <button type="button" class="btn btn-link" id="loadImgPerfil"><span class="glyphicon glyphicon-picture"></span>   Cargar im&aacute;gen</button>
-            <input type="file" id="fileToUpload">
+            <input name="archivo" type="file" id="fileToUpload">
       		</form>
         </div>
         <div class="col-md-8">

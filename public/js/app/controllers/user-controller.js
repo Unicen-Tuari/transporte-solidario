@@ -46,28 +46,24 @@ UserController.prototype = {
 
           $("#fileToUpload").on("change", function(event){
             event.preventDefault();
-            $('#imgAjax').submit();
-          });
-
-          $("#imgAjax").on("submit", function(event){
-        		event.preventDefault();
-            var formData = new FormData(this);
-        		$.ajax({
-        			method: "POST",
-        			url: "api/v1/perfil/img/"+idUser,
-        			data: formData,
+            //uploadFile(idUser); // función que se encargará de subir la imágen
+            var formData = new FormData($("#imgAjax")[0]);
+            $.ajax({
+              method: "POST",
+              url: "api/v1/perfil/img/"+idUser,
+              data: formData,
               contentType: false,
               cache: false,
               processData:false,
-        		  success: function() {
+              success: function() {
                 console.log("Imagen grabada");
-                //navigationController.loadTemplate('perfil',data,'#main-container');
-        		  },
-        		  error: function(jqxml, status, errorThrown) {
+              },
+              error: function(jqxml, status, errorThrown) {
                 console.log(errorThrown);
               }
             });
           });
+
         });
       },"json");
     },
@@ -136,4 +132,24 @@ UserController.prototype = {
         });
       });
     }
+}
+
+function uploadFile(idUser) {
+  var formData = new FormData($("#imgAjax")[0]);
+  console.log('uploadFile: ' + $('#fileToUpload').val());
+  $.ajax({
+    method: "POST",
+    url: "api/v1/perfil/img/"+idUser,
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function() {
+      console.log("Imagen grabada");
+      //navigationController.loadTemplate('perfil',data,'#main-container');
+    },
+    error: function(jqxml, status, errorThrown) {
+      console.log(errorThrown);
+    }
+  });
 }

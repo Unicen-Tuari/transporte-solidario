@@ -32,19 +32,18 @@ class UserModel extends Model
       return $user->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function copyImage($image){
+    /*public function copyImage($image){
       $path = $image["name"];
       copy($image["tmp_name"], $path);
       return $path;
-    }
+    }*/
 
     public function saveImg($user,$image) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       //try {
         //$this->$db->beginTransaction();
-        $path_image = "img/" . $this->copyImage($image);
         $insertImg = $this->db->prepare("UPDATE users SET img_path = ? WHERE id = ?");
-        $insertImg->execute(array($path_image, $user));
+        $insertImg->execute(array($image, $user));
         $this->$db->commit();
       /*} catch(PDOException $ex) {
         $this->$db->rollBack();
