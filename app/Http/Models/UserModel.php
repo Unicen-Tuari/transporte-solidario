@@ -32,20 +32,14 @@ class UserModel extends Model
       return $user->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /*public function copyImage($image){
-      $path = $image["name"];
-      copy($image["tmp_name"], $path);
-      return $path;
-    }*/
-
     public function saveImg($user,$image) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       //try {
         //$this->$db->beginTransaction();
         $insertImg = $this->db->prepare("UPDATE users SET img_path = ? WHERE id = ?");
         $insertImg->execute(array($image, $user));
-        $this->$db->commit();
-      /*} catch(PDOException $ex) {
+        /*$this->$db->commit();
+      } catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());
       }*/
@@ -58,8 +52,8 @@ class UserModel extends Model
         //$this->$db->beginTransaction();
         $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
         $insertUser->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
-        $this->$db->commit();
-      /*} catch(PDOException $ex) {
+        /*$this->$db->commit();
+      } catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());
       }*/

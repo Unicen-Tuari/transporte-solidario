@@ -57,6 +57,7 @@ UserController.prototype = {
               processData:false,
               success: function() {
                 console.log("Imagen grabada");
+                $("#imgUser").attr('src', $("#imgUser").attr('src') + '?' + Math.random() );
               },
               error: function(jqxml, status, errorThrown) {
                 console.log(errorThrown);

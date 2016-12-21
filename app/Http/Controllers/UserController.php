@@ -61,10 +61,10 @@ class UserController extends Controller
     if ($request->file('archivo')->isValid()) {
       // guardo la imagen con el nombre igual al id del usuario
       $fileName = $id.".".$request->file('archivo')->guessExtension();
-      $request->file('archivo')->move("img", $fileName);
-      $this->model->saveImg($id, "img/" . $fileName);
+      $request->file('archivo')->move(base_path().'/public/img/upload/', $fileName);
+      $this->model->saveImg($id, "img/upload/" . $fileName);
     }
-    return true;
+    return response()->json(true); // contenido application/json ya que no retornamos nada de la BD.
   }
 
 }
