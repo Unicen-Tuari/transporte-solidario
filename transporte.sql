@@ -1,10 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
-
--- Tiempo de generación: 24-11-2016 a las 01:32:52
+-- Tiempo de generación: 23-12-2016 a las 00:21:29
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -27,16 +26,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menu` (
+  `id` int(10) UNSIGNED NOT NULL,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `action` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `controller` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `icon` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `icon` varchar(150) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -49,7 +47,8 @@ INSERT INTO `menu` (`id`, `text`, `action`, `controller`, `created_at`, `updated
 (4, 'Viajes Realizados', 'viajes-realizados', 'HistorialViajesController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-road'),
 (5, 'Ver Perfil', 'perfil', 'UserController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-user'),
 (6, 'Ingresar', 'login', 'LoginController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', 'glyphicon glyphicon-log-in'),
-(7, 'Registrarme', 'register', 'UserController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', '');
+(7, 'Registrarme', 'register', 'UserController', '2016-10-26 03:00:00', '2016-10-26 03:00:00', ''),
+(8, 'Asignar Transportista', 'asignar', 'ViajesController', '2016-12-10 03:00:00', '2016-12-10 03:00:00', 'glyphicon glyphicon-thumbs-up');
 
 -- --------------------------------------------------------
 
@@ -64,18 +63,32 @@ CREATE TABLE `ofrecido` (
   `oferta_activa` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `ofrecido`
+--
+
+INSERT INTO `ofrecido` (`id_ofrecimiento`, `id_viaje`, `id_transportista`, `oferta_activa`) VALUES
+(1, 1, 5, 1),
+(2, 2, 5, 1),
+(3, 6, 5, 1),
+(4, 1, 6, 1),
+(5, 2, 6, 1),
+(6, 6, 6, 1),
+(7, 1, 7, 1),
+(8, 2, 7, 1),
+(9, 6, 7, 1);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `role`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `slug` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `slug` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `role`
@@ -94,10 +107,9 @@ INSERT INTO `role` (`id`, `name`, `slug`) VALUES
 -- Estructura de tabla para la tabla `role_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `role_menu` (
+CREATE TABLE `role_menu` (
   `id_role` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  PRIMARY KEY (`id_role`,`id_menu`)
+  `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -112,9 +124,11 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 (2, 3),
 (2, 4),
 (2, 5),
+(2, 8),
 (3, 2),
 (3, 3),
 (3, 5),
+(3, 8),
 (4, 3),
 (4, 4),
 (4, 5);
@@ -125,8 +139,8 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 -- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -137,9 +151,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `tipo_usuario` varchar(255) NOT NULL,
   `fecha_alta` date NOT NULL,
   `img_path` varchar(255) DEFAULT NULL,
-  `id_role` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
+  `id_role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
 
 --
 -- Volcado de datos para la tabla `users`
@@ -147,9 +160,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`, `id_role`) VALUES
 (1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, '', '2016-11-17', 'img/user-icon.png', 2),
-(2, 'Mesa Solidaria', 'mesasolidaria@lala.com', 'laclave1', 'miramelamesa', 'que mesasa', 'son un para de chavones/as que hacen cosas por la gente', '24324234', 'ONG', '2016-11-16', 'img/logo_Mesa.png', 3),
-(3, 'Banco de alimentos', 'bancoalimentos@gmail.com', 'quebanquitopapa', 'bancoalimentos', 'www.bankfood.com', 'El citibank del morfi', '3247932864', 'ONG', '2016-11-16', 'img/BancoAlimentos.jpg', 3),
-(4, 'reinventar', 'teinventedenuevo@gmail.com', '27o8127oyhdlq', 'reinventarTandil', 'www.reinventar.com.ar', 'hacen algo', '23212', 'ONG', '2016-11-15', 'img/reinventar.jpg', 3);
+(2, 'Mesa Solidaria', 'mesasolidaria@lala.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'miramelamesa', 'que mesasa', 'son un para de chavones/as que hacen cosas por la gente', '24324234', '', '2016-11-16', 'img/logo_Mesa.png', 3),
+(3, 'Banco de alimentos', 'bancoalimentos@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'bancoalimentos', 'www.bankfood.com', 'El citibank del morfi', '3247932864', 'ONG', '2016-11-16', 'img/BancoAlimentos.jpg', 3),
+(4, 'reinventar', 'teinventedenuevo@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'reinventarTandil', 'www.reinventar.com.ar', 'hacen algo', '23212', 'ONG', '2016-11-15', 'img/reinventar.jpg', 3),
+(5, 'trasnp1', 'jajaja@jaja.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'jsdhjgsd', 'sdaadsads', NULL, '23456', 'transportista', '2016-12-10', NULL, 4),
+(6, 'expreso lalala', 'jijiji@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'lshdasj', 'expresolalala.com', NULL, '234567', 'transportista', '2016-12-09', NULL, 4),
+(7, 'expreso sarasa', 'sarasa@gmail.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', 'sarasa', 'sarasa.com', NULL, '876543', 'transportista', '2016-12-07', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -157,8 +173,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `
 -- Estructura de tabla para la tabla `viajesolidario`
 --
 
-CREATE TABLE IF NOT EXISTS `viajesolidario` (
-  `id_viaje` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `viajesolidario` (
+  `id_viaje` int(11) NOT NULL,
   `origen` varchar(50) NOT NULL,
   `destino` varchar(50) NOT NULL,
   `fecha_creac` date NOT NULL,
@@ -168,20 +184,21 @@ CREATE TABLE IF NOT EXISTS `viajesolidario` (
   `alto` float NOT NULL,
   `ancho` float NOT NULL,
   `peso` float NOT NULL,
-  PRIMARY KEY (`id_viaje`),
-  KEY `id_ong` (`id_ong`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `descripcion` varchar(100) NOT NULL,
+  `Transp_asignado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viajesolidario`
 --
 
-INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `id_ong`, `habilitado`, `frecuencia`, `alto`, `ancho`, `peso`) VALUES
-(1, 'Tandil', 'Azul', '2016-11-07', 2, 1, 'mensual', 1, 4, 25),
-(2, 'Tandil', 'Olavarria', '2016-11-07', 2, 1, 'Semanal', 2, 2, 34),
-(5, 'Tandil', 'Juarez', '2016-11-07', 3, 1, '15 dias', 1.4, 2.2, 66),
-(6, 'Tandil', 'Capital Federal', '2016-11-07', 4, 1, 'Mensual', 1, 1.5, 33),
-(7, 'Azul', 'Tandil', '2016-11-19', 2, 1, 'Mensual', 30, 30, 10);
+INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `id_ong`, `habilitado`, `frecuencia`, `alto`, `ancho`, `peso`, `descripcion`, `Transp_asignado`) VALUES
+(1, 'Tandil', 'Azul', '2016-11-07', 2, 1, 'mensual', 1, 4, 25, 'proyecto recuperacion de botellas', 0),
+(2, 'Tandil', 'Olavarria', '2016-11-07', 2, 1, 'Semanal', 2, 2, 34, 'proyecto bolsas y pet', 0),
+(5, 'Tandil', 'Juarez', '2016-11-07', 3, 1, '15 dias', 1.4, 2.2, 66, 'distribucion a sucursal juarez', 0),
+(6, 'Tandil', 'Capital Federal', '2016-11-07', 4, 1, 'Mensual', 1, 1.5, 33, 'insumos proyecto pymes pibes', 0),
+(7, 'Azul', 'Tandil', '2016-11-19', 2, 1, 'Mensual', 30, 30, 10, 'traslado de botellas de acopio azul a tandil', 0),
+(8, 'Tandil', 'Mar del Plata', '2016-11-24', 3, 1, 'semanal', 33, 22, 222, 'Traslado de insumos a sucursal Mar del plata', 0);
 
 -- --------------------------------------------------------
 
@@ -189,17 +206,13 @@ INSERT INTO `viajesolidario` (`id_viaje`, `origen`, `destino`, `fecha_creac`, `i
 -- Estructura de tabla para la tabla `viaje_realizado`
 --
 
-CREATE TABLE IF NOT EXISTS `viaje_realizado` (
+CREATE TABLE `viaje_realizado` (
   `id_viaje` int(11) NOT NULL,
-  `id_transportista` int(11) NOT NULL AUTO_INCREMENT,
+  `id_transportista` int(11) NOT NULL,
   `fecha_realizado` date NOT NULL,
   `observacion` varchar(150) DEFAULT NULL,
-  `estado` int(11) NOT NULL,
-  PRIMARY KEY (`id_viaje`,`id_transportista`),
-  KEY `id_viaje` (`id_viaje`),
-  KEY `id_transportista` (`id_transportista`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viaje_realizado`
@@ -211,6 +224,54 @@ INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`
 (5, 4, '2016-11-16', 'Se despacho mercaderia en deposito alternativo indicado por ONG', 2),
 (7, 5, '2016-11-19', 'sgsdgsd', 0);
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ofrecido`
+--
+ALTER TABLE `ofrecido`
+  ADD KEY `id_ofrecimiento` (`id_ofrecimiento`);
+
+--
+-- Indices de la tabla `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `role_menu`
+--
+ALTER TABLE `role_menu`
+  ADD PRIMARY KEY (`id_role`,`id_menu`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `viajesolidario`
+--
+ALTER TABLE `viajesolidario`
+  ADD PRIMARY KEY (`id_viaje`),
+  ADD KEY `id_ong` (`id_ong`);
+
+--
+-- Indices de la tabla `viaje_realizado`
+--
+ALTER TABLE `viaje_realizado`
+  ADD PRIMARY KEY (`id_viaje`,`id_transportista`),
+  ADD KEY `id_viaje` (`id_viaje`),
+  ADD KEY `id_transportista` (`id_transportista`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -220,13 +281,17 @@ INSERT INTO `viaje_realizado` (`id_viaje`, `id_transportista`, `fecha_realizado`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `ofrecido`
+--
+ALTER TABLE `ofrecido`
+  MODIFY `id_ofrecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
@@ -236,14 +301,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `viajesolidario`
 --
 ALTER TABLE `viajesolidario`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `viaje_realizado`
 --
 ALTER TABLE `viaje_realizado`
-  MODIFY `id_transportista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_transportista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
-
 -- Restricciones para tablas volcadas
 --
 
