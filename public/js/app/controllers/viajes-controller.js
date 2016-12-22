@@ -105,17 +105,26 @@
       },
      assignT: function(){
        var navigationController = new NavigationController;
-       $.get('api/v1/listAsignacion',function(data){
+      $.get('api/v1/listAsignacion',function(data){
         navigationController.loadTemplate('asignarTransportista',data,'#main-container',function(){
-        // var formData = new FormData(form);
-         //$.post('api/v1/listAsignacion/asignar',{data:formData},function() {
-
-          //  })
-       });
+             manejadorAsignacion();
+                        });
        },"json");
      }
   }
 
+  function manejadorAsignacion() {
+    $(".asignacion").click(function(event){
+      event.preventDefault();
+      $.post('api/v1/viajes/asigTransp',{
+        idV: $(this).attr("id_viaje"),
+        idT: $("[name='transpOfrec']:checked").val()
+      },
+      function() {
+      alert('nada');
+      })
+    })
+  }
    function handleFormEvents(){
        var navigationController = new NavigationController;
        $("#agregarViaje").click(function(event){

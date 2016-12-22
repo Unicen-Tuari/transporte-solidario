@@ -36,5 +36,6 @@ $app->group(['prefix' => 'api/v1/',
       $app->get('perfil', 'UserController@getLoggedInUser');
       $app->get('listAsignacion','ViajesController@getOfrecidos');
       $app->post('viajes','ViajesController@addViaje');
+      $app->post('viajes/asigTransp','ViajesController@asignarTransporte');
       $app->post('users/{id}', 'UserController@setRol');
 });

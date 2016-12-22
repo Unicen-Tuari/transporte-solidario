@@ -122,11 +122,21 @@ class ViajeModel extends Model
           if (count($ofrecidos)>0)
             $viaje['hayOfrecidos']=true;
           else
-            $viaje['hayOfrecidos']=false;
+             $viaje['hayOfrecidos']=false;
           $viaje['ofrecidos']=$Ofrc;
+          if ($viaje['Transp_asignado']==0)
+            $viaje['sinAsignar']=true;
+          else
+            $viaje['sinAsignar']=false;
           $viajes_to_return[]=$viaje;
         }
       return $viajes_to_return;
+    }
+
+    public function registrarAsignacion($id_viaj,$id_tr)
+    {
+      $insertAsignacion = $this->db->prepare("UPDATE viajesolidario SET Transp_asignado = ? WHERE id_viaje = ?");
+      $insertAsignacion->execute(array($id_tr,$id_viaj));
     }
 
 }

@@ -90,4 +90,12 @@ class ViajesController extends Controller
 
    }
 
+   public function asignarTransporte(Request $request)
+   {$idTrans = $request->input('idT');
+    $idViaj = $request->input('idV');
+    $this->model->registrarAsignacion($idTrans,$idViaj);
+   }
+
+
+
 }
