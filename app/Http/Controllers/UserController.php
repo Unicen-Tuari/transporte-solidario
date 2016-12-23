@@ -63,8 +63,11 @@ class UserController extends Controller
       $fileName = $id.".".$request->file('archivo')->guessExtension();
       $request->file('archivo')->move(base_path().'/public/img/upload/', $fileName);
       $this->model->saveImg($id, "img/upload/" . $fileName);
+      return response()->json(true); // contenido application/json ya que no retornamos nada de la BD.
+    } else {
+      abort(403, 'Imagen no compatible, por favor utiliza formatos y tamaños de imagen compatibles.');
+      return response()->json(false);
     }
-    return response()->json(true); // contenido application/json ya que no retornamos nada de la BD.
   }
 
 }
