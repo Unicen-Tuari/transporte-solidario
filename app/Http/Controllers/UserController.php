@@ -66,7 +66,6 @@ class UserController extends Controller
       return response()->json(true); // contenido application/json ya que no retornamos nada de la BD.
     } else {
       abort(403, 'Imagen no compatible, por favor utiliza formatos y tamaños de imagen compatibles.');
-      return response()->json(false);
     }
   }
 
