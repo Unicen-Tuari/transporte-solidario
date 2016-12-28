@@ -47,8 +47,7 @@ class UserController extends Controller
       'webpage' => $request->input('web'),
       'descripcion' => $request->input('desc'),
       'telefono' => $request->input('tel'),
-      'tipo_usuario' => $request->input('tipo|'),
-      'img_path' => $request->input('image')
+      'tipo_usuario' => $request->input('tipo')
     );
     $this->model->setRegister($info);
   }
@@ -57,4 +56,17 @@ class UserController extends Controller
     $this->model->setRol($id,$request->input('rol'));
     return "exito!";
   }
+
+  public function saveImg(Request $request, $id) { //https://lumen.laravel.com/docs/5.2/requests#files
+    if ($request->file('archivo')->isValid()) {
+      // guardo la imagen con el nombre igual al id del usuario
+      $fileName = $id.".".$request->file('archivo')->guessExtension();
+      $request->file('archivo')->move(base_path().'/public/img/upload/', $fileName);
+      $this->model->saveImg($id, "img/upload/" . $fileName);
+      return response()->json(true); // contenido application/json ya que no retornamos nada de la BD.
+    } else {
+      abort(403, 'Imagen no compatible, por favor utiliza formatos y tamaños de imagen compatibles.');
+    }
+  }
+
 }

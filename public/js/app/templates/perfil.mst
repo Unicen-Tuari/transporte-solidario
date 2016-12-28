@@ -13,11 +13,15 @@
       </div>
       <div class="panel-body">
         <div class="col-md-4">
-          <img src="{{img_path}}" class="img-responsive img-rounded" alt="Img User" width="128" height="128">
+          <img id="imgUser" src="{{img_path}}" class="img-responsive img-rounded" alt="Img User" width="128" height="128">
+          <form id="imgAjax" enctype="multipart/form-data">
+            <button type="button" class="btn btn-link" id="loadImgPerfil"><span class="glyphicon glyphicon-picture"></span>   Cargar im&aacute;gen</button>
+            <input name="archivo" type="file" id="fileToUpload">
+      		</form>
         </div>
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
+            <li class="list-group-item" id="idNro"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>    {{email}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>   {{facebook}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>   {{webpage}}</li>

@@ -15,7 +15,7 @@ UserController.prototype = {
          UserController.prototype.load();
        });
     },
-    
+
     load : function (){
       var navigationController = new NavigationController;
       $.get('api/v1/users',function(data){
@@ -31,9 +31,41 @@ UserController.prototype = {
     },
 
     loadProfile : function (){
+      var idUser = '';
       var navigationController = new NavigationController;
       $.get('api/v1/perfil',function(data){
-        navigationController.loadTemplate('perfil',data,'#main-container');
+        navigationController.loadTemplate('perfil',data,'#main-container',function(){
+          $('#fileToUpload').hide(); // escondemos el botón de carga default
+
+          $('#loadImgPerfil').click(function(event){
+            event.preventDefault();
+            var nro = $('#idNro').text().split("#");
+            idUser = nro[1];
+            $('#fileToUpload').click(); // llamo al evento click del botón escondido
+          });
+
+          $("#fileToUpload").on("change", function(event){
+            event.preventDefault();
+            //uploadFile(idUser); // función que se encargará de subir la imágen
+            var formData = new FormData($("#imgAjax")[0]);
+            $.ajax({
+              method: "POST",
+              url: "api/v1/perfil/img/"+idUser,
+              data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function() {
+                console.log("Imagen grabada");
+                $("#imgUser").attr('src', $("#imgUser").attr('src') + '?' + Math.random() );
+              },
+              error: function(jqxml, status, errorThrown) {
+                console.log(errorThrown);
+              }
+            });
+          });
+
+        });
       },"json");
     },
 
@@ -97,10 +129,28 @@ UserController.prototype = {
       navigationController.loadTemplate('newUser',[],'#main-container',function(){
         $('#newUser').on("submit",function() {
           event.preventDefault();
-          alert("llegamo");
           createUser(this);
         });
       });
-
     }
+}
+
+function uploadFile(idUser) {
+  var formData = new FormData($("#imgAjax")[0]);
+  console.log('uploadFile: ' + $('#fileToUpload').val());
+  $.ajax({
+    method: "POST",
+    url: "api/v1/perfil/img/"+idUser,
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function() {
+      console.log("Imagen grabada");
+      //navigationController.loadTemplate('perfil',data,'#main-container');
+    },
+    error: function(jqxml, status, errorThrown) {
+      console.log(errorThrown);
+    }
+  });
 }
