@@ -18,7 +18,7 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="email">Email:</label>
       <div class="col-sm-4">
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+        <input type="text" class="form-control" id="email" placeholder="Ingrese su email">
       </div>
     </div>
 
@@ -38,11 +38,13 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="tipo">Tipo de usuario</label>
       <div class="col-sm-4">
+        <!-- este combo debe conseguir los valores de la BD transporte.role -->
         <select class="form-control" id="tipo">
-          <option value="admin">admin</option>
-          <option value="ong">ong</option>
-          <option value="transportista">transportista</option>
-          <option value="usuario">usuario</option>
+          <option value="1">Invitado</option>
+          <option value="2">admin</option>
+          <option value="3">ONG</option>
+          <option value="4">Transportista</option>
+          <option value="5">Usuario</option>
         </select>
       </div>
     </div>
@@ -76,23 +78,25 @@
               <div class="form-group">
                 <label class="control-label col-sm-4" for="tel">Tel&eacute;fono <span class="glyphicon glyphicon-phone"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su tel&eacute;fono">
+                  <input type="text" class="form-control" id="tel" placeholder="Ingrese su tel&eacute;fono">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-sm-4" for="desc">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
+                <label class="control-label col-sm-4" for="comment">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
                 <div class="col-sm-4">
                   <textarea class="form-control" rows="5" id="comment"></textarea>
                 </div>
               </div>
 
+              <!-- Comento la carga de imagen ya que al guardar solicita el id de usuario, y al crear uno nuevo no sabemos cuál va a ser
               <div class="form-group">
                 <label class="control-label col-sm-4" for="image">Im&aacute;gen <span class="glyphicon glyphicon-picture"></span> </label>
                 <div class="col-sm-4">
-                  <input class="btn btn-link" type="file" name="image[]" id="image">
+                  <input class="btn btn-link" type="file" name="image" id="image">
                 </div>
               </div>
+              -->
 
             </div>
           </div>
@@ -103,7 +107,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default id="newUser">Crear Usuario</button>
+        <button type="button" class="btn btn-default" id="newUserBtn">Crear Usuario</button>
       </div>
     </div>
 

@@ -95,6 +95,7 @@ UserController.prototype = {
       });
     },
 
+    /*
     createUser : function (form) {
       var navigationController = new NavigationController;
       var formData = new FormData(form);
@@ -114,6 +115,7 @@ UserController.prototype = {
         }
       });
     },
+    */
 
     setGlobalLogin : function(token){
       localStorage.setItem('token-transporte', token);
@@ -127,20 +129,46 @@ UserController.prototype = {
     loadRegister : function (){
       var navigationController = new NavigationController;
       navigationController.loadTemplate('newUser',[],'#main-container',function(){
-        $('#newUser').on("submit",function() {
+        //seteo la funcionalidad del botón del formulario
+        $('#newUserBtn').on("click", function(event){
           event.preventDefault();
-          createUser(this);
+          createUser();
         });
       });
-    }
+  }
 }
 
+function createUser(){
+  var navigationController = new NavigationController;
+  var str = $("#nuevoUsuario").serialize();
+  $.ajax({
+    url: 'api/v1/register',
+    method: "POST",
+    data: str,
+    contentType: 'application/x-www-form-urlencoded',
+    cache: false,
+    processData:false,
+    success: function(data){
+      console.log('Info: ' + data);
+      alert("SIIIIII AJAX");
+      navigationController.loadTemplate('newUsersuccess',data,'#main-container',function(){
+      });
+    },
+    error: function(){
+      console.log(data);
+      alert("No anduvo la llamada AJAX");
+    },
+  });
+}
+
+
 function uploadFile(idUser) {
+  var navigationController = new NavigationController;
   var formData = new FormData($("#imgAjax")[0]);
   console.log('uploadFile: ' + $('#fileToUpload').val());
   $.ajax({
-    method: "POST",
     url: "api/v1/perfil/img/"+idUser,
+    method: "POST",
     data: formData,
     contentType: false,
     cache: false,
