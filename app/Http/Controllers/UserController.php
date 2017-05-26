@@ -40,7 +40,7 @@ class UserController extends Controller
 
   public function setRegister(Request $request){
     $var=new \stdClass;
-    $name = $request->input('name');
+    $name = $request->input('nombre');
     $email = $request->input('email');
     $password = $request->input('pwd');
     $facebook = $request->input('face');

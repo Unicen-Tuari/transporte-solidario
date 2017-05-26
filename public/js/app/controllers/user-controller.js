@@ -95,28 +95,6 @@ UserController.prototype = {
       });
     },
 
-    /*
-    createUser : function (form) {
-      var navigationController = new NavigationController;
-      var formData = new FormData(form);
-      $.ajax({
-        method: "POST",
-        url: 'api/v1/register',
-        data: formData,
-        contentType: false,
-        cache: false,
-        processData:false,
-        success: function(data){
-          navigationController.loadTemplate('home',data,'#main-container');
-        },
-        error: function(jqxml, status, errorThrown) {
-          console.log(errorThrown);
-
-        }
-      });
-    },
-    */
-
     setGlobalLogin : function(token){
       localStorage.setItem('token-transporte', token);
       $.ajaxSetup({
@@ -133,27 +111,25 @@ UserController.prototype = {
         //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
         $("#newUserBtn").click(function(event){
           event.preventDefault();
-          var str = new FormData($("#nuevoUsuario"));
+          var str = $("#nuevoUsuario").serialize();
           $.ajax({
             url: 'api/v1/register',
             type: "POST",
             data: str,
-            contentType: false, //'application/x-www-form-urlencoded',
+            contentType: 'application/x-www-form-urlencoded',
             processData:false,
             success: function(ok){
-              console.log('Info: ' + ok);
-              alert("SIIIIII AJAX");
+              console.log(ok);
               navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
               });
             },
-            error: function(jqxml, status, errorThrown) {
+            error: function(errorThrown) {
               console.log(errorThrown);
               alert("Error - No se cargó el nuevo usuario");
             }
           }); // fin llamada ajax
         }); // fin función botón
-
-      });
+      }); // fin llamada newUser.mst
     }
 
 } // fin del prototype

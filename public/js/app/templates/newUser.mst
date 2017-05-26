@@ -9,29 +9,29 @@
   <form class="form-horizontal" id="nuevoUsuario">
 
     <div class="form-group">
-      <label class="control-label col-sm-4" for="name">Nombre de usuario:</label>
+      <label class="control-label col-sm-4" for="nombre">Nombre de usuario:</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre de usuario">
+        <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre de usuario">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="email">Email:</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="email" placeholder="Ingrese su email">
+        <input type="text" class="form-control" name="email" placeholder="Ingrese su email">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="pwd">Password:</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+        <input type="password" class="form-control" name="pwd" placeholder="Enter password">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-4" for="pwdRepeat">Confirme password</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="pwdRepeat" placeholder="Confirme password">
+        <input type="password" class="form-control" name="pwdRepeat" placeholder="Confirme password">
       </div>
     </div>
 
@@ -39,7 +39,7 @@
       <label class="control-label col-sm-4" for="tipo">Tipo de usuario</label>
       <div class="col-sm-4">
         <!-- este combo debe conseguir los valores de la BD transporte.role -->
-        <select class="form-control" id="tipo">
+        <select class="form-control" name="tipo">
           <option value="1">Invitado</option>
           <option value="2">admin</option>
           <option value="3">ONG</option>
@@ -64,28 +64,28 @@
               <div class="form-group">
                 <label class="control-label col-sm-4" for="face">Facebook <span class="glyphicon glyphicon-thumbs-up"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="face" placeholder="Ingrese su id de Facebook">
+                  <input type="text" class="form-control" name="face" placeholder="Ingrese su id de Facebook">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="web">Webpage <span class="glyphicon glyphicon-home"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su Webpage">
+                  <input type="text" class="form-control" name="web" placeholder="Ingrese su Webpage">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="tel">Tel&eacute;fono <span class="glyphicon glyphicon-phone"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="tel" placeholder="Ingrese su tel&eacute;fono">
+                  <input type="text" class="form-control" name="tel" placeholder="Ingrese su tel&eacute;fono">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="comment">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
                 <div class="col-sm-4">
-                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                  <textarea class="form-control" rows="5" name="comment"></textarea>
                 </div>
               </div>
 
@@ -107,7 +107,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-default" id="newUserBtn">Crear Usuario</button>
+        <button type="button" class="btn btn-default" name="newUserBtn" id="newUserBtn">Crear Usuario</button>
       </div>
     </div>
 
