@@ -129,38 +129,34 @@ UserController.prototype = {
     loadRegister : function (){
       var navigationController = new NavigationController;
       navigationController.loadTemplate('newUser',[],'#main-container',function(){
-        //seteo la funcionalidad del botón del formulario
-        $('#newUserBtn').on("click", function(event){
+
+        //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
+        $("#newUserBtn").click(function(event){
           event.preventDefault();
-          createUser();
-        });
-      });
-  }
-}
+          var str = new FormData($("#nuevoUsuario"));
+          $.ajax({
+            url: 'api/v1/register',
+            type: "POST",
+            data: str,
+            contentType: false, //'application/x-www-form-urlencoded',
+            processData:false,
+            success: function(ok){
+              console.log('Info: ' + ok);
+              alert("SIIIIII AJAX");
+              navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
+              });
+            },
+            error: function(jqxml, status, errorThrown) {
+              console.log(errorThrown);
+              alert("Error - No se cargó el nuevo usuario");
+            }
+          }); // fin llamada ajax
+        }); // fin función botón
 
-function createUser(){
-  var navigationController = new NavigationController;
-  var str = $("#nuevoUsuario").serialize();
-  $.ajax({
-    url: 'api/v1/register',
-    method: "POST",
-    data: str,
-    contentType: 'application/x-www-form-urlencoded',
-    cache: false,
-    processData:false,
-    success: function(data){
-      console.log('Info: ' + data);
-      alert("SIIIIII AJAX");
-      navigationController.loadTemplate('newUsersuccess',data,'#main-container',function(){
       });
-    },
-    error: function(){
-      console.log(data);
-      alert("No anduvo la llamada AJAX");
-    },
-  });
-}
+    }
 
+} // fin del prototype
 
 function uploadFile(idUser) {
   var navigationController = new NavigationController;

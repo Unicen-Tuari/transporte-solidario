@@ -31,7 +31,7 @@ $app->group(['prefix' => 'api/v1/',
 
       $app->get('viajes','ViajesController@getViajes');
       $app->post('viajes/ofrecerme','ViajesController@ofrecermeAlViaje');
-      $app->get('users', 'UserController@getUsers'); // hay que eliminar esta linea y descomentar la que está dentro del grupo autorizado
+      $app->get('users', 'UserController@getUsers');
       $app->get('users/{id}', 'UserController@getUser');
       $app->get('perfil', 'UserController@getLoggedInUser');
       $app->post('viajes','ViajesController@addViaje');

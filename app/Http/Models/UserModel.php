@@ -53,7 +53,7 @@ class UserModel extends Model
         $dateTime = date_create('now')->format('Y-m-d');
         $img = "img/user-icon.png";
         //$this->$db->beginTransaction();
-        $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,id_role,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+        $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,id_role,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
         $insertUser->execute(array($name,$email,$password,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario,$dateTime,$img)); // coloco imagen por defecto
         $id = $this->db->lastInsertId();
