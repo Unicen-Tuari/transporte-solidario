@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <h1>Usuario Registrado</h1>
+      <h3>Registro exitoso</h3>
       <ul>
         <li>Nombre : {{name}}</li>
         <li>Email : {{email}}</li>
@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <h2>Por favor realice el ingreso al sistema con su usuario</h2>
+      <h4>Por favor realice el ingreso al sistema con su usuario</h4>
     </div>
   </div>
 </div>

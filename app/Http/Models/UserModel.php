@@ -22,8 +22,8 @@ class UserModel extends Model
 
     public function getUserById($id) {
       $user = $this->db->prepare("SELECT * FROM users WHERE id = ?");
-      $user->execute(array($id));
-      return $user->fetchAll(PDO::FETCH_ASSOC);
+      $user->execute([$id]);
+      return $user->fetch(PDO::FETCH_ASSOC);
     }
 
 /* Comentamos la función ya que no se usa.
