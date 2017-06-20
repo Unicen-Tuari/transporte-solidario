@@ -18,8 +18,6 @@ class UserModel extends Model
       parent::__construct();
     }
 
-
-
     public function getUserById($id) {
       $user = $this->db->prepare("SELECT * FROM users WHERE id = ?");
       $user->execute([$id]);
@@ -82,5 +80,17 @@ class UserModel extends Model
     public function setRol($id,$rol){
       $insert = $this->db->prepare("UPDATE users SET id_role = ? WHERE id =?");
       $insert->execute(array($rol,$id));
+    }
+
+    public function getRoles(){
+      $getRoles = $this->db->prepare("SELECT id, name FROM role");
+      $getRoles->execute();
+      $roles = $getRoles->fetchAll(PDO::FETCH_ASSOC);
+      $return=[];
+      foreach ($roles as $key => $rol) {
+        if ($rol['id']!=2)
+          $return[] = $rol;
+      }
+      return $return;
     }
 }
