@@ -106,31 +106,42 @@ UserController.prototype = {
 
     loadRegister : function (){
       var navigationController = new NavigationController;
-      navigationController.loadTemplate('newUser',[],'#main-container',function(){
 
-        //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
-        $("#newUserBtn").click(function(event){
+      $.get('api/v1/roles',function(data){ // obtengo listado de roles para combo
+        navigationController.loadTemplate('newUser',data,'#main-container',function(){
           event.preventDefault();
-          var str = $("#nuevoUsuario").serialize();
-          $.ajax({
-            url: 'api/v1/register',
-            type: "POST",
-            data: str,
-            contentType: 'application/x-www-form-urlencoded',
-            processData:false,
-            success: function(ok){
-              console.log(ok);
-              navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
-              });
-            },
-            error: function(errorThrown) {
-              console.log(errorThrown);
-              alert("Error - No se cargó el nuevo usuario");
-            }
-          }); // fin llamada ajax
-        }); // fin función botón
-      }); // fin llamada newUser.mst
-    }
+          //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
+          $("#newUserBtn").click(function(event){
+            // encripto la clave del usuario antes de enviarla al servidor
+            $("#pwd").val(window.btoa($("#pwd").val()));
+            $("#pwdRepeat").val(window.btoa($("#pwdRepeat").val()));
+            var str;
+            if ($("#pwd").val() == $("#pwdRepeat").val()) { // consulto si las claves coinciden
+              str = $("#nuevoUsuario").serialize();
+
+              $.ajax({
+                url: 'api/v1/register',
+                type: "POST",
+                data: str,
+                contentType: 'application/x-www-form-urlencoded',
+                processData:false,
+                success: function(ok){
+                  console.log(ok);
+                  navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
+                  });
+                },
+                error: function(errorThrown) {
+                  console.log(errorThrown);
+                  alert("Error - No se cargó el nuevo usuario");
+                }
+              }); // fin llamada ajax
+            } else {
+              alert("Las claves no coinciden, intente nuevamente");
+            }; // fin if password
+          }); // fin función botón
+        }); // fin llamada newUser.mst
+      }); // fin llamada a roles
+    } // fin loadRegister
 
 } // fin del prototype
 

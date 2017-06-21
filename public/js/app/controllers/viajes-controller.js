@@ -104,9 +104,6 @@
 
       },
 
-
-
-
   }
    function handleFormEvents(){
        var navigationController = new NavigationController;

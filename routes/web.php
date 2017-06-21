@@ -25,13 +25,14 @@ $app->get('api/v1/navigation', 'NavigationController@menu');
 $app->get('api/v1/viajes/realizados/{orden}/{estado}','ViajesController@getViajesRealizados');
 $app->get('api/v1/viajes/{id}', 'ViajesController@getViaje');
 $app->post('api/v1/register', 'UserController@setRegister');
+$app->get('api/v1/roles', 'UserController@getRoles');
 
 $app->group(['prefix' => 'api/v1/',
     'middleware' => 'auth'], function () use ($app) {
 
       $app->get('viajes','ViajesController@getViajes');
       $app->post('viajes/ofrecerme','ViajesController@ofrecermeAlViaje');
-      $app->get('users', 'UserController@getUsers');
+      $app->get('users', 'UserController@getUser');
       $app->get('users/{id}', 'UserController@getUser');
       $app->get('perfil', 'UserController@getLoggedInUser');
       $app->post('viajes','ViajesController@addViaje');

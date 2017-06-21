@@ -57,6 +57,11 @@ class UserController extends Controller
     return "exito!";
   }
 
+  public function getRoles(Request $request){
+    $var = [ "data" => $this->model->getRoles()];
+    return $var;
+  }
+
   public function saveImg(Request $request, $id) { //https://lumen.laravel.com/docs/5.2/requests#files
     if ($request->file('archivo')->isValid()) {
       // guardo la imagen con el nombre igual al id del usuario
