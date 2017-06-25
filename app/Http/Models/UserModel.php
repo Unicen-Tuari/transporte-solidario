@@ -45,15 +45,20 @@ class UserModel extends Model
       }*/
     }
 
-    public function setRegister($name,$email,$password,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario) {
+    public function setRegister($name,$email,$b64Pass,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       //try {
         $dateTime = date_create('now')->format('Y-m-d');
         $img = "img/user-icon.png";
+        $password = base64_decode($b64Pass); // decodfico pass recibida a texto plano
+        $options = [
+          'cost' => 6
+        ];
+        $hash = password_hash($password, PASSWORD_BCRYPT, $options); // codifico pass para guardar en BD
         //$this->$db->beginTransaction();
         $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,id_role,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
-        $insertUser->execute(array($name,$email,$password,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario,$dateTime,$img)); // coloco imagen por defecto
+        $insertUser->execute(array($name,$email,$hash,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario,$dateTime,$img)); // coloco imagen por defecto
         $id = $this->db->lastInsertId();
         return $this->getUserById($id);
 
