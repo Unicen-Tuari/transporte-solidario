@@ -51,10 +51,8 @@ class UserModel extends Model
         $dateTime = date_create('now')->format('Y-m-d');
         $img = "img/user-icon.png";
         $password = base64_decode($b64Pass); // decodfico pass recibida a texto plano
-        $options = [
-          'cost' => 6
-        ];
-        $hash = password_hash($password, PASSWORD_BCRYPT, $options); // codifico pass para guardar en BD
+        $hash = password_hash($password, PASSWORD_DEFAULT); // codifico pass para guardar en BD
+        $hash = str_replace("$2y$","$2a$",$hash); // saco $2y por $2a por bug crypt_blowfish
         //$this->$db->beginTransaction();
         $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,id_role,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
