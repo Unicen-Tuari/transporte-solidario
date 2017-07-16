@@ -112,32 +112,36 @@ UserController.prototype = {
           event.preventDefault();
           //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
           $("#newUserBtn").click(function(event){
-            // encripto la clave del usuario antes de enviarla al servidor
-            $("#pwd").val(window.btoa($("#pwd").val()));
-            $("#pwdRepeat").val(window.btoa($("#pwdRepeat").val()));
-            var str;
-            if ($("#pwd").val() == $("#pwdRepeat").val()) { // consulto si las claves coinciden
-              str = $("#nuevoUsuario").serialize();
+            if (emailOk($("#email").val())) // chequeo que email esté bien formateado
+              var str;
+              if ($("#pwd").val() == $("#pwdRepeat").val()) { // consulto si las claves coinciden
+                // encripto la clave del usuario antes de enviarla al servidor
+                $("#pwd").val(window.btoa($("#pwd").val()));
+                $("#pwdRepeat").val(window.btoa($("#pwdRepeat").val()));
 
-              $.ajax({
-                url: 'api/v1/register',
-                type: "POST",
-                data: str,
-                contentType: 'application/x-www-form-urlencoded',
-                processData:false,
-                success: function(ok){
-                  console.log(ok);
-                  navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
-                  });
-                },
-                error: function(errorThrown) {
-                  console.log(errorThrown);
-                  alert("Error - No se cargó el nuevo usuario");
-                }
-              }); // fin llamada ajax
+                str = $("#nuevoUsuario").serialize();
+                $.ajax({
+                  url: 'api/v1/register',
+                  type: "POST",
+                  data: str,
+                  contentType: 'application/x-www-form-urlencoded',
+                  processData:false,
+                  success: function(ok){
+                    console.log(ok);
+                    navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
+                    });
+                  },
+                  error: function(errorThrown) {
+                    console.log(errorThrown);
+                    alert("Error - No se cargó el nuevo usuario");
+                  }
+                }); // fin llamada ajax
+              } else {
+                alert("Las claves no coinciden, intente nuevamente");
+              }; // fin if check password
             } else {
-              alert("Las claves no coinciden, intente nuevamente");
-            }; // fin if password
+              alert("El email no posee un formato correcto, intente nuevamente");
+            }; // fin if check password
           }); // fin función botón
         }); // fin llamada newUser.mst
       }); // fin llamada a roles
@@ -164,4 +168,10 @@ function uploadFile(idUser) {
       console.log(errorThrown);
     }
   });
+}
+
+function emailOk(e) {
+  if ((p1.indexOf("@") > 0) && (p1.indexOf(".") > 1))
+    return true;
+  return false;
 }

@@ -60,8 +60,8 @@ class UserModel extends Model
         $id = $this->db->lastInsertId();
         return $this->getUserById($id);
 
-        /*$this->$db->commit();
-      } catch(PDOException $ex) {
+        //$this->$db->commit();
+      /*} catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());
       }*/
