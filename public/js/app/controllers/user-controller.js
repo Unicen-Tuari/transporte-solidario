@@ -112,7 +112,7 @@ UserController.prototype = {
           event.preventDefault();
           //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
           $("#newUserBtn").click(function(event){
-            if (emailOk($("#email").val())) // chequeo que email esté bien formateado
+            if (emailOk(String($("#email").val()))) {// chequeo que email exista y esté bien formateado
               var str;
               if ($("#pwd").val() == $("#pwdRepeat").val()) { // consulto si las claves coinciden
                 // encripto la clave del usuario antes de enviarla al servidor
@@ -170,8 +170,8 @@ function uploadFile(idUser) {
   });
 }
 
-function emailOk(e) {
-  if ((p1.indexOf("@") > 0) && (p1.indexOf(".") > 1))
+function emailOk(p1) {
+  if ((p1.indexOf("@") > 0) && (p1.indexOf(".",p1.indexOf("@")) > 1))
     return true;
   return false;
 }
