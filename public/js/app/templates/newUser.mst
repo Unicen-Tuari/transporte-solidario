@@ -9,40 +9,40 @@
   <form class="form-horizontal" id="nuevoUsuario">
 
     <div class="form-group">
-      <label class="control-label col-sm-4" for="name">Nombre de usuario:</label>
+      <label class="control-label col-sm-4" for="nombre">Nombre de usuario:</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre de usuario">
+        <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre de usuario">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="email">Email:</label>
       <div class="col-sm-4">
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su email" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="pwd">Password:</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password" required>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-4" for="pwdRepeat">Confirme password</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="pwdRepeat" placeholder="Confirme password">
+        <input type="password" class="form-control" name="pwdRepeat" id="pwdRepeat" placeholder="Confirme password" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="tipo">Tipo de usuario</label>
       <div class="col-sm-4">
-        <select class="form-control" id="tipo">
-          <option value="admin">admin</option>
-          <option value="ong">ong</option>
-          <option value="transportista">transportista</option>
-          <option value="usuario">usuario</option>
+        <select class="form-control" name="tipo" id="tipo" placeholder="tipo" required>
+        <option disabled selected value> -- elija un tipo de usuario -- </option>
+          {{#data}}
+            <option value="{{id}}">{{name}}</option>
+          {{/data}}
         </select>
       </div>
     </div>
@@ -62,37 +62,39 @@
               <div class="form-group">
                 <label class="control-label col-sm-4" for="face">Facebook <span class="glyphicon glyphicon-thumbs-up"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="face" placeholder="Ingrese su id de Facebook">
+                  <input type="text" class="form-control" name="face" placeholder="Ingrese su id de Facebook">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="web">Webpage <span class="glyphicon glyphicon-home"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su Webpage">
+                  <input type="text" class="form-control" name="web" placeholder="Ingrese su Webpage">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="tel">Tel&eacute;fono <span class="glyphicon glyphicon-phone"></span> </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="web" placeholder="Ingrese su tel&eacute;fono">
+                  <input type="text" class="form-control" name="tel" placeholder="Ingrese su tel&eacute;fono">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-sm-4" for="desc">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
+                <label class="control-label col-sm-4" for="comment">Descripci&oacute;n <span class="glyphicon glyphicon-info-sign"></span> </label>
                 <div class="col-sm-4">
-                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                  <textarea class="form-control" rows="5" name="comment"></textarea>
                 </div>
               </div>
 
+              <!-- Comento la carga de imagen ya que al guardar solicita el id de usuario, y al crear uno nuevo no sabemos cuál va a ser
               <div class="form-group">
                 <label class="control-label col-sm-4" for="image">Im&aacute;gen <span class="glyphicon glyphicon-picture"></span> </label>
                 <div class="col-sm-4">
-                  <input class="btn btn-link" type="file" name="image[]" id="image">
+                  <input class="btn btn-link" type="file" name="image" id="image">
                 </div>
               </div>
+              -->
 
             </div>
           </div>
@@ -100,10 +102,9 @@
       </div>
     </div>
 
-
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default id="newUser">Crear Usuario</button>
+      <div class="col-sm-8 col-sm-offset-2">
+        <button type="button" class="btn btn-lg btn-primary btn-block" name="newUserBtn" id="newUserBtn">Crear Usuario</button>
       </div>
     </div>
 

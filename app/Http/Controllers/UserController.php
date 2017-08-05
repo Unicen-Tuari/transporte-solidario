@@ -38,23 +38,28 @@ class UserController extends Controller
     return $var;
   }
 
-  public function setRegister(Request $request){ // no se como se consiguen los datos
-    $info = array(
-      'name' => $request->input('name'),
-      'email' => $request->input('email'),
-      'password' => $request->input('password'),
-      'facebook' => $request->input('face'),
-      'webpage' => $request->input('web'),
-      'descripcion' => $request->input('desc'),
-      'telefono' => $request->input('tel'),
-      'tipo_usuario' => $request->input('tipo')
-    );
-    $this->model->setRegister($info);
+  public function setRegister(Request $request){
+    $var=new \stdClass;
+    $name = $request->input('nombre');
+    $email = $request->input('email');
+    $password = $request->input('pwd');
+    $facebook = $request->input('face');
+    $webpage = $request->input('web');
+    $descripcion = $request->input('comment');
+    $telefono = $request->input('tel');
+    $tipo_usuario = $request->input('tipo');
+    $var = $this->model->setRegister($name,$email,$password,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario);
+    return $var;
   }
 
   public function setRol($id,Request $request){
     $this->model->setRol($id,$request->input('rol'));
     return "exito!";
+  }
+
+  public function getRoles(Request $request){
+    $var = [ "data" => $this->model->getRoles()];
+    return $var;
   }
 
   public function saveImg(Request $request, $id) { //https://lumen.laravel.com/docs/5.2/requests#files

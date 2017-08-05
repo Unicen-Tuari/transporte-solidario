@@ -95,26 +95,6 @@ UserController.prototype = {
       });
     },
 
-    createUser : function (form) {
-      var navigationController = new NavigationController;
-      var formData = new FormData(form);
-      $.ajax({
-        method: "POST",
-        url: 'api/v1/register',
-        data: formData,
-        contentType: false,
-        cache: false,
-        processData:false,
-        success: function(data){
-          navigationController.loadTemplate('home',data,'#main-container');
-        },
-        error: function(jqxml, status, errorThrown) {
-          console.log(errorThrown);
-
-        }
-      });
-    },
-
     setGlobalLogin : function(token){
       localStorage.setItem('token-transporte', token);
       $.ajaxSetup({
@@ -126,21 +106,56 @@ UserController.prototype = {
 
     loadRegister : function (){
       var navigationController = new NavigationController;
-      navigationController.loadTemplate('newUser',[],'#main-container',function(){
-        $('#newUser').on("submit",function() {
+
+      $.get('api/v1/roles',function(data){ // obtengo listado de roles para combo
+        navigationController.loadTemplate('newUser',data,'#main-container',function(){
           event.preventDefault();
-          createUser(this);
-        });
-      });
-    }
-}
+          //seteo la funcionalidad del botón newUserBtn del formulario nuevoUsuario
+          $("#newUserBtn").click(function(event){
+            if (emailOk(String($("#email").val()))) {// chequeo que email exista y esté bien formateado
+              var str;
+              if ($("#pwd").val() == $("#pwdRepeat").val()) { // consulto si las claves coinciden
+                // encripto la clave del usuario antes de enviarla al servidor
+                $("#pwd").val(window.btoa($("#pwd").val()));
+                $("#pwdRepeat").val(window.btoa($("#pwdRepeat").val()));
+
+                str = $("#nuevoUsuario").serialize();
+                $.ajax({
+                  url: 'api/v1/register',
+                  type: "POST",
+                  data: str,
+                  contentType: 'application/x-www-form-urlencoded',
+                  processData:false,
+                  success: function(ok){
+                    console.log(ok);
+                    navigationController.loadTemplate('newUsersuccess',ok,'#main-container',function(){
+                    });
+                  },
+                  error: function(errorThrown) {
+                    console.log(errorThrown);
+                    alert("Error - No se cargó el nuevo usuario");
+                  }
+                }); // fin llamada ajax
+              } else {
+                alert("Las claves no coinciden, intente nuevamente");
+              }; // fin if check password
+            } else {
+              alert("El email no posee un formato correcto, intente nuevamente");
+            }; // fin if check password
+          }); // fin función botón
+        }); // fin llamada newUser.mst
+      }); // fin llamada a roles
+    } // fin loadRegister
+
+} // fin del prototype
 
 function uploadFile(idUser) {
+  var navigationController = new NavigationController;
   var formData = new FormData($("#imgAjax")[0]);
   console.log('uploadFile: ' + $('#fileToUpload').val());
   $.ajax({
-    method: "POST",
     url: "api/v1/perfil/img/"+idUser,
+    method: "POST",
     data: formData,
     contentType: false,
     cache: false,
@@ -153,4 +168,10 @@ function uploadFile(idUser) {
       console.log(errorThrown);
     }
   });
+}
+
+function emailOk(p1) {
+  if ((p1.indexOf("@") > 0) && (p1.indexOf(".",p1.indexOf("@")) > 1))
+    return true;
+  return false;
 }

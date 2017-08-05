@@ -22,7 +22,10 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item" id="idNro"><span class="glyphicon glyphicon-info-sign"></span>   ID #{{id}}</li>
-            <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>    {{email}}</li>
+            <!-- <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>    {{email}}</li> -->
+            <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>
+                <input type="email" name="email" id="inputEmail" placeholder={{email}}></input>
+            </li>
             <li class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>   {{facebook}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>   {{webpage}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-file"></span>   {{descripcion}}</li>
@@ -30,6 +33,7 @@
             <li class="list-group-item hide">{{tipo_user}}</li>
             <li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span>   {{fecha_alta}}</li>
           </ul>
+          <button type="button" class="btn btn-link" id="saveProfile"><span class="glyphicon glyphicon-edit"></span>   Guardar cambios</button>
         </div>
       </div>
     </div>

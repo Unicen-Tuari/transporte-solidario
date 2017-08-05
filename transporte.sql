@@ -118,6 +118,7 @@ INSERT INTO `role_menu` (`id_role`, `id_menu`) VALUES
 (4, 3),
 (4, 4),
 (4, 5);
+(5, 5);
 
 -- --------------------------------------------------------
 
@@ -132,24 +133,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `facebook` varchar(50) DEFAULT NULL,
   `webpage` varchar(50) DEFAULT NULL,
-  `descripcion` text,
+  `descripcion` text NULL,
   `telefono` varchar(50) DEFAULT NULL,
-  `tipo_usuario` varchar(255) NOT NULL,
+  `id_role` int(11) NOT NULL,
   `fecha_alta` date NOT NULL,
   `img_path` varchar(255) DEFAULT NULL,
-  `id_role` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE(`email`) -- el email debe ser único ya que se usa en el login
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='Tabla de usuarios transporte solidario';
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `tipo_usuario`, `fecha_alta`, `img_path`, `id_role`) VALUES
-(1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, '', '2016-11-17', 'img/user-icon.png', 2),
-(2, 'Mesa Solidaria', 'mesasolidaria@lala.com', 'laclave1', 'miramelamesa', 'que mesasa', 'son un para de chavones/as que hacen cosas por la gente', '24324234', 'ONG', '2016-11-16', 'img/logo_Mesa.png', 3),
-(3, 'Banco de alimentos', 'bancoalimentos@gmail.com', 'quebanquitopapa', 'bancoalimentos', 'www.bankfood.com', 'El citibank del morfi', '3247932864', 'ONG', '2016-11-16', 'img/BancoAlimentos.jpg', 3),
-(4, 'reinventar', 'teinventedenuevo@gmail.com', '27o8127oyhdlq', 'reinventarTandil', 'www.reinventar.com.ar', 'hacen algo', '23212', 'ONG', '2016-11-15', 'img/reinventar.jpg', 3);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `facebook`, `webpage`, `descripcion`, `telefono`, `id_role`, `fecha_alta`, `img_path`) VALUES
+(1, 'SysAdmin', 'a@a.com', '$2a$06$E/WR4ekkv7YuZFJpFbak8.qayik9YrtWuGVO4zMQefgpLg5KCpWRW', NULL, 'transportesolidario.app', NULL, NULL, 2, '2016-11-17', 'img/user-icon.png'),
+(2, 'Mesa Solidaria', 'mesasolidaria@lala.com', 'laclave1', 'miramelamesa', 'que mesasa', 'son un para de chavones/as que hacen cosas por la gente', '24324234', 3, '2016-11-16', 'img/logo_Mesa.png'),
+(3, 'Banco de alimentos', 'bancoalimentos@gmail.com', 'quebanquitopapa', 'bancoalimentos', 'www.bankfood.com', 'El citibank del morfi', '3247932864', 3, '2016-11-16', 'img/BancoAlimentos.jpg'),
+(4, 'reinventar', 'teinventedenuevo@gmail.com', '27o8127oyhdlq', 'reinventarTandil', 'www.reinventar.com.ar', 'hacen algo', '23212', 3, '2016-11-15', 'img/reinventar.jpg');
 
 -- --------------------------------------------------------
 
@@ -246,6 +247,12 @@ ALTER TABLE `viaje_realizado`
 
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `fk_users_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `viaje_realizado`

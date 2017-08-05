@@ -18,19 +18,19 @@ class UserModel extends Model
       parent::__construct();
     }
 
-
-
     public function getUserById($id) {
       $user = $this->db->prepare("SELECT * FROM users WHERE id = ?");
-      $user->execute(array($id));
-      return $user->fetchAll(PDO::FETCH_ASSOC);
+      $user->execute([$id]);
+      return $user->fetch(PDO::FETCH_ASSOC);
     }
 
+/* Comentamos la función ya que no se usa.
     public function getLogin($name) {
-      $user = $this->db->prepare("SELECT name, password FROM users WHERE name = ?");
+      $user = $this->db->prepare("SELECT email, password FROM users WHERE email = ?");
       $user->execute(array($name));
       return $user->fetchAll(PDO::FETCH_ASSOC);
     }
+*/
 
     public function saveImg($user,$image) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -45,15 +45,23 @@ class UserModel extends Model
       }*/
     }
 
-    public function setRegister($user) {
+    public function setRegister($name,$email,$b64Pass,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario) {
       //$this->$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       //try {
         $dateTime = date_create('now')->format('Y-m-d');
+        $img = "img/user-icon.png";
+        $password = base64_decode($b64Pass); // decodfico pass recibida a texto plano
+        $hash = password_hash($password, PASSWORD_DEFAULT); // codifico pass para guardar en BD
+        $hash = str_replace("$2y$","$2a$",$hash); // saco $2y por $2a por bug crypt_blowfish
         //$this->$db->beginTransaction();
-        $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,tipo_usuario,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
-        $insertUser->execute(array($user['name'],$user['email'],$user['password'],$user['facebook'],$user['webpage'],$user['descripcion'],$user['telefono'],$user['tipo_usuario'],$dateTime,$path_image));
-        /*$this->$db->commit();
-      } catch(PDOException $ex) {
+        $insertUser = $this->db->prepare("INSERT INTO users(name,email,password,facebook,webpage,descripcion,telefono,id_role,fecha_alta,img_path) VALUES(?,?,?,?,?,?,?,?,?,?)");
+
+        $insertUser->execute(array($name,$email,$hash,$facebook,$webpage,$descripcion,$telefono,$tipo_usuario,$dateTime,$img)); // coloco imagen por defecto
+        $id = $this->db->lastInsertId();
+        return $this->getUserById($id);
+
+        //$this->$db->commit();
+      /*} catch(PDOException $ex) {
         $this->$db->rollBack();
         log($ex->getMessage());
       }*/
@@ -65,7 +73,7 @@ class UserModel extends Model
       $users=$getUsers->fetchAll(PDO::FETCH_ASSOC);
       $return=[];
       foreach ($users as $key => $user) {
-        $ong = ($user['tipo_usuario']=='ong');
+        $ong = ($user['id_role']==3);
         $user['ong'] = $ong;
         $return[] = $user;
       }
@@ -73,7 +81,20 @@ class UserModel extends Model
     }
 
     public function setRol($id,$rol){
-      $insert = $this->db->prepare("UPDATE users SET tipo_usuario = ? WHERE id =?");
+      $insert = $this->db->prepare("UPDATE users SET id_role = ? WHERE id =?");
       $insert->execute(array($rol,$id));
+    }
+
+    // función para cargar info en combo "tipo de usuario" en pantalla de registro de usuario
+    public function getRoles(){
+      $getRoles = $this->db->prepare("SELECT id, name FROM role");
+      $getRoles->execute();
+      $roles = $getRoles->fetchAll(PDO::FETCH_ASSOC);
+      $return=[];
+      foreach ($roles as $key => $rol) {
+        if (($rol['id']!=2) && ($rol['id']!=1)) // el nuevo usuario no puede ser ni invitado (1) ni administrador (2)
+          $return[] = $rol;
+      }
+      return $return;
     }
 }
