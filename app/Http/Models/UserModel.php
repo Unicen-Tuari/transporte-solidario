@@ -85,13 +85,14 @@ class UserModel extends Model
       $insert->execute(array($rol,$id));
     }
 
+    // función para cargar info en combo "tipo de usuario" en pantalla de registro de usuario
     public function getRoles(){
       $getRoles = $this->db->prepare("SELECT id, name FROM role");
       $getRoles->execute();
       $roles = $getRoles->fetchAll(PDO::FETCH_ASSOC);
       $return=[];
       foreach ($roles as $key => $rol) {
-        if ($rol['id']!=2)
+        if (($rol['id']!=2) && ($rol['id']!=1)) // el nuevo usuario no puede ser ni invitado (1) ni administrador (2)
           $return[] = $rol;
       }
       return $return;
